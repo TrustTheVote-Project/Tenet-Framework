@@ -1,0 +1,9 @@
+- title ||= false
+- subtitle ||= false
+- if title || subtitle
+  .row.page-head
+    .col-md-12
+      - if title
+        %h3.page-title= title
+      - if subtitle
+        .page-subtitle= subtitle

@@ -1,0 +1,6 @@
+email:
+  # From-field of outgoing mail
+  noreply: noreply@trustthevote.org
+
+  # Super-admin email address(es) for notifications
+  superadmin: admin@localhost.localdomain

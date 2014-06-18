@@ -1,0 +1,15 @@
+- @page_id = "page_landing"
+
+= page_head
+
+.row
+  .col-md-12.text
+    %p.para_1= raw t ".para_1"
+    %p.para_2= raw t ".para_2"
+    %p.para_3= raw t ".para_3"
+    %p.learn-more= link_to t(".learn_more_prompt"), :about
+
+.row
+  .col-md-12.buttons
+    = link_to t(".register_prompt"), :new_registration_request, class: "btn btn-default"
+    = link_to t(".login_prompt"), :login, class: "btn btn-default"
