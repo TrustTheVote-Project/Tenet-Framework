@@ -10,5 +10,9 @@ module Csf
     def copy_csf_migrations
       rake "csf:install:migrations"
     end
+
+    def add_routes
+      route 'mount Csf::Engine => "/"'
+    end
   end
 end
