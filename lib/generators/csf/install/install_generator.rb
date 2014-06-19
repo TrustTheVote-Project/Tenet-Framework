@@ -14,5 +14,9 @@ module Csf
     def add_routes
       route 'mount Csf::Engine => "/"'
     end
+
+    def configure_sidekiq
+      copy_file "sidekiq.rb", "config/initializers/sidekiq.rb"
+    end
   end
 end

@@ -4,6 +4,7 @@ require "bootstrap-sass"
 require "gon"
 require "jquery-rails"
 require "carmen-rails"
+require "sidekiq"
 
 module Csf
 end
