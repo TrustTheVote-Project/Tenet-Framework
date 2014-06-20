@@ -9,6 +9,9 @@ Csf::Engine.routes.draw do
 
   get  '/data/organizations_in_state.json' => 'data#organizations_in_state', as: 'organizations_in_state'
 
+  get  '/admin_dashboard' => 'pages#admin_dashboard', as: 'admin_dashboard'
+  get  '/user_dashboard' => 'pages#user_dashboard', as: 'user_dashboard'
+
   root 'pages#landing'
 
 end

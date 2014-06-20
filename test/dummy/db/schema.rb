@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140620104411) do
+ActiveRecord::Schema.define(version: 20140620111207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20140620104411) do
     t.datetime "updated_at"
   end
 
+  add_index "csf_accounts", ["name"], name: "index_csf_accounts_on_name", unique: true, using: :btree
   add_index "csf_accounts", ["state_id"], name: "index_csf_accounts_on_state_id", using: :btree
 
   create_table "csf_registration_requests", force: true do |t|
@@ -61,9 +62,12 @@ ActiveRecord::Schema.define(version: 20140620104411) do
     t.string   "reset_password_token"
     t.datetime "reset_password_token_expires_at"
     t.datetime "reset_password_email_sent_at"
+    t.string   "phone"
+    t.string   "title"
   end
 
   add_index "csf_users", ["account_id"], name: "index_csf_users_on_account_id", using: :btree
+  add_index "csf_users", ["login"], name: "index_csf_users_on_login", unique: true, using: :btree
   add_index "csf_users", ["remember_me_token"], name: "index_csf_users_on_remember_me_token", using: :btree
   add_index "csf_users", ["reset_password_token"], name: "index_csf_users_on_reset_password_token", using: :btree
 
