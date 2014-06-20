@@ -1,0 +1,14 @@
+en:
+  csf:
+    user_sessions:
+      new:
+        title: Login
+        subtitle: Subtitle
+        body: Please login
+
+        form:
+          state: State
+          organization: Organization
+          username: User ID
+          password: Password
+          submit: Login
