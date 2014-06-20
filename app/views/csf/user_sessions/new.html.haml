@@ -1,0 +1,44 @@
+- @page_id = 'login'
+
+= page_head
+
+.row
+  .col-md-12
+    %p.body= raw t ".body"
+
+.row
+  .col-md-6.col-md-offset-3
+    = form_for :user_session, url: :login, html: { role: 'form' } do |f|
+      .form-group
+        = f.label :state_id, t(".form.state")
+        = f.select :state_id, options_from_collection_for_select(Csf::State.all, 'id', 'name', @user_session.state_id), { prompt: "Pick state" }, class: "form-control", data: { bind: 'value: stateId' }
+      .form-group
+        = f.label :account_id, t(".form.organization")
+        = f.select :account_id, [], { prompt: "Pick organization" }, class: "form-control", data: { bind: 'value: accountId, valueUpdate: "afterkeydown", enable: pickedState, options: organizations, optionsText: "name", optionsValue: "id", optionsCaption: "Pick organization"' }
+      .radio-inline
+        %label
+          = f.radio_button :type, 'user', data: { bind: 'checked: type, valueUpdate: "afterkeydown", enable: pickedOrganization' }
+          User
+      .radio-inline
+        %label
+          = f.radio_button :type, 'admin', data: { bind: 'checked: type, valueUpdate: "afterkeydown", enable: pickedOrganization' }
+          Administrator
+
+      .hidden{ data: { bind: 'css: { hidden: false }' } }
+        .form-group{ data: { bind: 'visible: isAdministrator' } }
+          %p= raw t ".admin.prompt"
+          %p= raw t ".admin.otp"
+        .form-group{ data: { bind: 'visible: isUser' } }
+          %p= raw t ".user.prompt"
+
+        <!-- ko if: pickedType -->
+        .form-group
+          = f.label :login, t(".form.login")
+          = f.text_field :login, class: "form-control", placeholder: "john.smith", data: { bind: 'value: login, valueUpdate: "afterkeydown"' }
+        .form-group
+          = f.label :password, t(".form.password")
+          = f.password_field :password, class: "form-control", data: { bind: 'value: password, valueUpdate: "afterkeydown"' }
+        <!-- /ko -->
+
+      .form-group
+        = f.submit t(".form.submit"), class: "btn btn-default", data: { binds: 'enable: canSubmit' }

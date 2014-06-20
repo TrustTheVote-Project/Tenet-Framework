@@ -1,17 +1,13 @@
 Csf::Engine.routes.draw do
 
-  namespace :csf do
-  get 'registration_requests/new'
-  end
+  get  '/about'    => 'pages#about', as: 'about'
+  get  '/login'    => 'user_sessions#new', as: 'login'
+  post '/login'    => 'user_sessions#create'
 
-  namespace :csf do
-  get 'registration_requests/create'
-  end
+  get  '/register' => 'registration_requests#new', as: 'new_registration_request'
+  post '/register' => 'registration_requests#create'
 
-  get '/about' => 'pages#about', as: 'about'
-  get '/login' => 'pages#about', as: 'login'
-
-  resources :registration_requests, only: [ :new, :create ]
+  get  '/data/organizations_in_state.json' => 'data#organizations_in_state', as: 'organizations_in_state'
 
   root 'pages#landing'
 

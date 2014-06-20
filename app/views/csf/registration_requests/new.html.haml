@@ -9,7 +9,7 @@
 .row
   .col-md-6.col-md-offset-3
     = form_errors @request, "Couldn't register your request", class: "alert alert-error"
-    = form_for @request, html: { role: 'form' } do |f|
+    = form_for @request, url: :new_registration_request, html: { role: 'form' } do |f|
       .form-group
         = f.label :organization_name, t(".form.organization_name")
         = f.text_field :organization_name, class: "form-control", placeholder: "TrustTheVote", data: { bind: 'value: organizationName, valueUpdate: "afterkeydown"' }

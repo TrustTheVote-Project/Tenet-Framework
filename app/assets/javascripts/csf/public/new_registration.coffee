@@ -21,28 +21,4 @@ $ ->
     l.push(t('invalid_phone')) unless phone(form.adminPhone())
     l
 
-  # see if we can submit the form
-  form.canSubmit = ko.computed ->
-    form.errors().length == 0
-
-  # disable form if we can't submit
-  $("form").on "submit", (e) ->
-    e.preventDefault() unless form.canSubmit()
-
-  # update class and popup of submit button
-  submitBtn = $("input[type='submit']")
-  updateSubmitBtn = ->
-    submitBtn.popover "destroy"
-    if form.canSubmit()
-      submitBtn.removeClass('grey')
-    else
-      submitBtn.addClass('grey')
-      submitBtn.popover
-        html:    true
-        content: form.errors().join("<br/>")
-        trigger: "hover"
-
-  form.errors.subscribe -> updateSubmitBtn()
-  updateSubmitBtn()
-
-  ko.applyBindings form
+  bindForm form

@@ -6,9 +6,16 @@ en:
         subtitle: Subtitle
         body: Please login
 
+        admin:
+          prompt: Provide your user-id and a one-time-password for administrator login.
+          otp: "<a href='/about_otp'>Learn More: One-Time Passwords</a>"
+
+        user:
+          prompt: Provide your user-id and password.
+
         form:
           state: State
           organization: Organization
-          username: User ID
+          login: User ID
           password: Password
           submit: Login

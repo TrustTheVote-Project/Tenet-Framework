@@ -1,9 +1,9 @@
 require_dependency "csf/application_controller"
 
 module Csf
-  class RegistrationRequestsController < ApplicationController
+  class RegistrationRequestsController < Csf::ApplicationController
 
-    before_filter :setup_gon_validations, only: [ :new, :create ]
+    before_filter :setup_gon_validations
 
     def new
       @request = RegistrationRequest.new

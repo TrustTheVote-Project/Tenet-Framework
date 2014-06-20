@@ -1,0 +1,5 @@
+Description:
+    Seeds CSF data
+
+Example:
+    rails generate csf:seed
