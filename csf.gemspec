@@ -32,5 +32,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'redis-rails'
   s.add_dependency 'sidekiq'
 
+  s.add_dependency 'sorcery'
+
   s.add_development_dependency "pg"
 end
