@@ -5,6 +5,7 @@ en:
         title: Login
         subtitle: Subtitle
         body: Please login
+        non_listed_states: "For states not listed, there are no elections organizations registered to use this service."
 
         admin:
           prompt: Provide your user-id and a one-time-password for administrator login.
