@@ -7,3 +7,8 @@
         %h3.page-title= title
       - if subtitle
         .page-subtitle= subtitle
+
+- if flash[:alert]
+  .alert.alert-danger= flash[:alert]
+- if flash[:notice]
+  .alert.alert-info= flash[:notice]

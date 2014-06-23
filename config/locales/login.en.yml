@@ -1,5 +1,7 @@
 en:
   csf:
+    user_not_found: User account is not found. Please check your details and retry.
+    successful_login: Successfully logged in.
     user_sessions:
       new:
         title: Login

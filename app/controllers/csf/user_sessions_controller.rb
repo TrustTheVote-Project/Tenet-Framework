@@ -22,12 +22,12 @@ module Csf
       raise ActiveRecord::RecordNotFound unless user
 
       if user.admin?
-        redirect_to :admin_dashboard
+        redirect_to :admin_dashboard, notice: I18n.t('.csf.successful_login')
       else
-        redirect_to :user_dashboard
+        redirect_to :user_dashboard, notice: I18n.t('.csf.successful_login')
       end
     rescue ActiveRecord::RecordNotFound
-      flash.now[:alert] = I18n.t('.user_not_found')
+      flash.now[:alert] = I18n.t('.csf.user_not_found')
 
       gon.organizations = @state.accounts.map { |a| { id: a.id.to_s, name: a.name } }
       gon.stateId       = @user_session.state_id
