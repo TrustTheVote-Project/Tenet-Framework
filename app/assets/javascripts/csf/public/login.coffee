@@ -2,12 +2,12 @@ $ ->
   return unless $("body#login")[0]?
 
   form =
-    stateId:       ko.observable()
-    accountId:     ko.observable()
-    type:          ko.observable()
-    login:         ko.observable()
+    stateId:       ko.observable(gon.stateId)
+    accountId:     ko.observable(gon.accountId)
+    type:          ko.observable(gon.type)
+    login:         ko.observable(gon.login)
     password:      ko.observable()
-    organizations: ko.observableArray([])
+    organizations: ko.observableArray(gon.organizations)
 
   form.pickedState = ko.computed -> filled(form.stateId())
   form.pickedOrganization = ko.computed -> filled(form.accountId())
@@ -34,6 +34,10 @@ $ ->
         form.organizations.removeAll()
         for i in data
           form.organizations.push(i)
+
+        # if aid = gon.accountId
+        #   form.accountId(aid)
+        #   gon.accountId = false
 
     undefined
 

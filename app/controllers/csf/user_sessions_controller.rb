@@ -5,14 +5,15 @@ module Csf
 
     def new
       @user_session = UserSession.new
+      @organizations = []
     end
 
     def create
       @user_session = UserSession.new(us[:state_id], us[:account_id], us[:type], us[:login], us[:password], us[:remember_me])
 
       # check that state + account + user tripple exists
-      state = State.find(@user_session.state_id)
-      account = state.accounts.find(@user_session.account_id)
+      @state = State.find(@user_session.state_id)
+      account = @state.accounts.find(@user_session.account_id)
       account.users.find_by!(login: @user_session.login)
 
       # verify credentials
@@ -27,6 +28,13 @@ module Csf
       end
     rescue ActiveRecord::RecordNotFound
       flash.now[:alert] = I18n.t('.user_not_found')
+
+      gon.organizations = @state.accounts.map { |a| { id: a.id.to_s, name: a.name } }
+      gon.stateId       = @user_session.state_id
+      gon.accountId     = @user_session.account_id
+      gon.type          = @user_session.type
+      gon.login         = @user_session.login
+
       render :new
     end
 
