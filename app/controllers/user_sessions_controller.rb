@@ -11,7 +11,13 @@ class UserSessionsController < ApplicationController
     # check that state + account + user tripple exists
     @state = State.find(@user_session.state_id)
     account = @state.accounts.find(@user_session.account_id)
-    account.users.find_by!(login: @user_session.login)
+    user = account.users.find_by!(login: @user_session.login)
+
+    # disallow logging admins as users and vice versa
+    if (user.admin? && @user_session.type != 'admin') ||
+       (!user.admin? && @user_session.type != 'user')
+         raise ActiveRecord::RecordNotFound
+    end
 
     # verify credentials
     user = login(@user_session.login, @user_session.password, @user_session.remember_me)
