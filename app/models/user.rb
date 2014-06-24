@@ -9,4 +9,9 @@ class User < ActiveRecord::Base
   validates :password, presence: { on: :create }, confirmation: { if: :password }
   validates :first_name, presence: true
   validates :last_name, presence: true
+
+  def user?
+    !self.admin?
+  end
+  
 end

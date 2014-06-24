@@ -62,5 +62,23 @@ Rename your `ApplicationController` to `BaseController` (or whatever). `Applicat
     class BaseController < ApplicationController
       # your former ApplicationController contents
     end
-    
+
 Don't forget to update other controllers to use your new `BaseController` if you have any.
+
+
+Auth methods and helpers
+------------------------
+
+Here's the collection of methods that can be used.
+
+*Filters*:
+
+* require_login - either admin or user
+* require_user_acc - user account is required
+* require_admin_acc - admin account is required
+
+*Helpers*:
+
+* current_user and current_login - either admin / user `User` instance or `nil`
+* current_user_acc - user `User` instance or nil (if not logged in, or logged as admin)
+* current_admin_acc - admin `User` instance or nil (if not logged in, or logged as user)

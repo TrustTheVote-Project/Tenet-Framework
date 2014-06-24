@@ -2,7 +2,6 @@ app_title: Dummy
 
 urls:
   user_dashboard:  /user_dash
-  admin_dashboard: /admin_dash
 
 email:
   # From-field of outgoing mail
