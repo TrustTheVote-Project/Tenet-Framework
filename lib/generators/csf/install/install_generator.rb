@@ -11,6 +11,10 @@ module Csf
       rake "csf_engine:install:migrations"
     end
 
+    def add_landing_page_route
+      route 'root "csf/pages#landing"'
+    end
+
     def configure_sidekiq
       copy_file "sidekiq.rb", "config/initializers/sidekiq.rb"
     end
