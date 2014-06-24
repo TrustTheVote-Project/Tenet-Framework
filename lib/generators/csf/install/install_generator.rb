@@ -4,11 +4,11 @@ module Csf
 
     def copy_csf_config
       copy_file "csf_config.yml", "config/csf_config.yml"
-      copy_file "csf_config.rb", "config/initializers/csf_config.rb"
+      copy_file "csf_config.rb",  "config/initializers/csf_config.rb"
     end
 
     def copy_csf_migrations
-      rake "csf:install:migrations"
+      rake "csf_engine:install:migrations"
     end
 
     def configure_sidekiq
