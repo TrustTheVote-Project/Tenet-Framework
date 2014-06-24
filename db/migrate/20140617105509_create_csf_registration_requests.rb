@@ -1,6 +1,6 @@
 class CreateCsfRegistrationRequests < ActiveRecord::Migration
   def change
-    create_table :csf_registration_requests do |t|
+    create_table :registration_requests do |t|
       t.string  :organization_name, null: false
       t.string  :state, null: false
       t.string  :website
@@ -13,6 +13,6 @@ class CreateCsfRegistrationRequests < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :csf_registration_requests, :archived
+    add_index :registration_requests, :archived
   end
 end

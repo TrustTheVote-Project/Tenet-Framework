@@ -1,6 +1,6 @@
 class CreateCsfUsers < ActiveRecord::Migration
   def change
-    create_table :csf_users do |t|
+    create_table :users do |t|
       t.belongs_to :account, null: false, index: true
 
       t.string     :login, null: false, unique: true

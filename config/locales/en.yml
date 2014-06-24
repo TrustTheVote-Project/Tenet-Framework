@@ -1,68 +1,66 @@
 en:
   layouts:
-    csf:
-      header:
-        banner_image: csf/brand.png
-        banner_image_alt_text: TrustTheVote Bullentin Board
-        banner_text: TrustTheVote Bullentin Board
-        banner_subtext: An example application with the TrustTheVote Common Services Framework
+    header:
+      banner_image: csf/brand.png
+      banner_image_alt_text: TrustTheVote Bullentin Board
+      banner_text: TrustTheVote Bullentin Board
+      banner_subtext: An example application with the TrustTheVote Common Services Framework
 
-      footer:
-        para1: "CSF created by <a href='http://trustthevote.org'>TrustTheVote Project</a>"
-        para2: " and provided by <a href='http//osetfoundation.org'>Open Source Election Technology (OSET) Foundation</a>"
-        links:
-          number: 3
-          separator: " | "
-          link_1:
-            title: "Legal"
-            url: http://osetfoundation.org/legal
-          link_2:
-            title: "Privacy"
-            url: http://osetfoundation.org/privacy
-          link_3:
-            title: "Contact"
-            url: http://osetfoundation.org/contact
+    footer:
+      para1: "CSF created by <a href='http://trustthevote.org'>TrustTheVote Project</a>"
+      para2: " and provided by <a href='http//osetfoundation.org'>Open Source Election Technology (OSET) Foundation</a>"
+      links:
+        number: 3
+        separator: " | "
+        link_1:
+          title: "Legal"
+          url: http://osetfoundation.org/legal
+        link_2:
+          title: "Privacy"
+          url: http://osetfoundation.org/privacy
+        link_3:
+          title: "Contact"
+          url: http://osetfoundation.org/contact
 
-  csf:
-    pages:
-      landing:
-        title: ""
-        subtitle: ""
-        para_1: "First paragraph"
-        para_2: "Second paragraph"
-        para_3: "Third paragraph"
-        learn_more_prompt: "Learn More"
-        register_prompt: "Register"
-        login_prompt: "Login"
+  pages:
+    landing:
+      title: ""
+      subtitle: ""
+      para_1: "First paragraph"
+      para_2: "Second paragraph"
+      para_3: "Third paragraph"
+      learn_more_prompt: "Learn More"
+      register_prompt: "Register"
+      login_prompt: "Login"
 
-      about:
-        title: About
-        subtitle: ""
-        body: "Nunc non felis sed est euismod placerat. Proin rhoncus porta est, id gravida dolor consectetur a. Nunc vitae massa urna. Pellentesque vel imperdiet mauris. Pellentesque aliquam elit sit amet tortor vulputate iaculis. Donec tristique semper augue, eget rutrum ligula. Praesent luctus orci ac venenatis viverra. Nulla luctus eleifend est id rhoncus. Nullam vel mi tincidunt, ultrices est eget, vulputate nulla."
+    about:
+      title: About
+      subtitle: ""
+      body: "Nunc non felis sed est euismod placerat. Proin rhoncus porta est, id gravida dolor consectetur a. Nunc vitae massa urna. Pellentesque vel imperdiet mauris. Pellentesque aliquam elit sit amet tortor vulputate iaculis. Donec tristique semper augue, eget rutrum ligula. Praesent luctus orci ac venenatis viverra. Nulla luctus eleifend est id rhoncus. Nullam vel mi tincidunt, ultrices est eget, vulputate nulla."
 
-    registration_requests:
-      new:
-        title: Register
-        subtitle: ""
-        body: "Nunc non felis sed est euismod placerat. Proin rhoncus porta est, id gravida dolor consectetur a. Nunc vitae massa urna. Pellentesque vel imperdiet mauris. Pellentesque aliquam elit sit amet tortor vulputate iaculis. Donec tristique semper augue, eget rutrum ligula. Praesent luctus orci ac venenatis viverra. Nulla luctus eleifend est id rhoncus. Nullam vel mi tincidunt, ultrices est eget, vulputate nulla."
-        form:
-          organization_name: "Name of Your Election Administration Organization"
-          state: "State"
-          website: "Web Site of Your Election Administration Organization"
-          admin_name: "Your Full Name"
-          admin_title: "Your Title or Job Description"
-          admin_email: "E-mail Address"
-          admin_phone: "Telephone"
-          submit: "Request registration"
-      create:
-        success: "Your request has been registered"
+  registration_requests:
+    new:
+      title: Register
+      subtitle: ""
+      body: "Nunc non felis sed est euismod placerat. Proin rhoncus porta est, id gravida dolor consectetur a. Nunc vitae massa urna. Pellentesque vel imperdiet mauris. Pellentesque aliquam elit sit amet tortor vulputate iaculis. Donec tristique semper augue, eget rutrum ligula. Praesent luctus orci ac venenatis viverra. Nulla luctus eleifend est id rhoncus. Nullam vel mi tincidunt, ultrices est eget, vulputate nulla."
+      form:
+        organization_name: "Name of Your Election Administration Organization"
+        state: "State"
+        website: "Web Site of Your Election Administration Organization"
+        admin_name: "Your Full Name"
+        admin_title: "Your Title or Job Description"
+        admin_email: "E-mail Address"
+        admin_phone: "Telephone"
+        submit: "Request registration"
+    create:
+      success: "Your request has been registered"
 
-    validations:
-      required: "is required"
-      invalid_email: "Please provide a valid email address"
-      invalid_phone: "Please provide valid 10 digit phone number"
-      invalid_website: "Please provide a valid URL for your organization"
+  validations:
+    required: "is required"
+    invalid_email: "Please provide a valid email address"
+    invalid_phone: "Please provide valid 10 digit phone number"
+    invalid_website: "Please provide a valid URL for your organization"
 
-    notifications:
-      new_registration_request:
-        subject: "New registration request"
+  notifications:
+    new_registration_request:
+      subject: "New registration request"

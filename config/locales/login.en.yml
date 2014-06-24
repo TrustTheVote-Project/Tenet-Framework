@@ -1,24 +1,23 @@
 en:
-  csf:
-    user_not_found: User account is not found. Please check your details and retry.
-    successful_login: Successfully logged in.
-    user_sessions:
-      new:
-        title: Login
-        subtitle: Subtitle
-        body: Please login
-        non_listed_states: "For states not listed, there are no elections organizations registered to use this service."
+  user_not_found: User account is not found. Please check your details and retry.
+  successful_login: Successfully logged in.
+  user_sessions:
+    new:
+      title: Login
+      subtitle: Subtitle
+      body: Please login
+      non_listed_states: "For states not listed, there are no elections organizations registered to use this service."
 
-        admin:
-          prompt: Provide your user-id and a one-time-password for administrator login.
-          otp: "<a href='/about_otp'>Learn More: One-Time Passwords</a>"
+      admin:
+        prompt: Provide your user-id and a one-time-password for administrator login.
+        otp: "<a href='/about_otp'>Learn More: One-Time Passwords</a>"
 
-        user:
-          prompt: Provide your user-id and password.
+      user:
+        prompt: Provide your user-id and password.
 
-        form:
-          state: State
-          organization: Organization
-          login: User ID
-          password: Password
-          submit: Login
+      form:
+        state: State
+        organization: Organization
+        login: User ID
+        password: Password
+        submit: Login

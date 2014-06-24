@@ -24,7 +24,7 @@ module Csf
         l[:subtitle] = subtitle
       end
 
-      render partial: "csf/shared/page_head", locals: l
+      render partial: "shared/page_head", locals: l
     end
 
   end

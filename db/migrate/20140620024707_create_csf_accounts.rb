@@ -1,6 +1,6 @@
 class CreateCsfAccounts < ActiveRecord::Migration
   def change
-    create_table :csf_accounts do |t|
+    create_table :accounts do |t|
       t.references :state, index: true
       t.string :name
 

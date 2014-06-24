@@ -1,3 +1,9 @@
+app_title: Sample App
+
+urls:
+  user_dashboard:  /user_dashboard
+  admin_dashboard: /admin_dashboard
+
 email:
   # From-field of outgoing mail
   noreply: noreply@trustthevote.org

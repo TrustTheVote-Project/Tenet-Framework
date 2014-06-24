@@ -311,7 +311,7 @@ Rails.application.config.sorcery.configure do |config|
     # mailer class. Needed.
     # Default: `nil`
     #
-    user.reset_password_mailer = 'Csf::Notifications'
+    user.reset_password_mailer = 'Notifications'
 
 
     # reset password email method on your mailer class.
@@ -437,5 +437,5 @@ Rails.application.config.sorcery.configure do |config|
 
   # This line must come after the 'user config' block.
   # Define which model authenticates with sorcery.
-  config.user_class = "Csf::User"
+  config.user_class = "User"
 end

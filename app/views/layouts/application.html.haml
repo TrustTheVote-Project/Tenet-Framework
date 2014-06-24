@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title CSF
+    %title= CsfConfig['app_title'] || 'CSF'
     %meta{:content => "width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no", :name => "viewport"}
 
     = stylesheet_link_tag "csf/application", :media => "all"
@@ -9,9 +9,9 @@
 
   %body{ id: @page_id }
     .container
-      = render "layouts/csf/header"
+      = render "layouts/header"
       = yield
-      = render "layouts/csf/footer"
+      = render "layouts/footer"
 
     = include_gon
     = javascript_include_tag "csf/application"

@@ -11,22 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140620111207) do
+ActiveRecord::Schema.define(version: 20140623195051) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "csf_accounts", force: true do |t|
+  create_table "accounts", force: true do |t|
     t.integer  "state_id"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "csf_accounts", ["name"], name: "index_csf_accounts_on_name", unique: true, using: :btree
-  add_index "csf_accounts", ["state_id"], name: "index_csf_accounts_on_state_id", using: :btree
+  add_index "accounts", ["name"], name: "index_accounts_on_name", unique: true, using: :btree
+  add_index "accounts", ["state_id"], name: "index_accounts_on_state_id", using: :btree
 
-  create_table "csf_registration_requests", force: true do |t|
+  create_table "registration_requests", force: true do |t|
     t.string   "organization_name",                 null: false
     t.string   "state",                             null: false
     t.string   "website"
@@ -39,14 +39,14 @@ ActiveRecord::Schema.define(version: 20140620111207) do
     t.datetime "updated_at"
   end
 
-  add_index "csf_registration_requests", ["archived"], name: "index_csf_registration_requests_on_archived", using: :btree
+  add_index "registration_requests", ["archived"], name: "index_registration_requests_on_archived", using: :btree
 
-  create_table "csf_states", force: true do |t|
+  create_table "states", force: true do |t|
     t.string "code", null: false
     t.string "name", null: false
   end
 
-  create_table "csf_users", force: true do |t|
+  create_table "users", force: true do |t|
     t.integer  "account_id",                                      null: false
     t.string   "login",                                           null: false
     t.string   "crypted_password",                                null: false
@@ -66,9 +66,9 @@ ActiveRecord::Schema.define(version: 20140620111207) do
     t.string   "title"
   end
 
-  add_index "csf_users", ["account_id"], name: "index_csf_users_on_account_id", using: :btree
-  add_index "csf_users", ["login"], name: "index_csf_users_on_login", unique: true, using: :btree
-  add_index "csf_users", ["remember_me_token"], name: "index_csf_users_on_remember_me_token", using: :btree
-  add_index "csf_users", ["reset_password_token"], name: "index_csf_users_on_reset_password_token", using: :btree
+  add_index "users", ["account_id"], name: "index_users_on_account_id", using: :btree
+  add_index "users", ["login"], name: "index_users_on_login", unique: true, using: :btree
+  add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token", using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", using: :btree
 
 end

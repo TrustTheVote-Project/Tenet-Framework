@@ -11,10 +11,6 @@ module Csf
       rake "csf:install:migrations"
     end
 
-    def add_routes
-      route 'mount Csf::Engine => "/"'
-    end
-
     def configure_sidekiq
       copy_file "sidekiq.rb", "config/initializers/sidekiq.rb"
     end
