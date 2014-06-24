@@ -22,22 +22,6 @@ en:
           title: "Contact"
           url: http://osetfoundation.org/contact
 
-  pages:
-    landing:
-      title: ""
-      subtitle: ""
-      para_1: "First paragraph"
-      para_2: "Second paragraph"
-      para_3: "Third paragraph"
-      learn_more_prompt: "Learn More"
-      register_prompt: "Register"
-      login_prompt: "Login"
-
-    about:
-      title: About
-      subtitle: ""
-      body: "Nunc non felis sed est euismod placerat. Proin rhoncus porta est, id gravida dolor consectetur a. Nunc vitae massa urna. Pellentesque vel imperdiet mauris. Pellentesque aliquam elit sit amet tortor vulputate iaculis. Donec tristique semper augue, eget rutrum ligula. Praesent luctus orci ac venenatis viverra. Nulla luctus eleifend est id rhoncus. Nullam vel mi tincidunt, ultrices est eget, vulputate nulla."
-
   registration_requests:
     new:
       title: Register
