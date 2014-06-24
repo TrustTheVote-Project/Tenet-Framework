@@ -19,9 +19,9 @@ class UserSessionsController < ApplicationController
     raise ActiveRecord::RecordNotFound unless user
 
     if user.admin?
-      redirect_to CsfAdmin['urls']['admin_dashboard'], notice: I18n.t('.successful_login')
+      redirect_to CsfConfig['urls']['admin_dashboard'], notice: I18n.t('.successful_login')
     else
-      redirect_to CsfAdmin['urls']['user_dashboard'], notice: I18n.t('.successful_login')
+      redirect_to CsfConfig['urls']['user_dashboard'], notice: I18n.t('.successful_login')
     end
   rescue ActiveRecord::RecordNotFound
     flash.now[:alert] = I18n.t('.user_not_found')
