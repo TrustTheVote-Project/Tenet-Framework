@@ -1,4 +1,7 @@
 en:
+  no_records: There are no records yet.
+  sure_to_delete: Are you sure to delete?
+
   layouts:
     header:
       banner_image: csf/brand.png

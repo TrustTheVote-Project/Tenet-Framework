@@ -13,7 +13,9 @@ Rails.application.routes.draw do
 
 
   namespace :group_admin do
-    get '/dashboard' => 'users#index', as: 'dashboard'
+    get '/users' => 'users#index', as: 'dashboard'
+
+    resources :users
   end
 
 end

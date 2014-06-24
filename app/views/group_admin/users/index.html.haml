@@ -1,1 +1,24 @@
-%h3 Group admin dashboard
+- @page_id = "group_admin_users_index"
+
+= page_head
+
+.row
+  .col-md-12
+    = link_to 'Add user', :new_group_admin_user, class: 'btn btn-primary pull-right'
+
+.row
+  .col-md-12
+    %table.table.users
+      %thead
+        %tr
+          %th.login Login
+          %th.email Email
+          %th.name  Full name
+          %th.phone Phone
+          %th.actions
+
+      - if @users.blank?
+        %tr
+          %td{ colspan: 5 }= t "no_records"
+      - else
+        = render @users

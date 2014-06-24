@@ -1,0 +1,17 @@
+en:
+  group_admin:
+    users:
+      index:
+        title: Users
+
+      new:
+        title: New user
+
+      create:
+        success: User record has been created.
+
+      update:
+        success: User record has been updated.
+
+      destroy:
+        success: User record has been deleted.
