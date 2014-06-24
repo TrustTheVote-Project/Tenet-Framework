@@ -56,3 +56,11 @@ Update frame work configuration at `config/csf_config.yml`.
 Seed data:
 
     $ bin/rake csf:db:seed
+
+Rename your `ApplicationController` to `BaseController` (or whatever). `ApplicationController` is provided by CSF and you need to inherit from it to get access to helpers and use layouts, like this:
+
+    class BaseController < ApplicationController
+      # your former ApplicationController contents
+    end
+    
+Don't forget to update other controllers to use your new `BaseController` if you have any.
