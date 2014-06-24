@@ -14,18 +14,12 @@ class UserSessionsController < ApplicationController
     u = account.users.find_by!(login: @user_session.login)
 
     # disallow logging admins as users and vice versa
-    # Rails.logger.info user.inspect
-    Rails.logger.info @user_session.inspect
     if u.admin? ? @user_session.type != 'admin' : @user_session.type != 'user'
       raise ActiveRecord::RecordNotFound
     end
 
-    Rails.logger.info "1"
-
     # verify credentials
     user = login(@user_session.login, @user_session.password)
-
-Rails.logger.info user.inspect
 
     raise ActiveRecord::RecordNotFound unless user
 
