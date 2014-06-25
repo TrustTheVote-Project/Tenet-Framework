@@ -18,4 +18,11 @@ Rails.application.routes.draw do
     resources :users
   end
 
+
+  namespace :admin_admin, path: 'admin' do
+    get '/' => 'registration_requests#index', as: 'dashboard'
+
+    resources :registration_requests
+  end
+
 end

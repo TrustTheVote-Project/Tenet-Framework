@@ -8,4 +8,6 @@ class RegistrationRequest < ActiveRecord::Base
   validates :admin_email, presence: true
   validates :admin_phone, presence: true
 
+  scope :unarchived, -> { where(archived: false) }
+  
 end

@@ -1,5 +1,9 @@
 app_title: Dummy
 
+admin:
+  # user id of admin-admin
+  login: admin
+
 urls:
   user_dashboard:  /user_dash
 

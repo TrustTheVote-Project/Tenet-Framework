@@ -1,0 +1,36 @@
+- @page_id = "aa_rr_show"
+
+= page_head
+
+.row
+  .col-md-6
+    %table.table.properties
+      %tr
+        %th Organization
+        %td= @req.organization_name
+      %tr
+        %th State
+        %td= @req.state
+      %tr
+        %th Website
+        %td= @req.website
+      %tr
+        %th Admin name
+        %td= @req.admin_name
+      %tr
+        %th Admin title
+        %td= @req.admin_title
+      %tr
+        %th Admin email
+        %td= @req.admin_email
+      %tr
+        %th Admin phone
+        %td= @req.admin_phone
+
+.row
+  .col-md-6
+    = link_to "Back to Requests", :admin_admin_registration_requests
+    &nbsp;&nbsp;
+    = link_to "Create account", '#', class: 'btn btn-default'
+    &nbsp;&nbsp;
+    = link_to "Delete request", [ :admin_admin, @req ], class: 'btn btn-danger', method: 'delete', data: { confirm: t('sure_to_delete') }

@@ -1,0 +1,19 @@
+- @page_id = "aa_rr_index"
+
+= page_head
+
+.row
+  .col-md-12
+    %table.table.rr
+      %thead
+        %tr
+          %th.org     Organization
+          %th.state   State
+          %th.website Website
+          %th.actions
+
+      - if @registration_requests.blank?
+        %tr
+          %td{ colspan: 4 }= t "no_records"
+      - else
+        = render @registration_requests

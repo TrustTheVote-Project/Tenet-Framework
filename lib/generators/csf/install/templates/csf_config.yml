@@ -1,8 +1,11 @@
 app_title: Sample App
 
+admin:
+  # user id of admin-admin
+  login: admin
+
 urls:
   user_dashboard:  /user_dashboard
-  admin_dashboard: /admin_dashboard
 
 email:
   # From-field of outgoing mail
