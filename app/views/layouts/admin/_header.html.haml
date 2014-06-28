@@ -1,7 +1,18 @@
 .row#header
-  .col-md-2
-    = link_to :root, class: "banner-image" do
-      = image_tag t("layouts.public.header.banner_image"), alt: t("layouts.public.header.banner_image_alt_text")
-  .col-md-10
-    %h3= t("layouts.public.header.banner_text")
-    %h4= t("layouts.public.header.banner_subtext")
+  .col-md-12
+    %nav.navbar.navbar-default
+      .container-fluid
+        %button{ type: "button", class: "navbar-toggle", data: { toggle: "collapse", target: "#nav-collapse" } }
+          %span.sr-only Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        = link_to "#{CsfConfig['app_title']} Admin Console", :root, class: "navbar-brand"
+
+        .collapse.navbar-collapse#nav-collapse
+          %ul.nav.navbar-nav
+            %li
+              = link_to :admin_admin_registration_requests do
+                Registrations
+                - if (c = RegistrationRequest.unarchived.count) > 0
+                  %span.badge= c
