@@ -15,4 +15,4 @@
 //= require bootstrap
 //= require knockout-3.1.0
 //= require csf/helpers
-//= require_tree ./public
+//= require_tree ./admin

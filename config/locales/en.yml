@@ -2,29 +2,6 @@ en:
   no_records: There are no records yet.
   sure_to_delete: Are you sure to delete?
 
-  layouts:
-    header:
-      banner_image: csf/brand.png
-      banner_image_alt_text: TrustTheVote Bullentin Board
-      banner_text: TrustTheVote Bullentin Board
-      banner_subtext: An example application with the TrustTheVote Common Services Framework
-
-    footer:
-      para1: "CSF created by <a href='http://trustthevote.org'>TrustTheVote Project</a>"
-      para2: " and provided by <a href='http//osetfoundation.org'>Open Source Election Technology (OSET) Foundation</a>"
-      links:
-        number: 3
-        separator: " | "
-        link_1:
-          title: "Legal"
-          url: http://osetfoundation.org/legal
-        link_2:
-          title: "Privacy"
-          url: http://osetfoundation.org/privacy
-        link_3:
-          title: "Contact"
-          url: http://osetfoundation.org/contact
-
   registration_requests:
     new:
       title: Register

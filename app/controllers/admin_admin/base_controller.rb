@@ -1,6 +1,7 @@
 class AdminAdmin::BaseController < ApplicationController
 
   before_filter :auth
+  layout "admin"
 
   private
 

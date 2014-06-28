@@ -3,14 +3,14 @@ module Csf
 
     # composes the HTML for the footer links
     def footer_links
-      links = t("layouts.footer.links.number").to_i.times.inject([]) do |m, i|
+      links = t("layouts.public.footer.links.number").to_i.times.inject([]) do |m, i|
         n = i + 1
-        title = t("layouts.footer.links.link_#{n}.title")
-        url   = t("layouts.footer.links.link_#{n}.url")
+        title = t("layouts.public.footer.links.link_#{n}.title")
+        url   = t("layouts.public.footer.links.link_#{n}.url")
         m << link_to(title, url)
       end
 
-      links.join(t("layouts.footer.links.separator")).html_safe
+      links.join(t("layouts.public.footer.links.separator")).html_safe
     end
 
     # renders the page head section

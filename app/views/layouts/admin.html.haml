@@ -4,14 +4,14 @@
     %title= CsfConfig['app_title'] || 'CSF'
     %meta{:content => "width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no", :name => "viewport"}
 
-    = stylesheet_link_tag "csf/application", :media => "all"
+    = stylesheet_link_tag "csf/admin", :media => "all"
     = csrf_meta_tags
 
   %body{ id: @page_id }
     .container
-      = render "layouts/public/header"
+      = render "layouts/admin/header"
       = yield
-      = render "layouts/public/footer"
+      = render "layouts/admin/footer"
 
     = include_gon
-    = javascript_include_tag "csf/application"
+    = javascript_include_tag "csf/admin"
