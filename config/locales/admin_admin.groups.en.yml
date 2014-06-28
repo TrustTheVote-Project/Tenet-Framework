@@ -1,0 +1,11 @@
+en:
+  admin_admin:
+    registration_requests:
+      index:
+        title: Registration requests
+
+      show:
+        title: Registration request
+        
+      destroy:
+        success: Registration request has been deleted.

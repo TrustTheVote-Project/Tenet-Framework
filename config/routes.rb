@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     get '/' => 'registration_requests#index', as: 'dashboard'
 
     resources :registration_requests
+    resources :groups
   end
 
 end

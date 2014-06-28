@@ -1,0 +1,19 @@
+- @page_id = "aa_groups_index"
+
+= page_head
+
+.row
+  .col-md-12
+    %table.table.groups
+      %thead
+        %tr
+          %th.name    Name
+          %th.state   State
+          %th.users   Users
+          %th.actions
+
+      - if @accounts.blank?
+        %tr
+          %td{ colspan: 4 }= t "no_records"
+      - else
+        = render partial: 'account', collection: @accounts
