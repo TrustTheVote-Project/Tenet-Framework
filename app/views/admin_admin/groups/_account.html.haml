@@ -3,5 +3,5 @@
   %td.state= account.state.name
   %td.users= account.users.users_only.count
   %td.actions
-    = link_to "Show", admin_admin_group_path(account), class: 'btn btn-xs btn-default'
+    = link_to "Show", "#admin_admin_group_path(account)", class: 'btn btn-xs btn-default'
     = link_to "Delete", admin_admin_group_path(account), method: 'delete', class: 'btn btn-xs btn-danger', data: { confirm: t("sure_to_delete") }
