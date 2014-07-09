@@ -1,0 +1,13 @@
+en:
+  admin_admin:
+    please_login: Please login to access this area
+    
+    user_sessions:
+      new:
+        title: Admin-admin Console Login
+        body: ''
+        success: Successfully logged in.
+        form:
+          login: Login
+          password: Password
+          submit: Login

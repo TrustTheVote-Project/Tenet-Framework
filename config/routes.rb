@@ -24,6 +24,10 @@ Rails.application.routes.draw do
 
     resources :registration_requests
     resources :groups
+
+    get  '/login'  => 'user_sessions#new', as: 'login'
+    post '/login'  => 'user_sessions#create'
+    get  '/logout' => 'user_sessions#destroy', as: 'logout'
   end
 
 end

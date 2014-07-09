@@ -3,11 +3,16 @@ class AdminAdmin::BaseController < ApplicationController
   before_filter :auth
   layout "admin"
 
+  def admin_admin?
+    !!session[:admin_admin]
+  end
+  helper_method :admin_admin?
+
   private
 
   def auth
-    authenticate_or_request_with_http_basic('Admin-admin Console') do |username, password|
-      username == CsfConfig['admin']['login']
+    if !session[:admin_admin]
+      redirect_to :admin_admin_login, notice: I18n.t('admin_admin.please_login')
     end
   end
 
