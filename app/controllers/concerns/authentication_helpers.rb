@@ -48,8 +48,8 @@ module Concerns::AuthenticationHelpers
   private
 
   def handle_not_authenticated
-    session[:return_to_url] = request.url if Config.save_return_to_url && request.get?
-    self.send(Config.not_authenticated_action)
+    session[:return_to_url] = request.url if request.get?
+    redirect_to :login, alert: I18n.t('.unauthenticated')
   end
 
 end
