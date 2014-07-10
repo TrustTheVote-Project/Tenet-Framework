@@ -9,6 +9,7 @@ module Concerns::AuthenticationHelpers
     helper_method :current_login
     helper_method :current_user_acc
     helper_method :current_admin_acc
+    helper_method :group_admin?
   end
 
   # returns the #Account of currently logged in user, or #nil
@@ -33,6 +34,11 @@ module Concerns::AuthenticationHelpers
       @current_admin_acc = current_login.try(:admin?) ? current_login : nil
     end
     @current_admin_acc
+  end
+
+  # TRUE if currently logged and is group admin
+  def group_admin?
+    !!current_admin_acc
   end
 
   # for use in before filter

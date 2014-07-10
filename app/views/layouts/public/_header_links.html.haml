@@ -1,5 +1,6 @@
 - if logged_in?
   %ul.nav.nav-pills.pull-right
-    %li= link_to "Users", :group_admin_users
-    %li= link_to "App Management", :group_admin_app_management
+    - if group_admin?
+      %li= link_to "Users", :group_admin_users
+      %li= link_to "App Management", :group_admin_app_management
     %li= link_to "Logout", :logout
