@@ -3,5 +3,6 @@
     = link_to :root, class: "banner-image" do
       = image_tag t(".banner_image"), alt: t(".banner_image_alt_text")
   .col-md-10
+    .pull-right= render 'layouts/public/header_links'
     %h3= t(".banner_text")
     %h4= t(".banner_subtext")

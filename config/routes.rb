@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get  '/about'    => 'csf/pages#about', as: 'about'
   get  '/login'    => 'user_sessions#new', as: 'login'
   post '/login'    => 'user_sessions#create'
+  get  '/logout'   => 'user_sessions#destroy'
 
   get  '/register' => 'registration_requests#new', as: 'new_registration_request'
   post '/register' => 'registration_requests#create'
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
 
   namespace :group_admin do
     get '/users' => 'users#index', as: 'dashboard'
+    get '/app_management' => 'pages#app_management', as: 'app_management'
 
     resources :users
   end

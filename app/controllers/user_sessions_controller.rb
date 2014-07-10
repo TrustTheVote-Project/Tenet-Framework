@@ -40,6 +40,11 @@ class UserSessionsController < ApplicationController
     render :new
   end
 
+  def destroy
+    logout
+    redirect_to :root, notice: I18n.t(".successful_logout")
+  end
+  
   private
 
   def us

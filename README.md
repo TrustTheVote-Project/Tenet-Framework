@@ -69,16 +69,50 @@ Don't forget to update other controllers to use your new `BaseController` if you
 Auth methods and helpers
 ------------------------
 
-Here's the collection of methods that can be used.
+Here's the collection of methods that can be used in the user / group admin visible parts:
 
 *Filters*:
 
-* require_login - either admin or user
+* require_login - either group admin or user
 * require_user_acc - user account is required
-* require_admin_acc - admin account is required
+* require_admin_acc - group admin account is required
 
 *Helpers*:
 
-* current_user and current_login - either admin / user `User` instance or `nil`
+* current_user and current_login - either group admin / user `User` instance or `nil`
 * current_user_acc - user `User` instance or nil (if not logged in, or logged as admin)
-* current_admin_acc - admin `User` instance or nil (if not logged in, or logged as user)
+* current_admin_acc - group admin `User` instance or nil (if not logged in, or logged as user)
+* group_admin? - TRUE if logged in as group admin
+
+
+For admin admin parts there is:
+
+*Filters*:
+
+* auth - authenticates the user as admin
+
+*Helpers*:
+
+* admin_admin? - TRUE if the user is logged in as admin admin
+
+
+
+Customizing header links
+------------------------
+
+Header links for public part are looked up at `app/views/layouts/public/_header_links`. Place a template in your app
+there, and it will replace the default logout link.
+
+Admin-admin header links are looked for at `app/views/layouts/admin/_header_links`.
+
+
+
+Integrating
+-----------
+
+To integrate into publicly visible part you don't do anything special. You create controllers, actions
+and views as usual, and use filters / helpers for proper authentication and authorization. If you need
+to place a link into header, see the section above.
+
+To integrate into admin part you inherit your controllers from `AdminAdmin::BaseController`. It will give
+you proper access control, view layout and helpers.

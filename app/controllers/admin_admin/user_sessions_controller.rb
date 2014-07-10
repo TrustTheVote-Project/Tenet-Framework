@@ -13,7 +13,7 @@ class AdminAdmin::UserSessionsController < AdminAdmin::BaseController
 
     if @user_session.authenticates?
       session[:admin_admin] = true
-      redirect_to :admin_admin_dashboard, notice: I18n.t('admin_admin.user_sessions.new.success')
+      redirect_to :admin_admin_dashboard, notice: I18n.t('.successful_login')
     else
       session[:admin_admin] = nil
       flash.now[:alert] = I18n.t('.user_not_found')
@@ -24,7 +24,7 @@ class AdminAdmin::UserSessionsController < AdminAdmin::BaseController
   # logout admin-admin
   def destroy
     session[:admin_admin] = nil
-    redirect_to :root
+    redirect_to :root, notice: I18n.t('.successful_logout')
   end
 
   private

@@ -10,14 +10,4 @@
         = link_to "#{CsfConfig['app_title']} Admin Console", :root, class: "navbar-brand"
 
         .collapse.navbar-collapse#nav-collapse
-          - if admin_admin?
-            %ul.nav.navbar-nav
-              %li
-                = link_to :admin_admin_registration_requests do
-                  Registrations
-                  - if (c = RegistrationRequest.unarchived.count) > 0
-                    %span.badge= c
-              %li= link_to "Groups", :admin_admin_groups
-
-            %ul.nav.navbar-nav.navbar-right
-              %li= link_to "Logout", :admin_admin_logout
+          = render "layouts/admin/header_links"
