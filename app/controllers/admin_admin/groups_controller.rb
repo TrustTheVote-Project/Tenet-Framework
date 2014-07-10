@@ -4,6 +4,10 @@ class AdminAdmin::GroupsController < AdminAdmin::BaseController
     @accounts = Account.order("name")
   end
 
+  def show
+    @account = Account.find(params[:id])
+  end
+  
   def destroy
     @account = Account.find(params[:id])
     @account.destroy

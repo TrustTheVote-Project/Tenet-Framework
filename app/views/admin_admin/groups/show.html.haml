@@ -1,0 +1,31 @@
+- @page_id = "aa_groups_show"
+
+= page_head
+
+.row
+  .col-md-6
+    %table.table.properties
+      %tr
+        %th Name
+        %td #{@account.name}
+      %tr
+        %th State
+        %td #{@account.state.name}
+
+.row
+  .col-md-12
+    %h4 Users
+    %table.table.users
+      %thead
+        %tr
+          %th.login Login
+          %th.email Email
+          %th.name  Full name
+          %th.phone Phone
+          %th.admin Group Admin
+
+      - if @account.users.blank?
+        %tr
+          %td{ colspan: 5 }= t "no_records"
+      - else
+        = render partial: 'user', collection: @account.users
