@@ -1,11 +1,28 @@
 en:
   admin_admin:
-    registration_requests:
+    groups:
       index:
-        title: Registration requests
+        title: Groups
 
       show:
-        title: Registration request
-        
+        title: Group
+
       destroy:
-        success: Registration request has been deleted.
+        success: Group has been deleted.
+
+      new:
+        title: New group
+        form:
+          name: Name
+          state: State
+          login: Login
+          first_name: First name
+          last_name: Last name
+          title: Title
+          phone: Phone
+          email: Email
+          ssh_public_key: SSH public key
+          submit: Create group
+
+      create:
+        success: Group has been created

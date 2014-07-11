@@ -9,5 +9,9 @@ class RegistrationRequest < ActiveRecord::Base
   validates :admin_phone, presence: true
 
   scope :unarchived, -> { where(archived: false) }
-  
+
+  def archive!
+    update_attribute(:archived, true)
+  end
+
 end

@@ -6,6 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+# create US states
+us = Carmen::Country.named('United States')
+us.subregions.each { |r| State.create_with(name: r.name).find_or_create_by(code: r.code) }
+
 st = State.create_with(name: 'Farallon').find_or_create_by(code: "FA")
 
 name = "Farallon State Board of Elections"

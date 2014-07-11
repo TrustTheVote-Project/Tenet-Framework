@@ -31,6 +31,6 @@
   .col-md-6
     = link_to "Back to Requests", :admin_admin_registration_requests
     &nbsp;&nbsp;
-    = link_to "Create account", '#', class: 'btn btn-default'
+    = link_to "Create group", new_admin_admin_group_path(request: @req.id), class: 'btn btn-default'
     &nbsp;&nbsp;
     = link_to "Delete request", [ :admin_admin, @req ], class: 'btn btn-danger', method: 'delete', data: { confirm: t('sure_to_delete') }

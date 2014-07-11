@@ -1,0 +1,62 @@
+- @page_id = "aa_groups_new"
+
+= page_head
+
+= form_errors @account, "Couldn't create group"
+= form_for @account, url: :admin_admin_groups, html: { class: 'form-horizontal' } do |f|
+  = hidden_field_tag :request, params[:request]
+
+  .row
+    .col-md-6
+      %h4 General
+  .row
+    .col-md-6
+      .form-group
+        = f.label :name, t(".form.name"), class: 'col-md-4 control-label'
+        .col-md-8
+          = f.text_field :name, class: 'form-control'
+    .col-md-6
+      .form-group
+        = f.label :state_id, t(".form.state"), class: 'col-md-4 control-label'
+        .col-md-8
+          = f.select :state_id, options_from_collection_for_select(State.order(:name).all, 'id', 'name', @account.state_id), { prompt: "Pick state" }, class: "form-control", data: { bind: 'value: state' }
+
+  .row
+    .col-md-6
+      %h4 Admin user
+  = f.fields_for :users do |u|
+    = u.hidden_field :admin
+    .row
+      .col-md-6
+        .form-group
+          = u.label :login, t(".form.login"), class: 'col-md-4 control-label'
+          .col-md-8
+            = u.text_field :login, class: 'form-control'
+        .form-group
+          = u.label :first_name, t(".form.first_name"), class: 'col-md-4 control-label'
+          .col-md-8
+            = u.text_field :first_name, class: 'form-control'
+        .form-group
+          = u.label :last_name, t(".form.last_name"), class: 'col-md-4 control-label'
+          .col-md-8
+            = u.text_field :last_name, class: 'form-control'
+        .form-group
+          = u.label :title, t(".form.title"), class: 'col-md-4 control-label'
+          .col-md-8
+            = u.text_field :title, class: 'form-control'
+        .form-group
+          = u.label :phone, t(".form.phone"), class: 'col-md-4 control-label'
+          .col-md-8
+            = u.text_field :phone, class: 'form-control'
+        .form-group
+          = u.label :email, t(".form.email"), class: 'col-md-4 control-label'
+          .col-md-8
+            = u.text_field :email, class: 'form-control'
+      .col-md-6
+        .form-group
+          = u.label :ssh_public_key, t(".form.ssh_public_key"), class: 'col-md-4 control-label'
+          .col-md-8
+            = u.text_area :ssh_public_key, rows: 5, class: 'form-control'
+  .row
+    .col-md-6
+      = f.submit t(".form.submit"), class: "btn btn-default", data: { binds: 'enable: canSubmit' }

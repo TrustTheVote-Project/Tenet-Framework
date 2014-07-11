@@ -1,11 +1,11 @@
 en:
   admin_admin:
-    groups:
+    registration_requests:
       index:
-        title: Groups
+        title: Registration requests
 
       show:
-        title: Group
+        title: Registration request
 
       destroy:
-        success: Group has been deleted.
+        success: Registration request has been deleted.
