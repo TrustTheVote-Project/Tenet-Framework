@@ -4,9 +4,9 @@ en:
       landing:
         title: ""
         subtitle: ""
-        para_1: "First paragraph"
-        para_2: "Second paragraph"
-        para_3: "Third paragraph"
+        para_1: "Landing page welcome and description."
+        para_2: "To override in an actual application,"
+        para_3: "TBD instructions for override."
         learn_more_prompt: "Learn More"
         register_prompt: "Register"
         login_prompt: "Login"
