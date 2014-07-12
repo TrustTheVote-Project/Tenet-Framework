@@ -107,6 +107,14 @@ Admin-admin header links are looked for at `app/views/layouts/admin/_header_link
 
 
 
+Customizing footer links
+------------------------
+
+Footer links can be updated in `config/locales/layouts.en.yml`.
+
+
+
+
 Integrating
 -----------
 
