@@ -15,7 +15,7 @@
         = f.text_field :organization_name, class: "form-control", placeholder: "TrustTheVote", data: { bind: 'value: organizationName, valueUpdate: "afterkeydown"' }
       .form-group
         = f.label :state, t(".form.state")
-        = f.subregion_select :state, 'US', { prompt: "Pick state" }, class: "form-control", data: { bind: 'value: state' }
+        = f.select :state, options_from_collection_for_select(State.all.order(:name), 'code', 'name', @request.state), { prompt: "Pick state" }, class: "form-control", data: { bind: 'value: state' }
       .form-group
         = f.label :website, t(".form.website")
         = f.text_field :website, class: "form-control", placeholder: "http://myfoundation.org", data: { bind: 'value: website' }
