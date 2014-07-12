@@ -5,7 +5,7 @@ en:
         banner_image: csf/brand.png
         banner_image_alt_text: TrustTheVote Common Services Framework
         banner_text: An example application with the TrustTheVote Common Services Framework
-        banner_subtext: TBD: instructions for overriding banners for actual application
+        banner_subtext: TBD - instructions for overriding banners for actual application
 
       footer:
         para1: "CSF created by <a href='http://trustthevote.org'>TrustTheVote Project</a>"

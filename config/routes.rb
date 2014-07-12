@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
 
   namespace :group_admin do
-    get '/users' => 'users#index', as: 'dashboard'
+    get '/users'          => 'users#index', as: 'dashboard'
     get '/app_management' => 'pages#app_management', as: 'app_management'
 
     resources :users
@@ -22,14 +22,15 @@ Rails.application.routes.draw do
 
 
   namespace :admin_admin, path: 'admin' do
-    get '/' => 'registration_requests#index', as: 'dashboard'
+    get '/'               => 'registration_requests#index', as: 'dashboard'
+    get '/app_management' => 'pages#app_management', as: 'app_management'
+
+    get  '/login'         => 'user_sessions#new', as: 'login'
+    post '/login'         => 'user_sessions#create'
+    get  '/logout'        => 'user_sessions#destroy', as: 'logout'
 
     resources :registration_requests
     resources :groups
-
-    get  '/login'  => 'user_sessions#new', as: 'login'
-    post '/login'  => 'user_sessions#create'
-    get  '/logout' => 'user_sessions#destroy', as: 'logout'
   end
 
 end
