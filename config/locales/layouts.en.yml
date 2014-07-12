@@ -4,8 +4,8 @@ en:
       header:
         banner_image: csf/brand.png
         banner_image_alt_text: TrustTheVote Common Services Framework
-        banner_text: An example application with the TrustTheVote Common Services Framework
-        banner_subtext: To override the defaults, create config/locales/layouts.en.yml in your app and use the copy of this file as the base
+        banner_text: TrustTheVote Common Services Framework
+        banner_subtext: A strong authentication and access control framework for multi-tenant managed services. (To override the defaults, create config/locales/layouts.en.yml in your app and use the copy of this file as the base.)
 
       footer:
         para1: "CSF created by <a href='http://trustthevote.org'>TrustTheVote Project</a>"
