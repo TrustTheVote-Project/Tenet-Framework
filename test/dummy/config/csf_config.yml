@@ -8,7 +8,7 @@ urls:
   user_dashboard:  /user_dash
 
 email:
-  # Host of the app
+  # Host of the app for in-mail links generation
   host: trustthevote.org
 
   # From-field of outgoing mail
@@ -16,3 +16,12 @@ email:
 
   # Super-admin email address(es) for notifications
   superadmin: admin@localhost.localdomain
+
+# --- DEVELOPMENT
+
+development:
+  email:
+    host: localhost
+    port: 3000
+    noreply: noreply@trustthevote.org
+    superadmin: admin@localhost.localdomain

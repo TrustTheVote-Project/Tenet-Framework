@@ -8,6 +8,9 @@ urls:
   user_dashboard:  /user-dashboard
 
 email:
+  # Host of the app for in-mail links generation
+  host: trustthevote.org
+
   # From-field of outgoing mail
   noreply: noreply@trustthevote.org
 
