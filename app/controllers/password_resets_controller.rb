@@ -2,7 +2,7 @@ class PasswordResetsController < ApplicationController
 
   # request password reset
   def create
-    @user = User.find_by(email: params[:email])
+    @user = User.find_by(email: params[:email], admin: false)
 
     if @user
       @user.deliver_reset_password_instructions!
