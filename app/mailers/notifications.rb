@@ -9,6 +9,7 @@ class Notifications < ActionMailer::Base
 
   def reset_password_email(user)
     @user = user
+    mail to: user.email
   end
 
 end
