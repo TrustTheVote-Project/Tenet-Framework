@@ -1,0 +1,16 @@
+- @page_id = 'forgot_password'
+
+= page_head
+
+.row
+  .col-md-12
+    %p= raw t '.body'
+
+.row
+  .col-md-4
+    = form_tag :forgot_password, role: 'form' do
+      .form-group
+        = label_tag :email, t(".form.email"), class: 'control-label'
+        = text_field_tag :email, '', class: 'form-control'
+
+      = submit_tag t(".form.submit"), class: 'btn btn-default'

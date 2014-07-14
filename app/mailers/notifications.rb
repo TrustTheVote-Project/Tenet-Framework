@@ -8,7 +8,7 @@ class Notifications < ActionMailer::Base
   end
 
   def reset_password_email(user)
-    # TODO
+    @user = user
   end
 
 end

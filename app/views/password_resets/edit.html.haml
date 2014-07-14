@@ -1,0 +1,20 @@
+- @page_id = 'reset-password'
+
+= page_head
+
+.row
+  .col-md-12
+    %p= raw t '.body'
+
+.row
+  .col-md-4
+    = form_errors @user, "Couldn't reset your password"
+    = form_for @user, url: reset_password_path(@token), role: 'form' do |f|
+      .form-group
+        = f.label :password, t(".form.password"), class: 'control-label'
+        = f.password_field :password, class: 'form-control'
+      .form-group
+        = f.label :password_confirmation, t(".form.password_confirmation"), class: 'control-label'
+        = f.password_field :password_confirmation, class: 'form-control'
+
+      = f.submit t(".form.submit"), class: 'btn btn-default'

@@ -311,7 +311,7 @@ Rails.application.config.sorcery.configure do |config|
     # mailer class. Needed.
     # Default: `nil`
     #
-    user.reset_password_mailer = 'Notifications'
+    user.reset_password_mailer = Notifications
 
 
     # reset password email method on your mailer class.
@@ -337,7 +337,7 @@ Rails.application.config.sorcery.configure do |config|
     # hammering protection, how long to wait before allowing another email to be sent.
     # Default: `5 * 60`
     #
-    # user.reset_password_time_between_emails =
+    user.reset_password_time_between_emails = Rails.env.development? ? 5 : 300
 
 
     # -- brute_force_protection --

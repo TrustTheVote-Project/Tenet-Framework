@@ -6,7 +6,7 @@ en:
         subtitle: ""
         para_1: "Landing page welcome and description."
         para_2: "To override in an actual application,"
-        para_3: "TBD instructions for override."
+        para_3: "copy pages.en.yml from CSF to your config/locales folder and customize."
         learn_more_prompt: "Learn More"
         register_prompt: "Register"
         login_prompt: "Login"

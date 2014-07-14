@@ -7,13 +7,14 @@ class User < ActiveRecord::Base
   validates :account, presence: true
   validates :login, presence: true, uniqueness: true
   validates :email, presence: true, format: { with: /\A[^@\s]+@(?:[-a-zA-Z0-9]+\.)+[a-z]{2,}\z/, allow_blank: true }
-  validates :password, presence: { on: :create }, confirmation: { if: :password }
+  validates :password, presence: { on: :create }, confirmation: { if: :password, message: "doesn't match password" }
+  validates :password, presence: { if: :resetting_password }
   validates :first_name, presence: true
   validates :last_name, presence: true
 
   scope :users_only, -> { where(admin: false) }
 
-  attr_reader :generated_password
+  attr_accessor :resetting_password
   attr_accessor :ssh_public_key
 
   before_validation :init_user, on: :create
@@ -33,7 +34,9 @@ class User < ActiveRecord::Base
       self.login = self.email
     end
 
-    self.password = self.password_confirmation = @generated_password = SecureRandom.hex(4)
+    # Generating long unbreakable password and will ask the user to
+    # reset it right away.
+    self.password = self.password_confirmation = SecureRandom.hex
   end
 
 end

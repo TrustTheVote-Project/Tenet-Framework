@@ -5,7 +5,7 @@ admin:
   login: admin
 
 urls:
-  user_dashboard:  /user_dashboard
+  user_dashboard:  /user-dashboard
 
 email:
   # From-field of outgoing mail

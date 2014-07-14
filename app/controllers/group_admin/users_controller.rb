@@ -13,7 +13,7 @@ class GroupAdmin::UsersController < GroupAdmin::BaseController
     @user.account = current_account
 
     if @user.save
-      Notifications.delay.new_user(@user.id, @user.generated_password)
+      @user.deliver_reset_password_instructions!
       redirect_to :group_admin_users, notice: t(".success")
     else
       render :new

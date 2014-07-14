@@ -1,21 +1,26 @@
 Rails.application.routes.draw do
 
-  get  '/about'    => 'csf/pages#about', as: 'about'
-  get  '/login'    => 'user_sessions#new', as: 'login'
-  post '/login'    => 'user_sessions#create'
-  get  '/logout'   => 'user_sessions#destroy'
+  get   '/about'    => 'csf/pages#about', as: 'about'
+  get   '/login'    => 'user_sessions#new', as: 'login'
+  post  '/login'    => 'user_sessions#create'
+  get   '/logout'   => 'user_sessions#destroy'
 
-  get  '/register' => 'registration_requests#new', as: 'new_registration_request'
-  post '/register' => 'registration_requests#create'
+  get   '/forgot-password'       => 'password_resets#new', as: 'forgot_password'
+  post  '/forgot-password'       => 'password_resets#create'
+  get   '/reset-password/:token' => 'password_resets#edit', as: 'reset_password'
+  patch '/reset-password/:token' => 'password_resets#update'
 
-  get  '/data/organizations_in_state.json' => 'data#organizations_in_state', as: 'organizations_in_state'
+  get   '/register' => 'registration_requests#new', as: 'new_registration_request'
+  post  '/register' => 'registration_requests#create'
 
-  get  '/user_dashboard'  => 'csf/pages#user_dashboard', as: 'user_dashboard'
+  get   '/data/organizations_in_state.json' => 'data#organizations_in_state', as: 'organizations_in_state'
+
+  get   '/user-dashboard'  => 'csf/pages#user_dashboard', as: 'user_dashboard'
 
 
   namespace :group_admin do
     get '/users'          => 'users#index', as: 'dashboard'
-    get '/app_management' => 'pages#app_management', as: 'app_management'
+    get '/app-management' => 'pages#app_management', as: 'app_management'
 
     resources :users
   end
@@ -23,7 +28,7 @@ Rails.application.routes.draw do
 
   namespace :admin_admin, path: 'admin' do
     get '/'               => 'registration_requests#index', as: 'dashboard'
-    get '/app_management' => 'pages#app_management', as: 'app_management'
+    get '/app-management' => 'pages#app_management', as: 'app_management'
 
     get  '/login'         => 'user_sessions#new', as: 'login'
     post '/login'         => 'user_sessions#create'
