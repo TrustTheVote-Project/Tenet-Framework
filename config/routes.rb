@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   post  '/forgot-password'       => 'password_resets#create'
   get   '/reset-password/:token' => 'password_resets#edit', as: 'reset_password'
   patch '/reset-password/:token' => 'password_resets#update'
+  get   '/init-password/:token'  => 'password_resets#edit', as: 'init_password'
+  patch '/init-password/:token'  => 'password_resets#update'
 
   get   '/register' => 'registration_requests#new', as: 'new_registration_request'
   post  '/register' => 'registration_requests#create'

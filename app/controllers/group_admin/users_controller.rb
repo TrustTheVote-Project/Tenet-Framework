@@ -16,6 +16,8 @@ class GroupAdmin::UsersController < GroupAdmin::BaseController
       @user.deliver_reset_password_instructions!
       redirect_to :group_admin_users, notice: t(".success")
     else
+      Rails.logger.info @user.valid?
+      Rails.logger.info @user.errors.inspect
       render :new
     end
   end

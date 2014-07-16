@@ -27,6 +27,10 @@ class User < ActiveRecord::Base
     !self.admin?
   end
 
+  def never_logged_in?
+    !self.last_login_at
+  end
+
   private
 
   def init_user
@@ -37,6 +41,9 @@ class User < ActiveRecord::Base
     # Generating long unbreakable password and will ask the user to
     # reset it right away.
     self.password = self.password_confirmation = SecureRandom.hex
+    self.password_set = false
+
+    true
   end
 
 end

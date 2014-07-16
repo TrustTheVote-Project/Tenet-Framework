@@ -6,16 +6,21 @@ class PasswordResetsController < ApplicationController
 
     if @user
       @user.deliver_reset_password_instructions!
-      redirect_to :root, notice: I18n.t('password_resets.create.success')
+      redirect_to :root, notice: t("password_resets.create.success.#{@user.password_set? ? 'reset' : 'init'}")
     else
-      redirect_to :root, alert: I18n.t('password_resets.user_not_found')
+      redirect_to :root, alert: t('password_resets.user_not_found')
     end
   end
 
-  # reset password form
+  # init / reset password form
   def edit
     @user = User.load_from_reset_password_token(@token = params[:token])
-    not_authenticated if @user.blank?
+    if @user.blank?
+      not_authenticated
+      return
+    end
+
+    render @user.password_set? ? :edit : :init
   end
 
   # update the password
@@ -28,15 +33,18 @@ class PasswordResetsController < ApplicationController
       return
     end
 
+    password_reset = @user.password_set?
+
     # the next line makes the password confirmation validation work
     @user.resetting_password    = true
+    @user.password_set          = true
     @user.password_confirmation = up[:password_confirmation]
 
     # the next line clears the temporary token and updates the password
     if @user.change_password!(up[:password])
-      redirect_to :root, notice: t('.success')
+      redirect_to :root, notice: t(password_reset ? ".success.reset" : ".success.init")
     else
-      render :edit
+      render password_reset ? :edit : :init
     end
   end
 
