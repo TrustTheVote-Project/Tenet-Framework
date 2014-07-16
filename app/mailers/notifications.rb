@@ -9,7 +9,8 @@ class Notifications < ActionMailer::Base
 
   def reset_password_email(user)
     @user = user
-    mail to: user.email
+    subject = t("notifications.reset_password_email.subject_#{!@user.password_set? ? 'reset' : 'init'}")
+    mail to: user.email, subject: subject
   end
 
 end
