@@ -19,7 +19,7 @@
       .form-group
         = f.label :state_id, t(".form.state"), class: 'col-md-4 control-label'
         .col-md-8
-          = f.select :state_id, options_from_collection_for_select(State.order(:name).all, 'id', 'name', @account.state_id), { prompt: "Pick state" }, class: "form-control", data: { bind: 'value: state' }
+          = f.select :state_id, options_from_collection_for_select(sorted_states, 'id', 'name', @account.state_id), { prompt: "Pick state" }, class: "form-control", data: { bind: 'value: state' }
 
   .row
     .col-md-6

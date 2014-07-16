@@ -11,7 +11,7 @@
     = form_for :user_session, url: :login, html: { role: 'form' } do |f|
       .form-group
         = f.label :state_id, t(".form.state")
-        = f.select :state_id, options_from_collection_for_select(State.with_accounts, 'id', 'name', @user_session.state_id), { prompt: "Pick state" }, class: "form-control", data: { bind: 'value: stateId' }
+        = f.select :state_id, options_from_collection_for_select(sorted_states(State.with_accounts), 'id', 'name', @user_session.state_id), { prompt: "Pick state" }, class: "form-control", data: { bind: 'value: stateId' }
         %p.help-block= t ".non_listed_states"
       .form-group
         = f.label :account_id, t(".form.organization")

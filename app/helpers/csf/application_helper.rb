@@ -27,5 +27,8 @@ module Csf
       render partial: "shared/page_head", locals: l
     end
 
+    def sorted_states(states = State.all)
+      states.sort_by { |s| s.code == 'ZZ' ? 'ZZ' : s.name }
+    end
   end
 end
