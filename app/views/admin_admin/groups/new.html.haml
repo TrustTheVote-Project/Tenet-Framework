@@ -24,6 +24,7 @@
   .row
     .col-md-6
       %h4 Admin user
+
   = f.fields_for :users do |u|
     = u.hidden_field :admin
     .row

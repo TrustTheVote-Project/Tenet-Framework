@@ -19,6 +19,18 @@ class User < ActiveRecord::Base
 
   before_validation :init_user, on: :create
 
+  def self.new_from_request(req)
+    u = User.new
+    u.admin      = true
+    u.first_name = req.admin_first_name
+    u.last_name  = req.admin_last_name
+    u.email      = req.admin_email
+    u.login      = [ u.first_name.to_s.downcase.gsub(/[^a-z]/, '.'), u.last_name.to_s.downcase.gsub(/[^a-z]/, '.') ].join('.').gsub(/^\.+/, '').gsub(/\.+$/, '').gsub(/\.+/, '.')
+    u.title      = req.admin_title
+    u.phone      = req.admin_phone
+    u
+  end
+
   def full_name
     [ self.first_name, self.last_name ].reject(&:blank?).join(" ")
   end
