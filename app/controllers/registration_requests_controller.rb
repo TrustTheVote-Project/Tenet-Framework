@@ -19,7 +19,8 @@ class RegistrationRequestsController < ApplicationController
   private
 
   def regreq_params
-    params[:registration_request].permit(:organization_name, :state, :website, :admin_name, :admin_title, :admin_email, :admin_phone)
+    params[:registration_request].permit(:organization_name, :state, :website, :admin_first_name,
+      :admin_last_name, :admin_title, :admin_email, :admin_phone)
   end
 
   def setup_gon_validations

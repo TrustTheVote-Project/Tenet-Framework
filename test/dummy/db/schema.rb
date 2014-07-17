@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140716200922) do
+ActiveRecord::Schema.define(version: 20140717101044) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,13 +30,14 @@ ActiveRecord::Schema.define(version: 20140716200922) do
     t.string   "organization_name",                 null: false
     t.string   "state",                             null: false
     t.string   "website"
-    t.string   "admin_name",                        null: false
     t.string   "admin_title",                       null: false
     t.string   "admin_email",                       null: false
     t.string   "admin_phone"
     t.boolean  "archived",          default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "admin_first_name"
+    t.string   "admin_last_name"
   end
 
   add_index "registration_requests", ["archived"], name: "index_registration_requests_on_archived", using: :btree

@@ -20,8 +20,11 @@
         = f.label :website, t(".form.website")
         = f.text_field :website, class: "form-control", placeholder: "http://myfoundation.org", data: { bind: 'value: website' }
       .form-group
-        = f.label :admin_name, t(".form.admin_name")
-        = f.text_field :admin_name, class: "form-control", placeholder: "John Smith", data: { bind: 'value: adminName, valueUpdate: "afterkeydown"' }
+        = f.label :admin_first_name, t(".form.admin_first_name")
+        = f.text_field :admin_first_name, class: "form-control", placeholder: "John", data: { bind: 'value: adminFirstName, valueUpdate: "afterkeydown"' }
+      .form-group
+        = f.label :admin_last_name, t(".form.admin_last_name")
+        = f.text_field :admin_last_name, class: "form-control", placeholder: "Smith", data: { bind: 'value: adminLastName, valueUpdate: "afterkeydown"' }
       .form-group
         = f.label :admin_title, t(".form.admin_title")
         = f.text_field :admin_title, class: "form-control", placeholder: "CEO", data: { bind: 'value: adminTitle, valueUpdate: "afterkeydown"' }

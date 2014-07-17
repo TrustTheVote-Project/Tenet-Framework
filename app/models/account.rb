@@ -14,15 +14,16 @@ class Account < ActiveRecord::Base
     a.name = req.organization_name
 
     u = User.new
-    u.admin = true
-    u.first_name = req.admin_name
-    u.email = u.login = req.admin_email
-    u.title = req.admin_title
-    u.phone = req.admin_phone
+    u.admin      = true
+    u.first_name = req.admin_first_name
+    u.last_name  = req.admin_last_name
+    u.email      = u.login = req.admin_email
+    u.title      = req.admin_title
+    u.phone      = req.admin_phone
 
     a.users << u
 
     a
   end
-  
+
 end
