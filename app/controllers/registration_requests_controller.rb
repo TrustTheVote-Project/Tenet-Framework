@@ -9,7 +9,8 @@ class RegistrationRequestsController < ApplicationController
   def create
     @request = RegistrationRequest.new(regreq_params)
     if @request.save
-      Notifications.delay.new_registration_request(@request.id)
+      # Notifications.delay.new_registration_request(@request.id)
+      Notifications.new_registration_request(@request.id).deliver
       redirect_to :root, notice: t(".success")
     else
       render :new

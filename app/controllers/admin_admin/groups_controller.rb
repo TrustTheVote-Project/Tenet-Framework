@@ -25,8 +25,8 @@ class AdminAdmin::GroupsController < AdminAdmin::BaseController
 
       # notify group users that their group has been approved
       @account.users.each do |u|
-        Notifications.delay.group_created(u.id)
-        # Notifications.group_created(u.id).deliver
+        # Notifications.delay.group_created(u.id)
+        Notifications.group_created(u.id).deliver
       end
 
       redirect_to admin_admin_group_path(@account), notice: t(".success")
