@@ -24,4 +24,10 @@ class Notifications < ActionMailer::Base
     mail to: user.email, subject: subject, body: body
   end
 
+  def group_created(user_id)
+    user = User.find(user_id)
+    body = t("notifications.group_created.body", name: user.first_name, login_url: login_url)
+    mail to: user.email, body: body
+  end
+
 end

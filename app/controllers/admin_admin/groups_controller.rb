@@ -21,8 +21,12 @@ class AdminAdmin::GroupsController < AdminAdmin::BaseController
   def create
     @account = Account.new(ap)
     if @account.save
-      if req
-        req.archive!
+      req.archive! if req
+
+      # notify group users that their group has been approved
+      @account.users.each do |u|
+        Notifications.delay.group_created(u.id)
+        # Notifications.group_created(u.id).deliver
       end
 
       redirect_to admin_admin_group_path(@account), notice: t(".success")

@@ -26,3 +26,15 @@ en:
 
       create:
         success: Group has been created
+
+  notifications:
+    group_created:
+      subject: Your group has been approved
+      body: |
+        Hi %{name}!
+
+        Your group registration request has been approved.
+
+        Please log in here:
+
+        %{login_url}
