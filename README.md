@@ -124,3 +124,21 @@ to place a link into header, see the section above.
 
 To integrate into admin part you inherit your controllers from `AdminAdmin::BaseController`. It will give
 you proper access control, view layout and helpers.
+
+
+
+Localizing
+----------
+
+All content of the CSF can be updated through the localization files without altering the code base.
+In order to do that, you need to create locale files in `config/locale` folder and override the values
+of keys in question. For example, to change the subject of the reset password email, you need to create
+a file (or update any existing locale file) and place the following keys in it:
+
+    en:
+      notifications:
+        reset_password_email:
+          subject:
+            reset: Your new subject line
+
+You can create any number of locale files to structure your overrides in the most logical way.
