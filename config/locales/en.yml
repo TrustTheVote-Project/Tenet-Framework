@@ -29,6 +29,3 @@ en:
   notifications:
     new_registration_request:
       subject: "New registration request"
-    reset_password_email:
-      subject_reset: "Reset your password"
-      subject_init: "Set your password"
