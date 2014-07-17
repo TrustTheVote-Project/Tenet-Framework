@@ -34,14 +34,19 @@ class User < ActiveRecord::Base
   private
 
   def init_user
-    if !self.admin?
+    if self.admin?
+      # Setting group admin password to 0000 initially, while
+      # we don't have OTP working
+      self.password = self.password_confirmation = '0000'
+      self.password_set = true
+    else
       self.login = self.email
-    end
 
-    # Generating long unbreakable password and will ask the user to
-    # reset it right away.
-    self.password = self.password_confirmation = SecureRandom.hex
-    self.password_set = false
+      # Generating long unbreakable password and will ask the user to
+      # reset it right away.
+      self.password = self.password_confirmation = SecureRandom.hex
+      self.password_set = false
+    end
 
     true
   end
