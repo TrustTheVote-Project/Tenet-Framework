@@ -26,6 +26,13 @@
       .col-md-4
         = f.password_field :password_confirmation, class: 'form-control'
 
+  - roles = CsfConfig['user_roles']
+  - if roles.any?
+    .form-group
+      = f.label :role, class: 'col-md-2 control-label'
+      .col-md-4
+        = f.select :role, roles, { prompt: 'Pick role' }, class: 'form-control'
+
   .form-group
     .col-md-offset-2.col-md-4
       = f.submit class: 'btn btn-default'

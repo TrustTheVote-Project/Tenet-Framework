@@ -3,6 +3,7 @@
   %td.email= user.email
   %td.name=  user.full_name
   %td.phone= user.phone
+  %td.role=  user.role
   %td.actions
     = link_to 'Edit', [ :edit_group_admin, user ], class: 'btn btn-xs btn-default'
     = link_to 'Delete', [ :group_admin, user ], class: 'btn btn-xs btn-danger', method: 'delete', data: { confirm: t('sure_to_delete') }

@@ -16,3 +16,6 @@ email:
 
   # Super-admin email address(es) for notifications
   superadmin: admin@localhost.localdomain
+
+# List of roles. For example, [ "reader", "writer" ]
+user_roles: []
