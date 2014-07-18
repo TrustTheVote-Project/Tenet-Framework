@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   validates :password, presence: { if: :resetting_password }
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :role, presence: { if: ->{ CsfConfig['user_roles'].any? } }
+  validates :role, presence: { if: ->{ !CsfConfig['user_roles'].blank? } }
 
   scope :users_only, -> { where(admin: false) }
 

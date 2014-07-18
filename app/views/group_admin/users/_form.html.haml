@@ -27,7 +27,7 @@
         = f.password_field :password_confirmation, class: 'form-control'
 
   - roles = CsfConfig['user_roles']
-  - if roles.any?
+  - unless roles.blank?
     .form-group
       = f.label :role, class: 'col-md-2 control-label'
       .col-md-4
