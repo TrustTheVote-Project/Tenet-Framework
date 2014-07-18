@@ -45,11 +45,11 @@ class GroupAdmin::UsersController < GroupAdmin::BaseController
   private
 
   def new_params
-    params[:user].permit(:email, :first_name, :last_name, :title, :phone)
+    params[:user].permit(:email, :first_name, :last_name, :title, :phone, :role)
   end
 
   def update_params
-    params[:user].permit(:email, :first_name, :last_name, :title, :phone, :password, :password_confirmation)
+    params[:user].permit(:email, :first_name, :last_name, :title, :phone, :role, :password, :password_confirmation)
   end
 
 end
