@@ -3,6 +3,7 @@ en:
     groups:
       index:
         title: Groups
+        add_group: Add group
 
       show:
         title: Group
@@ -23,6 +24,7 @@ en:
           email: Email
           ssh_public_key: SSH public key
           submit: Create group
+          cancel: Cancel
 
       create:
         success: Group has been created

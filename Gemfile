@@ -13,3 +13,7 @@ gemspec
 # To use debugger
 # gem 'debugger'
 gem 'redis-namespace', git: 'https://github.com/resque/redis-namespace.git'
+
+gem 'quiet_assets'
+gem 'better_errors'
+gem 'binding_of_caller'

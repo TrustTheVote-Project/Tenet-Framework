@@ -60,4 +60,5 @@
             = u.text_area :ssh_public_key, rows: 5, class: 'form-control'
   .row
     .col-md-6
-      = f.submit t(".form.submit"), class: "btn btn-default", data: { binds: 'enable: canSubmit' }
+      = f.submit t(".form.submit"), class: "btn btn-primary", data: { binds: 'enable: canSubmit' }
+      = link_to t(".form.cancel"), :back, class: 'btn btn-default'

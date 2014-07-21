@@ -29,6 +29,8 @@ class AdminAdmin::GroupsController < AdminAdmin::BaseController
         Notifications.group_created(u.id).deliver
       end
 
+      account_after_create_hook(@account)
+
       redirect_to admin_admin_group_path(@account), notice: t(".success")
     else
       render :new
@@ -53,6 +55,16 @@ class AdminAdmin::GroupsController < AdminAdmin::BaseController
       if !(reqid = params[:request]).blank?
         req = RegistrationRequest.find(reqid)
       end
+    end
+  end
+
+  def account_after_create_hook(account)
+    cl = CsfConfig['account_hooks_class_name']
+    mn = CsfConfig['account_after_create_method_name']
+    Rails.logger.info "Calling hook: #{cl}##{mn}"
+
+    if cl && mn && cl.constantize.respond_to?(mn)
+      cl.constantize.send(mn, account)
     end
   end
 

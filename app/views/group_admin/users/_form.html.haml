@@ -1,38 +1,39 @@
 = form_for [ :group_admin, @user ], html: { class: 'form-horizontal' } do |f|
   .form-group
-    = f.label :email, class: 'col-md-2 control-label'
+    = f.label :email, t('.email'), class: 'col-md-2 control-label'
     .col-md-4
       = f.text_field :email, class: 'form-control'
   .form-group
-    = f.label :first_name, class: 'col-md-2 control-label'
+    = f.label :first_name, t('.first_name'), class: 'col-md-2 control-label'
     .col-md-4
       = f.text_field :first_name, class: 'form-control'
   .form-group
-    = f.label :last_name, class: 'col-md-2 control-label'
+    = f.label :last_name, t('.last_name'), class: 'col-md-2 control-label'
     .col-md-4
       = f.text_field :last_name, class: 'form-control'
   .form-group
-    = f.label :phone, class: 'col-md-2 control-label'
+    = f.label :phone, t('.phone'), class: 'col-md-2 control-label'
     .col-md-4
       = f.text_field :phone, class: 'form-control'
 
   - if @user.persisted?
     .form-group
-      = f.label :password, class: 'col-md-2 control-label'
+      = f.label :password, t('.password'), class: 'col-md-2 control-label'
       .col-md-4
         = f.password_field :password, class: 'form-control'
     .form-group
-      = f.label :password_confirmation, 'Again', class: 'col-md-2 control-label'
+      = f.label :password_confirmation, t('.password_confirmation'), class: 'col-md-2 control-label'
       .col-md-4
         = f.password_field :password_confirmation, class: 'form-control'
 
   - roles = CsfConfig['user_roles']
   - unless roles.blank?
     .form-group
-      = f.label :role, class: 'col-md-2 control-label'
+      = f.label :role, t('.role'), class: 'col-md-2 control-label'
       .col-md-4
         = f.select :role, roles, { prompt: 'Pick role' }, class: 'form-control'
 
   .form-group
     .col-md-offset-2.col-md-4
-      = f.submit class: 'btn btn-default'
+      = f.submit t('.submit'), class: 'btn btn-primary'
+      = link_to t('.cancel'), :back, class: 'btn btn-default'

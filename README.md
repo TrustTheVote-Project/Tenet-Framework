@@ -142,3 +142,21 @@ a file (or update any existing locale file) and place the following keys in it:
             reset: Your new subject line
 
 You can create any number of locale files to structure your overrides in the most logical way.
+
+
+
+App-specific initialization
+---------------------------
+
+To initialize your app specifically, you can use Rails initializers. Create a file in the
+`config/initializers/` folder and place your custom initialization there. Note that initializers
+are loaded in alphabetical order, and so if you need any config settings initialized for your script
+name your scripts properly.
+
+
+Group-specific initialization
+-----------------------------
+
+Upon new group creation, when the group is saved, CSF looks for the `GroupInit` class and calls
+`perform(Account)` on it if the class and method are present. It gives you a hook to initialize the
+newly created group account.

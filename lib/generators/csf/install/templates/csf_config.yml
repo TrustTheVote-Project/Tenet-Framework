@@ -19,3 +19,7 @@ email:
 
 # List of roles. For example, [ "reader", "writer" ]
 user_roles: []
+
+# Hook to call after new group saving for further initialization
+# account_hooks_class_name: AccountHooks
+# account_after_create_method_name: after_create
