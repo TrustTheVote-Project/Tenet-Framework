@@ -14,13 +14,14 @@ module Csf
     end
 
     # renders the page head section
-    def page_head
+    def page_head(options = nil)
+      options ||= {}
       l = {}
-      if !(title = t(".title", default: '')).blank?
+      if !(title = t(".title", default: options[:title] || '')).blank?
         l[:title] = title
       end
 
-      if !(subtitle = t(".subtitle", default: '')).blank?
+      if !(subtitle = t(".subtitle", default: options[:subtitle] || '')).blank?
         l[:subtitle] = subtitle
       end
 
