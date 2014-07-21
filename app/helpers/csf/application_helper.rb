@@ -17,11 +17,11 @@ module Csf
     def page_head(options = nil)
       options ||= {}
       l = {}
-      if !(title = t(".title", default: options[:title] || '')).blank?
+      if !(title = options[:title] || t(".title", default: '')).blank?
         l[:title] = title
       end
 
-      if !(subtitle = t(".subtitle", default: options[:subtitle] || '')).blank?
+      if !(subtitle = options[:subtitle] || t(".subtitle", default: '')).blank?
         l[:subtitle] = subtitle
       end
 
