@@ -17,3 +17,4 @@
 //= require pwstrength-bootstrap-1.2.0
 //= require csf/helpers
 //= require_tree ./public
+//= require_tree ./group_admin
