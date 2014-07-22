@@ -61,7 +61,6 @@ class AdminAdmin::GroupsController < AdminAdmin::BaseController
   def account_after_create_hook(account)
     cl = CsfConfig['account_hooks_class_name']
     mn = CsfConfig['account_after_create_method_name']
-    Rails.logger.info "Calling hook: #{cl}##{mn}"
 
     if cl && mn && cl.constantize.respond_to?(mn)
       cl.constantize.send(mn, account)
