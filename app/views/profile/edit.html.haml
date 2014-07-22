@@ -1,0 +1,50 @@
+- @page_id = 'profile-edit'
+
+= page_head
+
+.row
+  .col-md-6
+    - if @user.errors.any? && params[:current_password].nil?
+      = form_errors @user, "Couldn't update your profile"
+    = form_for @user, as: :profile, url: :edit_profile, html: { role: 'form', class: 'form-horizontal' } do |f|
+      .form-group
+        = f.label :first_name, t('.form.first_name'), class: 'control-label col-md-4'
+        .col-md-8
+          = f.text_field :first_name, class: 'form-control'
+      .form-group
+        = f.label :last_name, t('.form.last_name'), class: 'control-label col-md-4'
+        .col-md-8
+          = f.text_field :last_name, class: 'form-control'
+      .form-group
+        = f.label :phone, t('.form.phone'), class: 'control-label col-md-4'
+        .col-md-8
+          = f.text_field :phone, class: 'form-control'
+      .form-group
+        = f.label :title, t('.form.title'), class: 'control-label col-md-4'
+        .col-md-8
+          = f.text_field :title, class: 'form-control'
+
+      .form-group
+        .col-md-offset-4.col-md-8= f.submit t('.form.submit'), class: 'btn btn-primary'
+
+  .col-md-6
+    - if @user.errors.any? && !params[:current_password].nil?
+      = form_errors @user, "Couldn't change password"
+    = form_for @user, as: :profile, url: :edit_profile, html: { role: 'form', class: 'form-horizontal' } do |f|
+      .form-group
+        = label_tag 'current_password', t('.form.current_password'), class: 'control-label col-md-4'
+        .col-md-8
+          = password_field_tag 'current_password', '', class: 'form-control'
+      .form-group
+        = f.label :password, t('.form.password'), class: 'control-label col-md-4'
+        .col-md-8
+          = f.password_field :password, class: 'form-control'
+      .form-group#user_password_viewports
+        .pr.col-md-offset-4.col-md-8
+      .form-group
+        = f.label :password_confirmation, t('.form.password_confirmation'), class: 'control-label col-md-4'
+        .col-md-8
+          = f.password_field :password_confirmation, class: 'form-control'
+
+      .form-group
+        .col-md-offset-4.col-md-8= f.submit t('.form.submit_change_password'), class: 'btn btn-primary'

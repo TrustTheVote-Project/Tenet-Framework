@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   get   '/user-dashboard'  => 'csf/pages#user_dashboard', as: 'user_dashboard'
 
+  get   '/profile'         => 'profile#edit', as: 'edit_profile'
+  patch '/profile'         => 'profile#update'
 
   namespace :group_admin do
     get '/users'          => 'users#index', as: 'dashboard'
