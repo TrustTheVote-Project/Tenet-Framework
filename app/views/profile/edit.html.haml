@@ -6,6 +6,7 @@
   .col-md-6
     - if @user.errors.any? && params[:current_password].nil?
       = form_errors @user, "Couldn't update your profile"
+    = hidden_field_tag :username, @user.login
     = form_for @user, as: :profile, url: :edit_profile, html: { role: 'form', class: 'form-horizontal' } do |f|
       .form-group
         = f.label :first_name, t('.form.first_name'), class: 'control-label col-md-4'
