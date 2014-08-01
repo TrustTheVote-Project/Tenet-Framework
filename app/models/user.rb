@@ -7,15 +7,15 @@ class User < ActiveRecord::Base
   validates :account, presence: true
   validates :login, presence: true, uniqueness: true
   validates :email, presence: true, format: { with: /\A[^@\s]+@(?:[-a-zA-Z0-9]+\.)+[a-z]{2,}\z/, allow_blank: true }
-  validates :password, presence: { on: :create }, confirmation: { if: :password, message: "doesn't match password" }
-  validates :password, presence: { if: :resetting_password }
+  validates :password, strong: { on: :create }, confirmation: { if: :password, message: "doesn't match password" }
+  validates :password, strong: { if: :setting_password }, confirmation: { if: :password, message: "doesn't match password" }
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :role, presence: { if: ->{ !CsfConfig['user_roles'].blank? && self.user? } }
 
   scope :users_only, -> { where(admin: false) }
 
-  attr_accessor :resetting_password
+  attr_accessor :setting_password
   attr_accessor :ssh_public_key
 
   before_validation :init_user, on: :create

@@ -32,6 +32,7 @@ class ProfileController < ApplicationController
       return
     end
 
+    @user.setting_password = true
     if @user.update_attributes(password_params)
       redirect_to :edit_profile, notice: t('.success_change_password')
     else

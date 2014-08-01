@@ -36,7 +36,7 @@ class PasswordResetsController < ApplicationController
     password_reset = @user.password_set?
 
     # the next line makes the password confirmation validation work
-    @user.resetting_password    = true
+    @user.setting_password      = true
     @user.password_set          = true
     @user.password_confirmation = up[:password_confirmation]
 

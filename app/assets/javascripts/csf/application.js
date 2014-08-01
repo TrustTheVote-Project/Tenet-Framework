@@ -14,7 +14,5 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require knockout-3.1.0
-//= require pwstrength-bootstrap-1.2.0
 //= require csf/helpers
 //= require_tree ./public
-//= require_tree ./group_admin
