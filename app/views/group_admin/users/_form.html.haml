@@ -32,7 +32,13 @@
     .form-group
       = f.label :role, t('.role'), class: 'col-md-2 control-label'
       .col-md-4
-        = f.select :role, roles, { prompt: 'Pick role' }, class: 'form-control'
+        - roles.each do |role, descr|
+          .radio
+            %label
+              = f.radio_button :role, role
+              = role.capitalize
+              - unless descr.blank?
+                .help-block #{descr}
 
   .form-group
     .col-md-offset-2.col-md-4

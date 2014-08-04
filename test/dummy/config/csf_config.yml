@@ -17,8 +17,17 @@ email:
   # Super-admin email address(es) for notifications
   superadmin: admin@localhost.localdomain
 
-# List of roles. For example, [ "reader", "writer" ]
-user_roles: [ 'reader', 'writer' ]
+# List of roles. Can either be a hash or an array:
+# Example 1:
+#   user_roles: [ "reader", "writer" ]
+#
+# Example 2:
+#   user_roles:
+#     reader: Reading messages only
+#     writer: Reading and writing messages
+user_roles:
+  reader: Reading messages only
+  writer: Reading and writing messages
 
 # Hook to call after new group saving for further initialization
 # account_hooks_class_name: AccountHooks
