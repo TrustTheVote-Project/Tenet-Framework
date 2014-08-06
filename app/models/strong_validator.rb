@@ -15,7 +15,7 @@ class StrongValidator < ActiveModel::EachValidator
     variety += 1 if password =~ /[A-Z]/
     variety += 1 if password =~ /[a-z]/
     variety += 1 if password =~ /[0-9]/
-    return false if variety < 3 || password =~ /#{username}/
+    return false if variety < 2 || password =~ /#{username}/
 
     return true
   end
