@@ -28,6 +28,8 @@ class GroupAdmin::UsersController < GroupAdmin::BaseController
 
   def update
     @user = current_account.users.find(params[:id])
+    @user.setting_password = true if !update_params[:password].blank? || !update_params[:password_confirmation].blank?
+
     if @user.update_attributes(update_params)
       redirect_to :group_admin_users, notice: t(".success")
     else
