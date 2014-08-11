@@ -13,7 +13,7 @@ class SshKeyManager
   private
 
   def self.cmd
-    "sudo -u otp #{Rails.root}/bin/otp-keys"
+    "sudo -u otp #{Rails.root}/scripts/otp-keys"
   end
 
   def self.sanitize_key(key)
