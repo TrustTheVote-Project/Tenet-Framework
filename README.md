@@ -160,3 +160,32 @@ Group-specific initialization
 Upon new group creation, when the group is saved, CSF looks for the `GroupInit` class and calls
 `perform(Account)` on it if the class and method are present. It gives you a hook to initialize the
 newly created group account.
+
+
+One-time passwords (OTP)
+------------------------
+
+Admin-admin and group-admin users log into the system using only OTP.
+For this purpose they are providing public keys during their account
+registration. When backend saves their account into the database, it
+also places the public key into the `authorized_keys` file of the "otp"
+unix user account. After that the user can make a connection to this
+account with their SSH client or the OTP password app and get the
+password in the response. This password is associated with their account
+and can be used once, and only for the limited period of time. When the
+password expires or is used, to login again, the user needs to request
+another OTP.
+
+For the operation of the OTP feature:
+
+  - create "otp" user account with home folder at `/home/otp`
+  - create empty `/home/otp/.ssh/authorized_keys` file
+  - set ownership of the `.ssh` folder and its contents to `otp:otp`
+  - set permissions of the `.ssh` folder to 700
+  - set permissions of the `authorized_keys` file to 400
+
+  - add the rule to the `/etc/sudoers` that allows `deploy` user to run
+    the `Rails.root/bin/otp_keys` script that works with the keys file
+
+        deploy ALL=(otp) NOPASSWD: /home/deploy/my-app/current/bin/otp-keys
+

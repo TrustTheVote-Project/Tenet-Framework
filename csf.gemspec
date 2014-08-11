@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "LICENSE", "Rakefile", "README.rdoc"]
-  s.test_files = Dir["test/**/*"]
+  s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "rails", "~> 4.1.1"
   s.add_dependency 'sass-rails', '~> 4.0.3'
@@ -33,6 +33,9 @@ Gem::Specification.new do |s|
   s.add_dependency 'sidekiq'
 
   s.add_dependency 'sorcery'
+  s.add_dependency 'sshkey'
 
   s.add_development_dependency "pg"
+  s.add_development_dependency "rspec-rails"
+  s.add_development_dependency "factory_girl_rails"
 end

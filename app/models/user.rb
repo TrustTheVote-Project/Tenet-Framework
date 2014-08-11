@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :role, presence: { if: ->{ !CsfConfig['user_roles'].blank? && self.user? } }
+  validates :ssh_public_key, ssh_key: { on: :create }
 
   scope :users_only, -> { where(admin: false) }
 
