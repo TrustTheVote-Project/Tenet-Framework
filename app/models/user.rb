@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   validates :account, presence: true
   validates :login, presence: true, uniqueness: true
   validates :email, presence: true, format: { with: /\A[^@\s]+@(?:[-a-zA-Z0-9]+\.)+[a-z]{2,}\z/, allow_blank: true }
-  validates :password, strong: { on: :create }, confirmation: { if: :password, message: "doesn't match password" }
+  validates :password, strong: { on: :create, unless: :admin? }, confirmation: { if: :password, message: "doesn't match password" }
   validates :password, strong: { if: :setting_password }
   validates :first_name, presence: true
   validates :last_name, presence: true
