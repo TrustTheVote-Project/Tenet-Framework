@@ -2,10 +2,16 @@ require 'spec_helper'
 
 describe User do
 
+  it 'should require public key' do
+    u = build(:user, ssh_public_key: '')
+    expect(u).not_to be_valid
+    expect(u.errors[:ssh_public_key]).to eq [ 'is not a valid public key' ]
+  end
+
   it 'should catch invalid public keys' do
     u = build(:user, ssh_public_key: 'invalid')
     expect(u).not_to be_valid
-    expect(u.errors[:ssh_public_key]).to eq [ 'is not a valid public key.' ]
+    expect(u.errors[:ssh_public_key]).to eq [ 'is not a valid public key' ]
   end
 
   it 'should validate ssh public key on create' do

@@ -1,0 +1,65 @@
+#!/bin/sh
+#
+# Format of the authorized_keys file:
+#
+#   command="/home/deploy/app/current/bin/otp-generate 1234" ssh-rsa AAAAB3NzaC1yc2...
+#
+#
+# Usage:
+#
+# Setting or updating the key for user-id (set 'admin' for admin-admin):
+#
+#   bin/otp-keys set <user-id> <rsa-public-key>
+#
+# Deleting the key for the user:
+#
+#   bin/otp-keys del <user-id>
+#
+
+# Location of the keys file
+if [ -z "$CSF_AUTHORIZED_KEYS_FILE" ]
+then
+  CSF_AUTHORIZED_KEYS_FILE=/home/otp/.ssh/authorized_keys
+fi
+
+# Root of the Rails app
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+operation=$1
+user_id=$2
+key=$3
+
+if [ ! -f $CSF_AUTHORIZED_KEYS_FILE ]
+then
+  echo "ERROR: Keys file is missing -- $CSF_AUTHORIZED_KEYS_FILE\n"
+  echo "You can change path by setting CSF_AUTHORIZED_KEYS_FILE environment variable."
+  exit 2
+fi
+
+# checking parameters
+if [ -z "$user_id" ]
+then
+  error=1
+else
+  if [ $operation == "set" -a -z "$key" ]
+  then
+    error=1
+  fi
+fi
+
+if [[ ! -z $error ]]
+then
+  echo "Usage: $0 ( set <user_id> <new-public-key> | del <user-id> )"
+  exit 1
+fi
+
+# delete the old key
+match="otp-generate $user_id\\\""
+sed -i -e "/$match/d" $CSF_AUTHORIZED_KEYS_FILE
+
+# if adding the key, append it to the tail of the file
+if [ $operation == "set" ]
+then
+  new_line="command=\"$SCRIPT_DIR/otp-generate $user_id\" $key"
+  echo $new_line >> $CSF_AUTHORIZED_KEYS_FILE
+fi
