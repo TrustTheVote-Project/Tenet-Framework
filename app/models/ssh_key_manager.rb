@@ -3,6 +3,8 @@ require 'open3'
 class SshKeyManager
 
   def self.regenerate_otp_authorized_keys
+    exit_status = nil
+
     Open3.popen3(env, cmd) do |stdin, stdout, stderr, wait_thr|
       stdin.puts "# This file is written by #{Rails.root}/scripts/otp-key"
       stdin.puts "# when called by #{Rails.root}/app/models/ssh_key_manager.rb\n"
@@ -20,6 +22,8 @@ class SshKeyManager
     end
 
     if exit_status != 0
+      Rails.logger.error "Failed to write authorized_keys"
+
       # TODO failed to generate authorized_keys. report.
     end
   end
