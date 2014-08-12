@@ -30,7 +30,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'redis', '~> 3.0.4'
   s.add_dependency 'redis-rails'
-  s.add_dependency 'sidekiq'
+  s.add_dependency 'sidekiq', '3.2.1'
 
   s.add_dependency 'sorcery'
   s.add_dependency 'sshkey'

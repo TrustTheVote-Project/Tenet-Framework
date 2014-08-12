@@ -19,7 +19,7 @@ PATH
       redis (~> 3.0.4)
       redis-rails
       sass-rails (~> 4.0.3)
-      sidekiq
+      sidekiq (= 3.2.1)
       sorcery
       sshkey
       therubyracer
