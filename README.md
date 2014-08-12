@@ -178,14 +178,16 @@ another OTP.
 
 For the operation of the OTP feature:
 
-  - create "otp" user account with home folder at `/home/otp`
+  - create "otp" user account with home folder at `/home/otp` and shell
+    at `/home/deploy/my-app/current/scripts/otp-generate`
+  - touch `~otp/.hushlogin` to prevent MOTD on session start
   - create empty `/home/otp/.ssh/authorized_keys` file
   - set ownership of the `.ssh` folder and its contents to `otp:otp`
   - set permissions of the `.ssh` folder to 700
   - set permissions of the `authorized_keys` file to 400
 
   - add the rule to the `/etc/sudoers` that allows `deploy` user to run
-    the `Rails.root/bin/otp_keys` script that works with the keys file
+    the `<app_root>/scripts/otp_keys` script that works with the keys file
 
-        deploy ALL=(otp) NOPASSWD: /home/deploy/my-app/current/bin/otp-keys
+        deploy ALL=(otp) NOPASSWD: /home/deploy/my-app/current/scripts/otp-keys
 
