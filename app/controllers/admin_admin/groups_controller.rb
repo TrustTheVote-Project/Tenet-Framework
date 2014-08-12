@@ -23,12 +23,10 @@ class AdminAdmin::GroupsController < AdminAdmin::BaseController
     if @account.save
       req.archive! if req
 
+      SshKeyManager.regenerate_otp_authorized_keys
+
       # notify group users that their group has been approved
       @account.users.each do |u|
-        if key = u.ssh_public_key
-          SshKeyManager.set(u.id, key)
-        end
-
         # Notifications.delay.group_created(u.id)
         Notifications.group_created(u.id).deliver
       end

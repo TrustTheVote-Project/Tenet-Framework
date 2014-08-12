@@ -1,23 +1,49 @@
+require 'open3'
+
 class SshKeyManager
 
-  def self.set(user_id, key)
-    res = `#{cmd} set #{user_id} "#{sanitize_key(key)}" 2>&1`
-    Rails.logger.debug "Setting SSH key:\nUser ID: #{user_id}\nSSH Key: '#{key}'\nResult: #{res}"
-  end
+  def self.regenerate_otp_authorized_keys
+    Open3.popen3(env, cmd) do |stdin, stdout, stderr, wait_thr|
+      stdin.puts "# This file is written by #{Rails.root}/scripts/otp-key"
+      stdin.puts "# when called by #{Rails.root}/app/models/ssh_key_manager.rb\n"
 
-  def self.del(user_id)
-    res = `#{cmd} del #{user_id} 2>&1`
-    Rails.logger.debug "Deleting SSH key:\nUser ID: #{user_id}\nResult: #{res}"
+      User.where(admin: true).each do |u|
+        next if u.ssh_public_key.blank?
+        stdin.puts "environment=\"CSF_USER_ID=#{u.id}\" #{u.ssh_public_key}"
+      end
+
+      stderr.close
+      stdout.close
+      stdin.close
+
+      exit_status = wait_thr.value.exitstatus
+    end
+
+    if exit_status != 0
+      # TODO failed to generate authorized_keys. report.
+    end
   end
 
   private
 
-  def self.cmd
-    "sudo -u otp #{Rails.root}/scripts/otp-keys"
+  def self.env
+    if Rails.env.development? or Rails.env.test?
+      keys_file = "#{Rails.root}/tmp/authorized_keys"
+      `touch #{keys_file}`
+      { "CSF_AUTHORIZED_KEYS_FILE" => keys_file }
+    else
+      {}
+    end
   end
 
-  def self.sanitize_key(key)
-    key.to_s.gsub('"', '')
+  def self.cmd
+    c = "#{Rails.root}/scripts/otp-keys"
+
+    if Rails.env.development? or Rails.env.test?
+      c
+    else
+      "sudo -u otp #{c}"
+    end
   end
 
 end

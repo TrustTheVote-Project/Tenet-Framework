@@ -181,20 +181,22 @@ For the operation of the OTP feature:
   - create "otp" user account with home folder at `/home/otp` and shell
     at `/home/deploy/my-app/current/scripts/otp-generate`
   - touch `~otp/.hushlogin` to prevent MOTD on session start
-  - create empty `/home/otp/.ssh/authorized_keys` file
-  - set ownership of the `.ssh` folder and its contents to `otp:otp`
-  - set permissions of the `.ssh` folder to 700
+  - create empty `~otp/.ssh/authorized_keys` file
   - set permissions of the `authorized_keys` file to 400
+  - create `~otp/.ssh/environment` and set permissions to 600:
 
+        CSF_DB_USERNAME=<your app db username>
+        CSF_DB_NAME=<your app db name>
+
+  - set `~otp/.ssh` and contents ownership to `otp:otp`
   - add the rule to the `/etc/sudoers` that allows `deploy` user to run
     the `<app_root>/scripts/otp_keys` script that works with the keys file
 
         deploy ALL=(otp) NOPASSWD: /home/deploy/my-app/current/scripts/otp-keys
 
   - add permissions line to `pg_hba.conf` (PostgreSQL access
-    configuration) so that your app database was accessible to the db
-    user from CLI. `database` and `username` are the same as in
-    `config/database.yml` of your application.
+    configuration) so that your app database is accessible to the db
+    user from CLI. See CSF_DB_USERNAME and CSF_DB_NAME above.
 
         local <database> <username> trust
 

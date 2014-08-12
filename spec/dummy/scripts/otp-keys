@@ -1,4 +1,23 @@
 #!/bin/bash
+#
+# This script simply dumps its stdin into authorized_keys file.
+# This is done to let us write to a user-only file by granting
+# sudo access to this script.
 
-echo "done"
+# Location of the keys file
+if [ -z "$CSF_AUTHORIZED_KEYS_FILE" ]
+then
+  CSF_AUTHORIZED_KEYS_FILE=/home/otp/.ssh/authorized_keys
+fi
+
+if [ ! -f $CSF_AUTHORIZED_KEYS_FILE ]
+then
+  echo "ERROR: Keys file is missing -- $CSF_AUTHORIZED_KEYS_FILE"
+  echo "You can change path by setting CSF_AUTHORIZED_KEYS_FILE environment variable."
+  exit 1
+fi
+
+echo $CSF_AUTHORIZED_KEYS_FILE
+
+cat > $CSF_AUTHORIZED_KEYS_FILE
 exit 0
