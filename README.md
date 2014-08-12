@@ -191,3 +191,10 @@ For the operation of the OTP feature:
 
         deploy ALL=(otp) NOPASSWD: /home/deploy/my-app/current/scripts/otp-keys
 
+  - add permissions line to `pg_hba.conf` (PostgreSQL access
+    configuration) so that your app database was accessible to the db
+    user from CLI. `database` and `username` are the same as in
+    `config/database.yml` of your application.
+
+        local <database> <username> trust
+
