@@ -200,3 +200,18 @@ For the operation of the OTP feature:
 
         local <database> <username> trust
 
+
+
+Setting admin-admin public key for OTP
+--------------------------------------
+
+In order to let the admin-admin to request the OTP, you need to set
+their SSH public key.
+
+NOTE: This should be done only after you configured the "otp" user and
+keys storage as in OTP configuration instructions above.
+
+To set / change the public key of admin-admin, run the rake task:
+
+    $ rake csf:set_admin_public_key PUBLIC_KEY='ssh-rsa AAAAB3 ...'
+ 

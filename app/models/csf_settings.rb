@@ -18,12 +18,12 @@ class CsfSettings < ActiveRecord::Base
     set('admin_crypted_password', value)
   end
 
-  def self.admin_ssh_public_key
-    get('admin_ssh_public_key')
+  def self.admin_public_key
+    get('admin_public_key')
   end
 
-  def self.admin_ssh_public_key=(value)
-    set('admin_ssh_public_key', value)
+  def self.admin_public_key=(value)
+    set('admin_public_key', value)
   end
 
   def self.clear_admin_password!
