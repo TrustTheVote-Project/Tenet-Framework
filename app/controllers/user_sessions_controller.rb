@@ -24,6 +24,9 @@ class UserSessionsController < ApplicationController
     raise ActiveRecord::RecordNotFound unless user
 
     if user.admin?
+      # clear OTP once logged in
+      user.clear_password!
+
       redirect_to :group_admin_dashboard, notice: I18n.t('.successful_login')
     else
       redirect_to CsfConfig['urls']['user_dashboard'], notice: I18n.t('.successful_login')
@@ -44,7 +47,7 @@ class UserSessionsController < ApplicationController
     logout
     redirect_to :root, notice: I18n.t(".successful_logout")
   end
-  
+
   private
 
   def us

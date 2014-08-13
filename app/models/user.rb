@@ -53,8 +53,10 @@ class User < ActiveRecord::Base
 
   # assigns unknown password and saves the record
   def clear_password!
-    clear_password
-    save!
+    # updating attributes directly avoiding validations
+    update_attribute(:salt, SecureRandom.hex)
+    update_attribute(:crypted_password, SecureRandom.hex)
+    update_attribute(:password_set, false)
   end
 
   private
