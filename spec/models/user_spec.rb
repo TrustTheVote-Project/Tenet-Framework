@@ -27,4 +27,16 @@ describe User do
     expect(u.errors[:ssh_public_key]).to be_blank
   end
 
+  it 'should make admin initially unauthenticatable' do
+    u = create(:user, :admin)
+    expect(User.authenticate(u.login, '')).to be_nil
+    expect(u.password_set).to eq false
+  end
+
+  it 'should make user initially unauthenticatable' do
+    u = create(:user)
+    expect(User.authenticate(u.login, '')).to be_nil
+    expect(u.password_set).to eq false
+  end
+
 end

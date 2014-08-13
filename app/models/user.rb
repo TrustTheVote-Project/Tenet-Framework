@@ -7,8 +7,7 @@ class User < ActiveRecord::Base
   validates :account, presence: true
   validates :login, presence: true, uniqueness: true
   validates :email, presence: true, format: { with: /\A[^@\s]+@(?:[-a-zA-Z0-9]+\.)+[a-z]{2,}\z/, allow_blank: true }
-  validates :password, strong: { on: :create, unless: :admin? }, confirmation: { if: :password, message: "doesn't match password" }
-  validates :password, strong: { if: :setting_password }
+  validates :password, strong: { if: :setting_password }, confirmation: { if: :password, message: "doesn't match password" }
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :role, presence: { if: ->{ !CsfConfig['user_roles'].blank? && self.user? } }
@@ -19,6 +18,7 @@ class User < ActiveRecord::Base
   attr_accessor :setting_password
 
   before_validation :init_user, on: :create
+  after_commit :clear_password!, on: :create
 
   def self.new_from_request(req)
     u = User.new
@@ -44,23 +44,24 @@ class User < ActiveRecord::Base
     !self.last_login_at
   end
 
+  # assigns unknown password so no one can log in
+  def clear_password
+    self.salt             = SecureRandom.hex
+    self.crypted_password = SecureRandom.hex
+    self.password_set     = false
+  end
+
+  # assigns unknown password and saves the record
+  def clear_password!
+    clear_password
+    save!
+  end
+
   private
 
   def init_user
-    if self.admin?
-      # Setting group admin password to 0000 initially, while
-      # we don't have OTP working
-      self.password = self.password_confirmation = '0000'
-      self.password_set = true
-    else
-      self.login = self.email
-
-      # Generating long unbreakable password and will ask the user to
-      # reset it right away.
-      self.password = self.password_confirmation = SecureRandom.hex
-      self.password_set = false
-    end
-
+    clear_password
+    self.login = self.email unless self.admin?
     true
   end
 
