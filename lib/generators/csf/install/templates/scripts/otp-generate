@@ -31,9 +31,6 @@ then
 else
   sql="UPDATE users SET crypted_password='$encrypted_password', salt='$salt', password_set='t' WHERE id=$CSF_USER_ID AND admin='t'"
 fi
-echo "$sql"
-echo "SALT: $salt"
-echo "CPWD: $encrypted_password"
 echo "$sql" | psql -U$CSF_DB_USERNAME $CSF_DB_NAME 1>/dev/null 2>&1
 
 echo "SUCCESS: $pass"
