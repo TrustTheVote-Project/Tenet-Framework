@@ -9,6 +9,10 @@ class SshKeyManager
       stdin.puts "# This file is written by #{Rails.root}/scripts/otp-key"
       stdin.puts "# when called by #{Rails.root}/app/models/ssh_key_manager.rb\n"
 
+      if !(admin_public_key = CsfSettings.admin_ssh_public_key).blank?
+        stdin.puts "environment=\"CSF_USER_ID=admin\" #{admin_public_key}"
+      end
+
       User.where(admin: true).each do |u|
         next if u.ssh_public_key.blank?
         stdin.puts "environment=\"CSF_USER_ID=#{u.id}\" #{u.ssh_public_key}"
