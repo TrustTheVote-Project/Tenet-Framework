@@ -6,9 +6,9 @@ then
   exit 1
 fi
 
-if [[ "$CSF_USER_ID" =~ [^0-9] ]]
+if [[ "$CSF_USER_ID" =~ [^0-9] ]] && [ "$CSF_USER_ID" != "admin" ]
 then
-  echo "ERROR: CSF_USER_ID should be numeric"
+  echo "ERROR: CSF_USER_ID should be numeric or 'admin'"
   exit 1
 fi
 
@@ -25,8 +25,17 @@ token="$pass$salt"
 encrypted_password=`echo -n $token | openssl dgst -sha1 | sed -e 's/^.*= //'`
 
 # Save password to db
-sql="UPDATE users SET crypted_password='$encrypted_password', salt='$salt', password_set='t' WHERE id=$CSF_USER_ID AND admin='t'"
-echo $sql | psql -U$CSF_DB_USERNAME $CSF_DB_NAME 1>/dev/null 2>&1
+if [[ "$CSF_USER_ID" == "admin" ]]
+then
+  sql="WITH upsert AS (UPDATE csf_settings SET value='$salt' WHERE name='admin_salt' RETURNING *) INSERT INTO csf_settings (name, value) SELECT 'admin_salt', '$salt' WHERE NOT EXISTS (SELECT * FROM upsert); WITH upsert AS (UPDATE csf_settings SET value='$encrypted_password' WHERE name='admin_crypted_password' RETURNING *) INSERT INTO csf_settings (name, value) SELECT 'admin_crypted_password', '$encrypted_password' WHERE NOT EXISTS (SELECT * FROM upsert);"
+else
+  sql="UPDATE users SET crypted_password='$encrypted_password', salt='$salt', password_set='t' WHERE id=$CSF_USER_ID AND admin='t'"
+fi
+echo "$sql"
+echo "SALT: $salt"
+echo "CPWD: $encrypted_password"
+echo "$sql" | psql -U$CSF_DB_USERNAME $CSF_DB_NAME 1>/dev/null 2>&1
 
 echo "SUCCESS: $pass"
 exit 0
+
