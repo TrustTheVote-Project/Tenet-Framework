@@ -4,7 +4,6 @@ module Csf
 
     def copy_csf_config
       copy_file "csf_config.yml", "config/csf_config.yml"
-      copy_file "csf_config.rb",  "config/initializers/csf_config.rb"
     end
 
     def copy_csf_migrations
@@ -17,6 +16,12 @@ module Csf
 
     def configure_sidekiq
       copy_file "sidekiq.rb", "config/initializers/sidekiq.rb"
+    end
+
+    def copy_otp_scripts
+      directory "scripts"
+      chmod "scripts/otp-generate", 0755
+      chmod "scripts/otp-keys", 0755
     end
   end
 end
