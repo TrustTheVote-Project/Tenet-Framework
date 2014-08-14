@@ -18,7 +18,6 @@ class User < ActiveRecord::Base
   attr_accessor :setting_password
 
   before_validation :init_user, on: :create
-  after_commit :clear_password!, on: :create
 
   def self.new_from_request(req)
     u = User.new
