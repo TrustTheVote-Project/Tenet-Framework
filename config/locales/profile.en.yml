@@ -3,6 +3,7 @@ en:
     messages:
       strong: "is too weak. Need at least 8 characters: lowercase, uppercase, digits, no username"
       ssh_key: "is not a valid public key"
+      admin_key_uniqueness: "is used by admin"
 
   profile:
     edit:
