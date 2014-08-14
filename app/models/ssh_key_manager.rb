@@ -18,12 +18,16 @@ class SshKeyManager
         stdin.puts "environment=\"CSF_USER_ID=#{u.id}\" #{u.ssh_public_key}"
       end
 
+      stdin.close
       stderr.close
       stdout.close
-      stdin.close
+
+      Rails.logger.debug "Finished writing authenticated_keys"
 
       exit_status = wait_thr.value.exitstatus
     end
+
+    Rails.logger.debug "Closed streams"
 
     if exit_status != 0
       Rails.logger.error "Failed to write authorized_keys"
