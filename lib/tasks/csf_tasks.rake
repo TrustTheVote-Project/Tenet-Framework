@@ -24,6 +24,12 @@ namespace :csf do
       exit 1
     end
 
+    if (u = User.where(ssh_public_key: key).first).present?
+      puts "This public key is used by the group admin (#{u.login} - #{u.full_name}) from #{u.account.name} (#{u.account.state.name})."
+      puts "Please choose a different key."
+      exit 1
+    end
+
     CsfSettings.admin_public_key = key
 
     # regenerate authorized_keys
