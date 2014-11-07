@@ -1,12 +1,12 @@
 - if admin_admin?
   %ul.nav.navbar-nav
-    %li
+    %li{ class: item_class(:requests) }
       = link_to :admin_admin_registration_requests do
         Requests
         - if (c = RegistrationRequest.unarchived.count) > 0
           %span.badge= c
-    %li= link_to "Organizations", :admin_admin_groups
-    %li= link_to "Settings", :admin_admin_app_management
+    %li{ class: item_class(:groups) }= link_to "Organizations", :admin_admin_groups
+    %li{ class: item_class(:app_management) }= link_to "Settings", :admin_admin_app_management
 
   %ul.nav.navbar-nav.navbar-right
     %li= link_to "Logout", :admin_admin_logout
