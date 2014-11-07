@@ -1,13 +1,14 @@
-.row#header
-  .col-md-12
-    %nav.navbar.navbar-default
-      .container-fluid
-        %button{ type: "button", class: "navbar-toggle", data: { toggle: "collapse", target: "#nav-collapse" } }
-          %span.sr-only Toggle navigation
-          %span.icon-bar
-          %span.icon-bar
-          %span.icon-bar
-        = link_to "#{CsfConfig['app_title']} Admin Console", :root, class: "navbar-brand"
+%nav.navbar.navbar-default
+  .container
+    .navbar-header
+      %button.navbar-toggle.collapse{ type: "button", data: { toggle: "collapse", target: "#navbar" } }
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to :root, class: "banner-image navbar-brand" do
+        = image_tag t(".banner_image"), alt: t(".banner_image_alt_text")
+        #{t("layouts.public.header.title")} Admin Console
 
-        .collapse.navbar-collapse#nav-collapse
-          = render "layouts/admin/header_links"
+    #navbar.collapse.navbar-collapse
+      = render 'layouts/admin/header_links'

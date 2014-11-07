@@ -1,7 +1,14 @@
 en:
   layouts:
+    admin:
+      header:
+        title: TTV CSF
+        banner_image: csf/brand.png
+        banner_image_alt_text: TrustTheVote Common Services Framework
+
     public:
       header:
+        title: TTV CSF
         banner_image: csf/brand.png
         banner_image_alt_text: TrustTheVote Common Services Framework
         banner_text: TrustTheVote Common Services Framework
@@ -22,3 +29,4 @@ en:
           link_3:
             title: "Contact"
             url: /
+

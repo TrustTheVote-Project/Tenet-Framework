@@ -1,8 +1,14 @@
-.row#header
-  .col-md-2
-    = link_to :root, class: "banner-image" do
-      = image_tag t(".banner_image"), alt: t(".banner_image_alt_text")
-  .col-md-10
-    .pull-right= render 'layouts/public/header_links'
-    %h3= t(".banner_text")
-    %h4= t(".banner_subtext")
+%nav.navbar.navbar-default
+  .container
+    .navbar-header
+      %button.navbar-toggle.collapse{ type: "button", data: { toggle: "collapse", target: "#navbar" } }
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to :root, class: "banner-image navbar-brand" do
+        = image_tag t(".banner_image"), alt: t(".banner_image_alt_text")
+        = t ".title"
+
+    #navbar.collapse.navbar-collapse
+      = render 'layouts/public/header_links'

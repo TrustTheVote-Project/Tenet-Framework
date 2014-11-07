@@ -1,20 +1,18 @@
 - @page_id = 'login'
-
-= page_head
-
-.row
-  .col-md-12
-    %p.body= raw t ".body"
+- @no_header = true
+- @no_footer = true
 
 .row
-  .col-md-6.col-md-offset-3
-    = form_for :user_session, url: :admin_admin_login, html: { role: 'form' } do |f|
-      .form-group
-        = f.label :login, t(".form.login")
-        = f.text_field :login, class: "form-control", placeholder: "john.smith"
-      .form-group
-        = f.label :password, t(".form.password")
-        = f.password_field :password, class: "form-control"
+  .col-md-4.col-md-offset-4
+    .center-box
+      %p.logo= image_tag t(".logo_image"), alt: t(".logo_image_alt")
+      %p.title= raw t ".title"
+      %p.body= raw t ".body"
+      = form_for :user_session, url: :admin_admin_login, html: { role: 'form' } do |f|
+        .form-group
+          = f.text_field :login, placeholder: t('.login'), class: "form-control", placeholder: "john.smith"
+        .form-group
+          = f.password_field :password, placeholder: t('.password'), class: "form-control"
 
-      .form-group
-        = f.submit t(".form.submit"), class: "btn btn-default"
+        .form-group.text-center
+          = f.submit t(".submit"), class: "btn btn-primary"

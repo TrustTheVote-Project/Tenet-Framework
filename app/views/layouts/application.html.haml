@@ -9,10 +9,10 @@
     = csrf_meta_tags
 
   %body{ id: @page_id }
+    = render "layouts/public/header"
     .container
-      = render "layouts/public/header"
       = yield
-      = render "layouts/public/footer"
+    = render "layouts/public/footer"
 
     = include_gon
     = javascript_include_tag "csf/application"

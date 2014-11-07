@@ -1,0 +1,14 @@
+.center-box {
+  margin-top: 100px;
+  padding: 20px;
+  background: #eee;
+
+  .logo, .title, .body {
+    text-align: center;
+  }
+
+  .title {
+    font-weight: 800;
+    text-align: center;
+  }
+}

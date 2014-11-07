@@ -1,7 +1,12 @@
-- if logged_in?
-  %ul.nav.nav-pills.pull-right
+%ul.nav.navbar-nav.navbar-right
+  - if logged_in?
     - if group_admin?
       %li= link_to "Users", :group_admin_users
       %li= link_to "App Management", :group_admin_app_management
     %li= link_to "Profile", :edit_profile
     %li= link_to "Logout", :logout
+  - else
+    %li= link_to "Sys-Admin Log In", :admin_admin_dashboard
+    %li= link_to "Log In", :login
+    %li= link_to "Sign Up", :register
+

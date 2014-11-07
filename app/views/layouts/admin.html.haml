@@ -8,9 +8,13 @@
     = csrf_meta_tags
 
   %body{ id: @page_id }
-    .container
+    - unless @no_header
       = render "layouts/admin/header"
+
+    .container
       = yield
+
+    - unless @no_footer
       = render "layouts/admin/footer"
 
     = include_gon
