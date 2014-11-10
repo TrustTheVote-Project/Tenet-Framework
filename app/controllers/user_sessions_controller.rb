@@ -10,8 +10,20 @@ class UserSessionsController < ApplicationController
 
     # check that state + account + user tripple exists
     @state = State.find(@user_session.state_id)
+
+    # disallow suspended organizations
     account = @state.accounts.find(@user_session.account_id)
+    if account.suspended?
+      redirect_to :login, alert: t(".organization_suspended")
+      return
+    end
+
+    # disallow suspended accounts
     u = account.users.find_by!(login: @user_session.login)
+    if u.suspended?
+      redirect_to :login, alert: t(".user_suspended")
+      return
+    end
 
     # disallow logging admins as users and vice versa
     if u.admin? ? @user_session.type != 'admin' : @user_session.type != 'user'
@@ -27,12 +39,12 @@ class UserSessionsController < ApplicationController
       # clear OTP once logged in
       user.clear_password!
 
-      redirect_to :group_admin_dashboard, notice: I18n.t('.successful_login')
+      redirect_to :group_admin_dashboard, notice: t('.successful_login')
     else
-      redirect_to CsfConfig['urls']['user_dashboard'], notice: I18n.t('.successful_login')
+      redirect_to CsfConfig['urls']['user_dashboard'], notice: t('.successful_login')
     end
   rescue ActiveRecord::RecordNotFound
-    flash.now[:alert] = I18n.t('.user_not_found')
+    flash.now[:alert] = t('.user_not_found')
 
     gon.organizations = @state.accounts.map { |a| { id: a.id.to_s, name: a.name } }
     gon.stateId       = @user_session.state_id
@@ -45,7 +57,7 @@ class UserSessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to :root, notice: I18n.t(".successful_logout")
+    redirect_to :root, notice: t(".successful_logout")
   end
 
   private
@@ -58,7 +70,7 @@ class UserSessionsController < ApplicationController
     super
 
     %w( required ).each do |k|
-      gon.l[k] = I18n.t("validations.#{k}")
+      gon.l[k] = t("validations.#{k}")
     end
 
     gon.organizationsInStateUrl = organizations_in_state_path

@@ -1,0 +1,5 @@
+en:
+  user_sessions:
+    create:
+      organization_suspended: Could not log in. Your organization is suspended.
+      user_suspended: Could not log in. Your account is suspended.

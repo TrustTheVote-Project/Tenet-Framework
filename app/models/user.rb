@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   validates :ssh_public_key, ssh_key: { if: :admin? }, uniqueness: { if: :admin? }, admin_key_uniqueness: { if: :admin? }
 
   scope :users_only, -> { where(admin: false) }
+  scope :active, -> { where(suspended: false) }
+  scope :suspended, -> { where(suspended: true) }
 
   attr_accessor :setting_password
 

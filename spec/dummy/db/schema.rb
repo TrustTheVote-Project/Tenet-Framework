@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141110073270) do
+ActiveRecord::Schema.define(version: 20141110092256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,10 +21,13 @@ ActiveRecord::Schema.define(version: 20141110073270) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "website"
+    t.boolean  "suspended",  default: false, null: false
   end
 
   add_index "accounts", ["name"], name: "index_accounts_on_name", unique: true, using: :btree
   add_index "accounts", ["state_id"], name: "index_accounts_on_state_id", using: :btree
+  add_index "accounts", ["suspended"], name: "index_accounts_on_suspended", using: :btree
 
   create_table "csf_settings", force: true do |t|
     t.string   "name",       null: false
@@ -51,6 +54,7 @@ ActiveRecord::Schema.define(version: 20141110073270) do
   end
 
   add_index "registration_requests", ["archived"], name: "index_registration_requests_on_archived", using: :btree
+  add_index "registration_requests", ["rejected"], name: "index_registration_requests_on_rejected", using: :btree
 
   create_table "states", force: true do |t|
     t.string "code", null: false
@@ -82,6 +86,7 @@ ActiveRecord::Schema.define(version: 20141110073270) do
     t.string   "last_login_from_ip_address"
     t.string   "role"
     t.text     "ssh_public_key"
+    t.boolean  "suspended",                       default: false, null: false
   end
 
   add_index "users", ["account_id"], name: "index_users_on_account_id", using: :btree
@@ -90,5 +95,6 @@ ActiveRecord::Schema.define(version: 20141110073270) do
   add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", using: :btree
   add_index "users", ["ssh_public_key"], name: "index_users_on_ssh_public_key", unique: true, using: :btree
+  add_index "users", ["suspended"], name: "index_users_on_suspended", using: :btree
 
 end

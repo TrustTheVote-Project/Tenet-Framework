@@ -8,6 +8,9 @@ class Account < ActiveRecord::Base
 
   accepts_nested_attributes_for :users
 
+  scope :active, -> { where(suspended: false) }
+  scope :suspended, -> { where(suspended: true) }
+
   def self.new_from_request(req)
     a = Account.new
     a.state = State.find_by(code: req.state)
