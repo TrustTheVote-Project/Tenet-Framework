@@ -1,14 +1,13 @@
 - @page_id = "aa_groups_show"
 - @navbar_item = :groups
 
-= page_head
+.row.page-head
+  .col-md-12
+    %h3.page-title= @account.name
 
 .row
   .col-md-6
     %table.table.properties
-      %tr
-        %th Name
-        %td #{@account.name}
       %tr
         %th State
         %td #{@account.state.name}
@@ -23,7 +22,7 @@
           %th.email Email
           %th.name  Full name
           %th.phone Phone
-          %th.admin Group Admin
+          %th.admin Admin
 
       - if @account.users.blank?
         %tr

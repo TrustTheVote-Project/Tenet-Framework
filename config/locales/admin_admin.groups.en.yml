@@ -2,40 +2,43 @@ en:
   admin_admin:
     groups:
       index:
-        title: Groups
-        add_group: Add group
+        title: Organizations
+        add_group: New Organization
 
       show:
-        title: Group
+        title: Organization
 
       destroy:
-        success: Group has been deleted.
+        success: Organization has been deleted.
 
       new:
-        title: New group
+        title: New Organization
+        organization: Organization
+        administrator: Administrator
+        all_required: All fields are required.
         form:
           name: Name
           state: State
           login: Login
-          first_name: First name
-          last_name: Last name
+          first_name: First Name
+          last_name: Last Name
           title: Title
           phone: Phone
           email: Email
-          ssh_public_key: SSH public key
-          submit: Create group
+          ssh_public_key: SSH Public Key
+          submit: Create Organization
           cancel: Cancel
 
       create:
-        success: Group has been created
+        success: Organization has been created
 
   notifications:
     group_created:
-      subject: Your group has been approved
+      subject: Your organization has been approved
       body: |
         Hi %{name}!
 
-        Your group registration request has been approved.
+        Your organization registration request has been approved.
 
         Please log in here:
 
