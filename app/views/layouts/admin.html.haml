@@ -8,11 +8,14 @@
     = csrf_meta_tags
 
   %body{ id: @page_id }
-    - unless @no_header
-      = render "layouts/admin/header"
+    #wrap
+      - unless @no_header
+        = render "layouts/admin/header"
 
-    .container
-      = yield
+      .container
+        = yield
+        - unless @no_footer
+          #push
 
     - unless @no_footer
       = render "layouts/admin/footer"
