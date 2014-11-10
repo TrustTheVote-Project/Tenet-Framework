@@ -1,8 +1,12 @@
 - rr = registration_request
 %tr
-  %td.org=     rr.organization_name
+  %td.org=     link_to rr.organization_name, [ :admin_admin, rr ]
   %td.state=   rr.state
   %td.website= rr.website
   %th.actions
-    = link_to "Show", [ :admin_admin, rr ], class: 'btn btn-xs btn-default'
-    = link_to "Delete", [ :admin_admin, rr ], method: 'delete', class: 'btn btn-xs btn-danger', data: { confirm: t("sure_to_delete") }
+    - if rr.rejected?
+      = link_to "Reopen", [ :reopen_admin_admin, rr ], method: 'post', class: 'btn btn-xs btn-default'
+      = link_to "Delete", [ :admin_admin, rr ], method: 'delete', class: 'btn btn-xs btn-danger', data: { confirm: t("sure_to_delete") }
+    - else
+      = link_to "Review", [ :admin_admin, rr ], class: 'btn btn-xs btn-default'
+      = link_to "Reject", [ :reject_admin_admin, rr ], method: 'post', class: 'btn btn-xs btn-success'

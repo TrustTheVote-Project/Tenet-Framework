@@ -1,3 +1,8 @@
+- if flash[:alert]
+  .alert.alert-danger= flash[:alert]
+- if flash[:notice]
+  .alert.alert-info= flash[:notice]
+
 - title ||= false
 - subtitle ||= false
 - if title || subtitle
@@ -8,7 +13,3 @@
       - if subtitle
         .page-subtitle= subtitle
 
-- if flash[:alert]
-  .alert.alert-danger= flash[:alert]
-- if flash[:notice]
-  .alert.alert-info= flash[:notice]

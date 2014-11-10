@@ -9,3 +9,9 @@ en:
 
       destroy:
         success: Registration request has been deleted.
+
+      reject:
+        success: Registration request has been rejected.
+
+      reopen:
+        success: Registration request has been reopened.

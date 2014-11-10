@@ -18,3 +18,13 @@
           %td{ colspan: 4 }= t "no_records"
       - else
         = render @registration_requests
+
+.row
+  .col-md-12.text-right
+    - active_label = "Requests (#{RegistrationRequest.active.count})"
+    - rejected_label = "Rejected (#{RegistrationRequest.rejected.count})"
+    - if @showing_rejected
+      #{link_to active_label, :admin_admin_registration_requests} | #{rejected_label}
+    - else
+      #{active_label} | #{link_to rejected_label, :rejected_admin_admin_registration_requests}
+

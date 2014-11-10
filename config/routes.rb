@@ -38,7 +38,16 @@ Rails.application.routes.draw do
     post '/login'         => 'user_sessions#create'
     get  '/logout'        => 'user_sessions#destroy', as: 'logout'
 
-    resources :registration_requests
+    resources :registration_requests do
+      collection do
+        get :rejected
+      end
+
+      member do
+        post :reject
+        post :reopen
+      end
+    end
     resources :groups
   end
 

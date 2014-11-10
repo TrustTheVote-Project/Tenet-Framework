@@ -1,6 +1,6 @@
 class AdminAdmin::BaseController < ApplicationController
 
-  before_filter :auth
+  before_filter :auth, unless: -> { Rails.env.test? }
   layout "admin"
 
   def admin_admin?
