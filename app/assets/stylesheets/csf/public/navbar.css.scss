@@ -1,5 +1,16 @@
-.banner-image img {
-  height: 40px;
-  margin-top: -10px;
-  margin-right: 5px;
+.navbar-brand {
+  span, img {
+    height: 40px;
+  }
+
+  img {
+    width: 40px;
+    margin-right: 10px;
+  }
+
+  span {
+    display: inline-block;
+    margin-top: -10px;
+    margin-right: 5px;
+  }
 }

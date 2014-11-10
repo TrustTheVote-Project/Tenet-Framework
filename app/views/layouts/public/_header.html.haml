@@ -6,9 +6,10 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      = link_to :root, class: "banner-image navbar-brand" do
-        = image_tag t(".banner_image"), alt: t(".banner_image_alt_text")
-        = t ".title"
+      = link_to :root, class: "navbar-brand" do
+        %span
+          = image_tag t(".banner_image"), alt: t(".banner_image_alt_text")
+          = t ".title"
 
     #navbar.collapse.navbar-collapse
       = render 'layouts/public/header_links'

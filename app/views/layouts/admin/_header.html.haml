@@ -6,9 +6,10 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      = link_to :admin_admin_dashboard, class: "banner-image navbar-brand" do
-        = image_tag t(".banner_image"), alt: t(".banner_image_alt_text")
-        #{t("layouts.public.header.title")} Admin Console
+      = link_to :admin_admin_dashboard, class: "navbar-brand" do
+        %span
+          = image_tag t(".banner_image"), alt: t(".banner_image_alt_text")
+          #{t("layouts.public.header.title")} Admin Console
 
     #navbar.collapse.navbar-collapse
       = render 'layouts/admin/header_links'
