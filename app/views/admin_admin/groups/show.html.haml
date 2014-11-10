@@ -5,12 +5,28 @@
   .col-md-12
     %h3.page-title= @account.name
 
+- admin = @account.admin
 .row
   .col-md-6
     %table.table.properties
       %tr
-        %th State
-        %td #{@account.state.name}
+        %th= t '.state'
+        %td= @account.state.name
+      %tr
+        %th= t '.website'
+        %td= link_to @account.website
+      %tr
+        %th= t '.administrator'
+        %td= admin.full_name
+      %tr
+        %th= t '.title'
+        %td= admin.title
+      %tr
+        %th= t '.email'
+        %td= mail_to admin.email
+      %tr
+        %th= t '.phone'
+        %td= admin.phone
 
 .row
   .col-md-12
@@ -24,8 +40,17 @@
           %th.phone Phone
           %th.admin Admin
 
-      - if @account.users.blank?
+      - if @users.blank?
         %tr
           %td{ colspan: 5 }= t "no_records"
       - else
-        = render partial: 'user', collection: @account.users
+        = render partial: 'user', collection: @users
+
+.row
+  .col-md-12.text-right
+    - active_label = "Users (#{@account.users.active.count})"
+    - suspended_label = "Suspended (#{@account.users.suspended.count})"
+    - if @showing_suspended_users
+      #{link_to active_label, admin_admin_group_path(@account)} | #{suspended_label}
+    - else
+      #{active_label} | #{link_to suspended_label, suspended_users_admin_admin_group_path(@account)}

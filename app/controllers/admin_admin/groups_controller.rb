@@ -15,6 +15,15 @@ class AdminAdmin::GroupsController < AdminAdmin::BaseController
   # Renders organization details
   def show
     @account = Account.find(params[:id])
+    @users   = @account.users.active
+  end
+
+  # Renders organization details with suspended users
+  def suspended_users
+    @showing_suspended_users = true
+    @account = Account.find(params[:id])
+    @users   = @account.users.suspended
+    render :show
   end
 
   # Suspends the account

@@ -57,6 +57,7 @@ Rails.application.routes.draw do
       member do
         post :suspend
         post :unsuspend
+        get  :suspended_users
       end
     end
   end

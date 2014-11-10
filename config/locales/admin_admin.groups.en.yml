@@ -6,7 +6,12 @@ en:
         add_group: New Organization
 
       show:
-        title: Organization
+        state: State
+        website: Website
+        administrator: Administrator
+        title: Job Title or Description
+        email: Email
+        phone: Phone
 
       destroy:
         success: Organization has been deleted.
