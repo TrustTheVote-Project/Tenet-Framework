@@ -14,7 +14,7 @@
         %td= @req.state
       %tr
         %th Website
-        %td= @req.website
+        %td= link_to @req.website
       %tr
         %th Admin name
         %td= @req.admin_name
@@ -23,7 +23,7 @@
         %td= @req.admin_title
       %tr
         %th Admin email
-        %td= @req.admin_email
+        %td= mail_to @req.admin_email
       %tr
         %th Admin phone
         %td= @req.admin_phone
@@ -32,6 +32,6 @@
   .col-md-6
     = link_to "Back to Requests", :admin_admin_registration_requests
     &nbsp;&nbsp;
-    = link_to "Create group", new_admin_admin_group_path(request: @req.id), class: 'btn btn-default'
+    = link_to "Process Request", new_admin_admin_group_path(request: @req.id), class: 'btn btn-primary'
     &nbsp;&nbsp;
-    = link_to "Delete request", [ :admin_admin, @req ], class: 'btn btn-danger', method: 'delete', data: { confirm: t('sure_to_delete') }
+    = link_to "Delete Request", [ :admin_admin, @req ], class: 'btn btn-danger', method: 'delete', data: { confirm: t('sure_to_delete') }

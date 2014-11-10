@@ -2,10 +2,10 @@ en:
   admin_admin:
     registration_requests:
       index:
-        title: Registration requests
+        title: Registration Requests
 
       show:
-        title: Registration request
+        title: Review Request
 
       destroy:
         success: Registration request has been deleted.
