@@ -1,3 +1,23 @@
+$app-title-height: 60px;
+$app-title-bg: #444;
+$app-title-color: #eee;
+
 #header {
   margin-bottom: 0;
+}
+
+.navbar {
+  border-radius: 0 !important;
+}
+
+#app-title {
+  margin-top: -20px;
+  margin-bottom: 20px;
+  height:     $app-title-height;
+  background: $app-title-bg;
+  color:      $app-title-color;
+
+  h4 {
+    line-height: $app-title-height - 20px;
+  }
 }
