@@ -46,6 +46,9 @@ class AdminAdmin::GroupsController < AdminAdmin::BaseController
 
   # Shows new organization form
   def new
+    gon.ssh_key_help = t(".ssh_key_help")
+    gon.administrator = t(".administrator")
+
     if req
       @account = Account.new_from_request(req)
     else

@@ -15,7 +15,10 @@
         = f.text_field :name, class: 'form-control'
       .form-group
         = f.label :state_id, t(".form.state"), class: 'control-label'
-        = f.select :state_id, options_from_collection_for_select(sorted_states, 'id', 'name', @account.state_id), { prompt: "Pick state" }, class: "form-control", data: { bind: 'value: state' }
+        = f.select :state_id, options_from_collection_for_select(sorted_states, 'id', 'name', @account.state_id), { prompt: "Pick state" }, class: "form-control"
+      .form-group
+        = f.label :website, t(".form.website"), class: 'control-label'
+        = f.text_field :website, class: 'form-control'
 
     .col-md-offset-2.col-md-4
       %h4= t ".administrator"
@@ -27,10 +30,10 @@
           = u.text_field :login, class: 'form-control'
         .form-group
           = u.label :first_name, t(".form.first_name"), class: 'control-label'
-          = u.text_field :first_name, class: 'form-control'
+          = u.text_field :first_name, class: 'form-control', data: { bind: 'value: firstName' }
         .form-group
           = u.label :last_name, t(".form.last_name"), class: 'control-label'
-          = u.text_field :last_name, class: 'form-control'
+          = u.text_field :last_name, class: 'form-control', data: { bind: 'value: lastName' }
         .form-group
           = u.label :title, t(".form.title"), class: 'control-label'
           = u.text_field :title, class: 'form-control'
@@ -44,7 +47,9 @@
     .col-md-10
       = f.fields_for :users do |u|
         .form-group
-          = u.label :ssh_public_key, t(".form.ssh_public_key"), class: 'control-label'
+          .control-label
+            = u.label :ssh_public_key, t(".form.ssh_public_key")
+            %small.what{ data: { toggle: 'tooltip', placement: 'right' } } What is this?
           = u.text_area :ssh_public_key, rows: 5, class: 'form-control'
   .row
     .col-md-8

@@ -21,6 +21,10 @@ en:
         organization: Organization
         administrator: Administrator
         all_required: All fields are required.
+        ssh_key_help: >
+          Ask {name} to provide their SSH Public Key.
+          The key can be created with the TrustTheVote
+          <a href="#TBD">SoftToken App</a>. <a href="#TDB">Learn more</a>
         form:
           name: Name
           state: State
