@@ -31,7 +31,13 @@
 .row
   .col-md-6
     = link_to "Back to Requests", :back
-    &nbsp;&nbsp;
-    = link_to "Process Request", new_admin_admin_group_path(request: @req.id), class: 'btn btn-primary'
-    &nbsp;&nbsp;
-    = link_to "Delete Request", [ :admin_admin, @req ], class: 'btn btn-danger', method: 'delete', data: { confirm: t('sure_to_delete') }
+    - if @req.rejected?
+      &nbsp;&nbsp;
+      = link_to "Reopen Request", [ :reopen_admin_admin, @req ], method: 'post', class: 'btn btn-success'
+      &nbsp;&nbsp;
+      = link_to "Delete Request", [ :admin_admin, @req ], class: 'btn btn-danger', method: 'delete', data: { confirm: t('sure_to_delete') }
+    - else
+      &nbsp;&nbsp;
+      = link_to "Reject Request", [ :reject_admin_admin, @req ], method: 'post', class: 'btn btn-success'
+      &nbsp;&nbsp;
+      = link_to "Process Request", new_admin_admin_group_path(request: @req.id), class: 'btn btn-primary'
