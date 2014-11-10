@@ -12,6 +12,7 @@
     %table.table.groups
       %thead
         %tr
+          %th.joined  Joined
           %th.name    Name
           %th.state   State
           %th.users   Users
@@ -22,3 +23,12 @@
           %td{ colspan: 4 }= t "no_records"
       - else
         = render partial: 'account', collection: @accounts
+
+.row
+  .col-md-12.text-right
+    - active_label = "Organizations (#{Account.active.count})"
+    - suspended_label = "Suspended (#{Account.suspended.count})"
+    - if @showing_suspended
+      #{link_to active_label, :admin_admin_groups} | #{suspended_label}
+    - else
+      #{active_label} | #{link_to suspended_label, :suspended_admin_admin_groups}

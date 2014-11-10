@@ -48,7 +48,17 @@ Rails.application.routes.draw do
         post :reopen
       end
     end
-    resources :groups
+
+    resources :groups do
+      collection do
+        get :suspended
+      end
+
+      member do
+        post :suspend
+        post :unsuspend
+      end
+    end
   end
 
 end

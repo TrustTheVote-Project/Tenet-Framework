@@ -1,13 +1,41 @@
 class AdminAdmin::GroupsController < AdminAdmin::BaseController
 
+  # Renders the list of active organizations
   def index
-    @accounts = Account.order("name")
+    @accounts = Account.active.order("name")
   end
 
+  # Renders the list of suspended organizations
+  def suspended
+    @accounts = Account.suspended.order("name")
+    @showing_suspended = true
+    render :index
+  end
+
+  # Renders organization details
   def show
     @account = Account.find(params[:id])
   end
 
+  # Suspends the account
+  def suspend
+    acc = Account.find(params[:id])
+    acc.suspend!
+    redirect_to :back, notice: t(".success")
+  rescue ActiveRecord::RecordNotFound
+    redirect_to :back
+  end
+
+  # Unsuspends the account
+  def unsuspend
+    acc = Account.find(params[:id])
+    acc.unsuspend!
+    redirect_to :back, notice: t(".success")
+  rescue ActiveRecord::RecordNotFound
+    redirect_to :back
+  end
+
+  # Shows new organization form
   def new
     if req
       @account = Account.new_from_request(req)
@@ -18,6 +46,7 @@ class AdminAdmin::GroupsController < AdminAdmin::BaseController
     end
   end
 
+  # Creates the organization
   def create
     @account = Account.new(ap)
     if @account.save
@@ -39,6 +68,7 @@ class AdminAdmin::GroupsController < AdminAdmin::BaseController
     end
   end
 
+  # Destroys the organization
   def destroy
     @account = Account.find(params[:id])
     @account.destroy

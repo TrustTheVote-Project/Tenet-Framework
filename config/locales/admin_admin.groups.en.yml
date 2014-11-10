@@ -32,6 +32,12 @@ en:
       create:
         success: Organization has been created
 
+      suspend:
+        success: Organization has been suspended
+
+      unsuspend:
+        success: Organization has been unsuspended
+
   notifications:
     group_created:
       subject: Your organization has been approved
