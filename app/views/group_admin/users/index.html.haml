@@ -4,7 +4,7 @@
 
 .row
   .col-md-12
-    = link_to t('.add_user'), :new_group_admin_user, class: 'btn btn-primary pull-right'
+    = link_to t('.add_user'), :new_group_admin_user, class: 'btn btn-success pull-right'
 
 .row
   .col-md-12
@@ -23,3 +23,12 @@
           %td{ colspan: 5 }= t "no_records"
       - else
         = render @users
+
+.row
+  .col-md-12.text-right
+    - active_label = "Users (#{current_account.users.users_only.active.count})"
+    - suspended_label = "Suspended (#{current_account.users.users_only.suspended.count})"
+    - if @showing_suspended
+      #{link_to active_label, :group_admin_users} | #{suspended_label}
+    - else
+      #{active_label} | #{link_to suspended_label, :suspended_group_admin_users}

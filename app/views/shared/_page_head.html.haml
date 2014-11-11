@@ -3,6 +3,9 @@
 - if flash[:notice]
   .alert.alert-info= flash[:notice]
 
+- if group_admin?
+  %h2 #{current_account.name} Admin
+
 - title ||= false
 - subtitle ||= false
 - if title || subtitle

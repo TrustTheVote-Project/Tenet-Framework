@@ -1,13 +1,41 @@
 class GroupAdmin::UsersController < GroupAdmin::BaseController
 
+  # Renders active users
   def index
-    @users = current_account.users.users_only.order("first_name, last_name")
+    @users = current_account.users.users_only.active.order("first_name, last_name")
   end
 
+  # Renders suspended users
+  def suspended
+    @showing_suspended = true
+    @users = current_account.users.users_only.suspended.order("first_name, last_name")
+    render :index
+  end
+
+  # Suspends the user
+  def suspend
+    user = current_account.users.users_only.find(params[:id])
+    user.suspend!
+    redirect_to :back, notice: t(".success")
+  rescue ActiveRecord::RecordNotFound
+    redirect_to :back
+  end
+
+  # Unsuspends the user
+  def unsuspend
+    user = current_account.users.users_only.find(params[:id])
+    user.unsuspend!
+    redirect_to :back, notice: t(".success")
+  rescue ActiveRecord::RecordNotFound
+    redirect_to :back
+  end
+
+  # Renders new user form
   def new
     @user = User.new
   end
 
+  # Creates new user
   def create
     @user = User.new(new_params)
     @user.account = current_account

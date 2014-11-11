@@ -27,7 +27,16 @@ Rails.application.routes.draw do
     get '/users'          => 'users#index', as: 'dashboard'
     get '/app-management' => 'pages#app_management', as: 'app_management'
 
-    resources :users
+    resources :users do
+      collection do
+        get :suspended
+      end
+
+      member do
+        post :suspend
+        post :unsuspend
+      end
+    end
   end
 
 

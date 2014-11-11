@@ -3,7 +3,7 @@ en:
     users:
       index:
         title: Users
-        add_user: Add user
+        add_user: New User
 
       new:
         title: New user account
@@ -14,6 +14,12 @@ en:
         title: Edit user account
         form:
           submit: Update user account
+
+      suspend:
+        success: User has been suspended
+
+      unsuspend:
+        success: User has been unsuspend
 
       form:
         email: Email
