@@ -1,8 +1,6 @@
 class UserSessionsController < ApplicationController
 
   def new
-    gon.user_id_placeholder = I18n.t('user_sessions.new.user_id_placeholder')
-    gon.password_placeholder = I18n.t('user_sessions.new.password_placeholder')
     @user_session = UserSession.new
     @organizations = []
   end
@@ -34,12 +32,11 @@ class UserSessionsController < ApplicationController
 
     # verify credentials
     user = login(@user_session.login, @user_session.password)
-
     raise ActiveRecord::RecordNotFound unless user
 
     if user.admin?
       # clear OTP once logged in
-      user.clear_password!
+      user.clear_password! unless Rails.env.development?
 
       redirect_to :group_admin_dashboard, notice: t('.successful_login')
     else
@@ -75,7 +72,9 @@ class UserSessionsController < ApplicationController
       gon.l[k] = t("validations.#{k}")
     end
 
+    gon.type = params[:user_session].try(:[], :type)
     gon.organizationsInStateUrl = organizations_in_state_path
+    gon.user_id_placeholder = I18n.t('user_sessions.new.user_id_placeholder')
+    gon.password_placeholder = I18n.t('user_sessions.new.password_placeholder')
   end
-
 end

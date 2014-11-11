@@ -4,7 +4,7 @@ $ ->
   form =
     stateId:       ko.observable(gon.stateId)
     accountId:     ko.observable(gon.accountId)
-    type:          ko.observable('user')
+    type:          ko.observable(gon.type || 'user')
     login:         ko.observable(gon.login)
     password:      ko.observable()
     organizations: ko.observableArray(gon.organizations)

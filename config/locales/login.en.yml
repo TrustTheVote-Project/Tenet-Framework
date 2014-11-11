@@ -31,3 +31,6 @@ en:
         login: User ID
         password: Password
         submit: Log In
+
+    create:
+      successful_login: Logged in successfully

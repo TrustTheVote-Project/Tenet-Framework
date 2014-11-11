@@ -9,6 +9,7 @@
       %p.title= raw t ".title"
       %p.body= raw t ".body"
       = form_for :user_session, url: :login, html: { role: 'form' } do |f|
+        = f.hidden_field :type, data: { bind: 'value: type' }
         -# .form-group
         -#   = f.text_field :login, placeholder: t('.login'), class: "form-control", placeholder: "john.smith"
         -# .form-group
@@ -17,10 +18,11 @@
         -# .form-group.text-center
         -#   = f.submit t(".submit"), class: "btn btn-primary"
 
+        - type = params[:user_session].try(:[], :type) || 'user'
         %ul.nav.nav-tabs{ role: 'tablist' }
-          %li.active{ role: 'presentation' }
+          %li{ role: 'presentation', class: type == 'user' ? 'active' : nil }
             = link_to t(".users"), '#users', role: 'tab', data: { toggle: 'tab', type: 'user' }
-          %li{ role: 'presentation' }
+          %li{ role: 'presentation', class: type == 'admin' ? 'active' : nil }
             = link_to t(".admins"), '#admins', role: 'tab', data: { toggle: 'tab', type: 'admin' }
 
         .tab-content
