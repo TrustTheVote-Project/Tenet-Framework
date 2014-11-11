@@ -23,8 +23,8 @@ en:
       about_security_tokens: About Security Tokens
 
       logo_image: csf/brand.png
-
       logo_image_alt: Logo
+
       form:
         state_prompt: State
         organization: Organization
