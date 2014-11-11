@@ -1,6 +1,8 @@
 class UserSessionsController < ApplicationController
 
   def new
+    gon.user_id_placeholder = I18n.t('user_sessions.new.user_id_placeholder')
+    gon.password_placeholder = I18n.t('user_sessions.new.password_placeholder')
     @user_session = UserSession.new
     @organizations = []
   end

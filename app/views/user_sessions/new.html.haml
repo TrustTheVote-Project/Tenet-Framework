@@ -1,48 +1,46 @@
 - @page_id = 'login'
-
-= page_head
-
-.row
-  .col-md-12
-    %p.body= raw t ".body"
+- @no_header = true
+- @no_footer = true
 
 .row
-  .col-md-6.col-md-offset-3
-    = form_for :user_session, url: :login, html: { role: 'form' } do |f|
-      .form-group
-        = f.label :state_id, t(".form.state")
-        = f.select :state_id, options_from_collection_for_select(sorted_states(State.with_accounts), 'id', 'name', @user_session.state_id), { prompt: "Pick state" }, class: "form-control", data: { bind: 'value: stateId' }
-        %p.help-block= t ".non_listed_states"
-      .form-group
-        = f.label :account_id, t(".form.organization")
-        = f.select :account_id, [], { prompt: "Pick organization" }, class: "form-control", data: { bind: 'value: accountId, valueUpdate: "afterkeydown", enable: pickedState, options: organizations, optionsText: "name", optionsValue: "id", optionsCaption: "Pick organization"' }
-      .radio-inline
-        %label
-          = f.radio_button :type, 'user', data: { bind: 'checked: type, valueUpdate: "afterkeydown", enable: pickedOrganization' }
-          User
-      .radio-inline
-        %label
-          = f.radio_button :type, 'admin', data: { bind: 'checked: type, valueUpdate: "afterkeydown", enable: pickedOrganization' }
-          Administrator
+  .col-md-4.col-md-offset-4
+    .center-box
+      %p.logo= image_tag t(".logo_image"), alt: t(".logo_image_alt")
+      %p.title= raw t ".title"
+      %p.body= raw t ".body"
+      = form_for :user_session, url: :login, html: { role: 'form' } do |f|
+        -# .form-group
+        -#   = f.text_field :login, placeholder: t('.login'), class: "form-control", placeholder: "john.smith"
+        -# .form-group
+        -#   = f.password_field :password, placeholder: t('.password'), class: "form-control"
 
-      .hidden{ data: { bind: 'css: { hidden: false }' } }
-        .form-group{ data: { bind: 'visible: isAdministrator' } }
-          %p= raw t ".admin.prompt"
-          %p= raw t ".admin.otp"
-        .form-group{ data: { bind: 'visible: isUser' } }
-          %p= raw t ".user.prompt"
+        -# .form-group.text-center
+        -#   = f.submit t(".submit"), class: "btn btn-primary"
 
-        <!-- ko if: pickedType -->
-        .form-group
-          = f.label :login, t(".form.login")
-          = f.text_field :login, class: "form-control", placeholder: "john.smith", data: { bind: 'value: login, valueUpdate: "afterkeydown"' }
-        .form-group
-          = f.label :password, t(".form.password")
-          = f.password_field :password, class: "form-control", data: { bind: 'value: password, valueUpdate: "afterkeydown"' }
-        <!-- /ko -->
+        %ul.nav.nav-tabs{ role: 'tablist' }
+          %li.active{ role: 'presentation' }
+            = link_to t(".users"), '#users', role: 'tab', data: { toggle: 'tab', type: 'user' }
+          %li{ role: 'presentation' }
+            = link_to t(".admins"), '#admins', role: 'tab', data: { toggle: 'tab', type: 'admin' }
 
-      .form-group
-        = f.submit t(".form.submit"), class: "btn btn-default", data: { binds: 'enable: canSubmit' }
+        .tab-content
+          .form-group
+            = f.select :state_id, options_from_collection_for_select(sorted_states(State.with_accounts), 'id', 'name', @user_session.state_id), { prompt: t(".form.state_prompt") }, class: "form-control", data: { bind: 'value: stateId' }
+            %p.help-block= t ".non_listed_states"
+          .form-group
+            = f.select :account_id, [], { prompt: "Pick organization" }, class: "form-control", data: { bind: 'value: accountId, valueUpdate: "afterkeydown", enable: pickedState, options: organizations, optionsText: "name", optionsValue: "id", optionsCaption: "Pick organization"' }
 
-        %span{ data: { bind: 'visible: isUser' } }
-          = link_to t(".forgot_password"), :forgot_password
+          .form-group
+            = f.text_field :login, class: "form-control", data: { bind: 'value: login, valueUpdate: "afterkeydown", enable: pickedOrganization, attr: { placeholder: useridPlaceholder }' }
+          .form-group{ data: { bind: "visible: isAdministrator" } }
+            = link_to t(".forgot_userid"), "#TBD"
+
+          .form-group
+            = f.password_field :password, class: "form-control", data: { bind: 'value: password, valueUpdate: "afterkeydown", enable: pickedOrganization, attr: { placeholder: passwordPlaceholder }' }
+          .form-group{ data: { bind: 'visible: isAdministrator' } }
+            = link_to t(".about_security_tokens"), :about_otp
+          .form-group{ data: { bind: 'visible: isUser' } }
+            = link_to t(".forgot_password"), :forgot_password
+
+        .form-group.text-center
+          = f.submit t(".form.submit"), class: "btn btn-primary", data: { binds: 'enable: canSubmit' }

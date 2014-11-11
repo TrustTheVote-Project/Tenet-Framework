@@ -4,21 +4,30 @@ en:
   successful_logout: Successfully logged out.
   user_sessions:
     new:
-      title: Login
-      subtitle: Subtitle
-      body: Please login
+      title: Welcome back!
+      body: "Select your state and organization, then provide your account info:"
       non_listed_states: "For states not listed, there are no elections organizations registered to use this service."
 
-      admin:
-        prompt: Provide your user-id and a one-time-password for administrator login.
-        otp: "<a href='/about_otp'>Learn More: One-Time Passwords</a>"
+      users: Users
+      admins: Admins
 
-      user:
-        prompt: Provide your user-id and password.
+      user_id_placeholder:
+        user: Email
+        admin: User Id
 
+      password_placeholder:
+        user: Password
+        admin: Security Token
+
+      forgot_userid: Forgot User Id
+      about_security_tokens: About Security Tokens
+
+      logo_image: csf/brand.png
+
+      logo_image_alt: Logo
       form:
-        state: State
+        state_prompt: State
         organization: Organization
         login: User ID
         password: Password
-        submit: Login
+        submit: Log In

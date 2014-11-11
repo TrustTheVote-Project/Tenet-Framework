@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get   '/about'    => 'csf/pages#about', as: 'about'
+  get   '/about_otp' => 'csf/pages#about_otp', as: 'about_otp'
   get   '/login'    => 'user_sessions#new', as: 'login'
   post  '/login'    => 'user_sessions#create'
   get   '/logout'   => 'user_sessions#destroy'

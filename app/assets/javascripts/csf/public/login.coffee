@@ -4,17 +4,24 @@ $ ->
   form =
     stateId:       ko.observable(gon.stateId)
     accountId:     ko.observable(gon.accountId)
-    type:          ko.observable(gon.type)
+    type:          ko.observable('user')
     login:         ko.observable(gon.login)
     password:      ko.observable()
     organizations: ko.observableArray(gon.organizations)
 
+  $('.nav-tabs a').on 'click', (e) ->
+    e.preventDefault()
+    form.type($(this).data('type'))
+    $(this).tab('show')
+
   form.pickedState = ko.computed -> filled(form.stateId())
   form.pickedOrganization = ko.computed -> filled(form.accountId())
-  form.pickedType = ko.computed -> filled(form.type())
 
   form.isAdministrator = ko.computed -> form.type() == 'admin'
   form.isUser = ko.computed -> form.type() == 'user'
+
+  form.useridPlaceholder = ko.computed -> gon.user_id_placeholder[form.type()]
+  form.passwordPlaceholder = ko.computed -> gon.password_placeholder[form.type()]
 
   form.errors = ko.computed ->
     l = []
@@ -34,10 +41,6 @@ $ ->
         form.organizations.removeAll()
         for i in data
           form.organizations.push(i)
-
-        # if aid = gon.accountId
-        #   form.accountId(aid)
-        #   gon.accountId = false
 
     undefined
 
