@@ -1,6 +1,6 @@
 - @page_id = "ga-users-edit"
 
-= page_head
+= page_head title: t('.title', user: @user.full_name)
 
 = form_errors @user, "Couldn't update the user", class: 'alert'
 = render partial: "form", locals: { submit_label: t('.form.submit') }

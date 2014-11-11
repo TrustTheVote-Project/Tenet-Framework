@@ -6,7 +6,7 @@
   %td.role=  user.role
   %td.actions
     - if user.suspended?
-      = link_to 'Unsuspend', [ :unsuspend_group_admin, user ], class: 'btn btn-xs btn-success', method: 'post'
+      = link_to 'Restore', [ :unsuspend_group_admin, user ], class: 'btn btn-xs btn-default', method: 'post'
       = link_to 'Delete', [ :group_admin, user ], class: 'btn btn-xs btn-danger', method: 'delete', data: { confirm: t('sure_to_delete') }
     - else
       = link_to 'Edit', [ :edit_group_admin, user ], class: 'btn btn-xs btn-default'

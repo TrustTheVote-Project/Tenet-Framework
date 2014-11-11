@@ -6,14 +6,14 @@ en:
         add_user: New User
 
       new:
-        title: New user account
+        title: New User
         form:
-          submit: Add user account
+          submit: Add New User
 
       edit:
-        title: Edit user account
+        title: "Edit user: %{user}"
         form:
-          submit: Update user account
+          submit: Save Changes
 
       suspend:
         success: User has been suspended
@@ -23,11 +23,12 @@ en:
 
       form:
         email: Email
-        first_name: First name
-        last_name: Last name
-        phone: Phone
+        first_name: First Name
+        last_name: Last Name
+        phone: Telephone
         password: Password
-        password_confirmation: Again
+        new_password: Assign New Password
+        password_confirmation: Confirm Password
         role: Role
         cancel: Cancel
 
