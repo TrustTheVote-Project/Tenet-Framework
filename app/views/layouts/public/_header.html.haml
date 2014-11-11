@@ -1,4 +1,5 @@
-%nav.navbar.navbar-default
+- nav_class = group_admin? ? 'navbar-inverse' : 'navbar-default'
+%nav.navbar{ class: nav_class }
   .container
     .navbar-header
       %button.navbar-toggle.collapse{ type: "button", data: { toggle: "collapse", target: "#navbar" } }
