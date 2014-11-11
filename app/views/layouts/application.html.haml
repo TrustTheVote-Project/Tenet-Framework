@@ -13,10 +13,11 @@
       - unless @no_header
         = render "layouts/public/header"
 
-      .container
-        = yield
-        - unless @no_footer
-          #push
+      - content = render "layouts/public/content"
+      - if @no_container
+        = content
+      - else
+        .container= content
 
     - unless @no_footer
       = render "layouts/public/footer"

@@ -1,0 +1,24 @@
+#page_landing {
+  .jumbotron {
+    margin-top: -20px;
+    border-radius: 0;
+  }
+
+  .welcome {
+    margin: 10px 0 30px;
+  }
+
+  .box {
+    text-align: center;
+    background-color: #eee;
+    padding: 20px;
+
+    .glyphicon {
+      font-size: 48px;
+    }
+
+    .info {
+      margin: 20px 0;
+    }
+  }
+}

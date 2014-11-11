@@ -1,15 +1,29 @@
 - @page_id = "page_landing"
+- @no_container = true
 
-= page_head
+.jumbotron
+  .container
+    .row
+      .col-md-offset-2.col-md-8
+        %p= raw t '.hero'
 
-.row
-  .col-md-12.text
-    %p.para_1= raw t ".para_1"
-    %p.para_2= raw t ".para_2"
-    %p.para_3= raw t ".para_3"
-    %p.learn-more= link_to t(".learn_more_prompt"), :about
+.container
+  .row
+    .col-md-offset-2.col-md-8
+      .row.welcome
+        .col-md-12
+          %h2= t '.title'
+          = raw t '.details'
 
-.row
-  .col-md-12.buttons
-    = link_to t(".register_prompt"), :new_registration_request, class: "btn btn-default"
-    = link_to t(".login_prompt"), :login, class: "btn btn-default"
+      .row
+        .col-md-6
+          .box
+            %span.glyphicon.glyphicon-pencil
+            %p.info= raw t '.signup.info'
+            %p= link_to t(".signup.button"), :new_registration_request, class: 'btn btn-primary'
+
+        .col-md-6
+          .box
+            %span.glyphicon.glyphicon-user
+            %p.info= raw t '.signup.info'
+            %p= link_to t(".signup.button"), :new_registration_request, class: 'btn btn-primary'

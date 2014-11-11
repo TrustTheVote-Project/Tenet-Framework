@@ -2,14 +2,22 @@ en:
   csf:
     pages:
       landing:
-        title: ""
-        subtitle: ""
-        para_1: "Landing page welcome and description."
-        para_2: "To override in an actual application,"
-        para_3: "copy pages.en.yml from CSF to your config/locales folder and customize."
-        learn_more_prompt: "Learn More"
-        register_prompt: "Register"
-        login_prompt: "Login"
+        hero: >
+          CSF, the Common Services Framework, is an open source application framework for
+          web apps with strong authentication for administration. <a href="#">Learn more</a>
+        title: Landing page
+        details: >
+          <p>
+            This is a CSF landing page details.
+          </p>
+
+        signup:
+          info: "Register an admin account for your organization:"
+          button: Sign Up
+        login:
+          info: "Already have an account:"
+          button: Log In
+
 
       about:
         title: About
