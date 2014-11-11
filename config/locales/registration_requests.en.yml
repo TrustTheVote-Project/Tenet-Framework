@@ -1,0 +1,27 @@
+en:
+  registration_requests:
+    new:
+      title: Signup for %{app_title}
+      body: "We’ll review your request and contact you via email or phone to complete the registration of your organization."
+      your_organization: Your Organization
+      your_information: Your Information
+      all_required: All fields are required
+      form:
+        organization_name: Name
+        state: State
+        website: Website
+        admin_first_name: First Name
+        admin_last_name: Last Name
+        admin_title: Job Title or Description
+        admin_email: Email
+        admin_phone: Telephone
+        submit: Submit Request
+    create:
+      success: "Your request has been registered"
+
+  validations:
+    required: "is required"
+    invalid_email: "Please provide a valid email address"
+    invalid_phone: "Please provide valid 10 digit phone number"
+    invalid_website: "Please provide a valid URL for your organization"
+

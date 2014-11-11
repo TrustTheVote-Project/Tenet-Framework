@@ -1,38 +1,49 @@
 - @page_id = 'registration_request_new'
 
-= page_head
-
-.row
+.row.page-head
   .col-md-12
+    %h3.page-title= raw t ".title", app_title: CsfConfig['app_title']
     %p.body= raw t ".body"
 
 .row
-  .col-md-6.col-md-offset-3
+  .col-md-12
     = form_errors @request, "Couldn't register your request", class: "alert alert-error"
     = form_for @request, url: :new_registration_request, html: { role: 'form' } do |f|
-      .form-group
-        = f.label :organization_name, t(".form.organization_name")
-        = f.text_field :organization_name, class: "form-control", placeholder: "TrustTheVote", data: { bind: 'value: organizationName, valueUpdate: "afterkeydown"' }
-      .form-group
-        = f.label :state, t(".form.state")
-        = f.select :state, options_from_collection_for_select(sorted_states, 'code', 'name', @request.state), { prompt: "Pick state" }, class: "form-control", data: { bind: 'value: state' }
-      .form-group
-        = f.label :website, t(".form.website")
-        = f.text_field :website, class: "form-control", placeholder: "http://myfoundation.org", data: { bind: 'value: website' }
-      .form-group
-        = f.label :admin_first_name, t(".form.admin_first_name")
-        = f.text_field :admin_first_name, class: "form-control", placeholder: "John", data: { bind: 'value: adminFirstName, valueUpdate: "afterkeydown"' }
-      .form-group
-        = f.label :admin_last_name, t(".form.admin_last_name")
-        = f.text_field :admin_last_name, class: "form-control", placeholder: "Smith", data: { bind: 'value: adminLastName, valueUpdate: "afterkeydown"' }
-      .form-group
-        = f.label :admin_title, t(".form.admin_title")
-        = f.text_field :admin_title, class: "form-control", placeholder: "CEO", data: { bind: 'value: adminTitle, valueUpdate: "afterkeydown"' }
-      .form-group
-        = f.label :admin_email, t(".form.admin_email")
-        = f.text_field :admin_email, class: "form-control", placeholder: "john@myfoundation.org", data: { bind: 'value: adminEmail, valueUpdate: "afterkeydown"' }
-      .form-group
-        = f.label :admin_phone, t(".form.admin_phone")
-        = f.text_field :admin_phone, class: "form-control", placeholder: "(000) 000-0000", data: { bind: 'value: adminPhone, valueUpdate: "afterkeydown"' }
+      .row
+        .col-md-4
+          %h4= t '.your_organization'
+          .form-group
+            = f.label :organization_name, t(".form.organization_name")
+            = f.text_field :organization_name, class: "form-control", placeholder: "TrustTheVote", data: { bind: 'value: organizationName, valueUpdate: "afterkeydown"' }
+          .form-group
+            = f.label :state, t(".form.state")
+            = f.select :state, options_from_collection_for_select(sorted_states, 'code', 'name', @request.state), { prompt: "Pick state" }, class: "form-control", data: { bind: 'value: state' }
+          .form-group
+            = f.label :website, t(".form.website")
+            = f.text_field :website, class: "form-control", placeholder: "http://myfoundation.org", data: { bind: 'value: website' }
 
-      = f.submit t(".form.submit"), class: "btn btn-default", data: { binds: 'enable: canSubmit' }
+        .col-md-offset-2.col-md-4
+          %h4= t '.your_information'
+          .form-group
+            = f.label :admin_first_name, t(".form.admin_first_name")
+            = f.text_field :admin_first_name, class: "form-control", placeholder: "John", data: { bind: 'value: adminFirstName, valueUpdate: "afterkeydown"' }
+          .form-group
+            = f.label :admin_last_name, t(".form.admin_last_name")
+            = f.text_field :admin_last_name, class: "form-control", placeholder: "Smith", data: { bind: 'value: adminLastName, valueUpdate: "afterkeydown"' }
+          .form-group
+            = f.label :admin_title, t(".form.admin_title")
+            = f.text_field :admin_title, class: "form-control", placeholder: "CEO", data: { bind: 'value: adminTitle, valueUpdate: "afterkeydown"' }
+          .form-group
+            = f.label :admin_email, t(".form.admin_email")
+            = f.text_field :admin_email, class: "form-control", placeholder: "john@myfoundation.org", data: { bind: 'value: adminEmail, valueUpdate: "afterkeydown"' }
+          .form-group
+            = f.label :admin_phone, t(".form.admin_phone")
+            = f.text_field :admin_phone, class: "form-control", placeholder: "(000) 000-0000", data: { bind: 'value: adminPhone, valueUpdate: "afterkeydown"' }
+
+      .row
+        .col-md-8
+          %p= t ".all_required"
+
+      .row
+        .col-md-6
+          = f.submit t(".form.submit"), class: "btn btn-primary", data: { binds: 'enable: canSubmit' }

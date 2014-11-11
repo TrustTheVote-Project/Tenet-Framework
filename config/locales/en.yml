@@ -3,30 +3,6 @@ en:
   sure_to_delete: Are you sure to delete?
   unauthenticated: Please log in to access this area.
 
-  registration_requests:
-    new:
-      title: Register
-      subtitle: ""
-      body: "Nunc non felis sed est euismod placerat. Proin rhoncus porta est, id gravida dolor consectetur a. Nunc vitae massa urna. Pellentesque vel imperdiet mauris. Pellentesque aliquam elit sit amet tortor vulputate iaculis. Donec tristique semper augue, eget rutrum ligula. Praesent luctus orci ac venenatis viverra. Nulla luctus eleifend est id rhoncus. Nullam vel mi tincidunt, ultrices est eget, vulputate nulla."
-      form:
-        organization_name: "Name of Your Election Administration Organization"
-        state: "State"
-        website: "Web Site of Your Election Administration Organization"
-        admin_first_name: "Your First Name"
-        admin_last_name: "Your Last Name"
-        admin_title: "Your Title or Job Description"
-        admin_email: "E-mail Address"
-        admin_phone: "Telephone"
-        submit: "Request registration"
-    create:
-      success: "Your request has been registered"
-
-  validations:
-    required: "is required"
-    invalid_email: "Please provide a valid email address"
-    invalid_phone: "Please provide valid 10 digit phone number"
-    invalid_website: "Please provide a valid URL for your organization"
-
   notifications:
     new_registration_request:
       subject: "New registration request"
