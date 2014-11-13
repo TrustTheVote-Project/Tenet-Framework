@@ -103,8 +103,8 @@ class AdminAdmin::GroupsController < AdminAdmin::BaseController
   end
 
   def account_after_create_hook(account)
-    cl = CsfConfig['account_hooks_class_name']
-    mn = CsfConfig['account_after_create_method_name']
+    cl = TenetConfig['account_hooks_class_name']
+    mn = TenetConfig['account_after_create_method_name']
 
     if cl && mn && cl.constantize.respond_to?(mn)
       cl.constantize.send(mn, account)

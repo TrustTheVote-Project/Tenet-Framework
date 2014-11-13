@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  get   '/about'    => 'csf/pages#about', as: 'about'
-  get   '/about_security_tokens' => 'csf/pages#about_security_tokens', as: 'about_security_tokens'
+  get   '/about'    => 'tenet/pages#about', as: 'about'
+  get   '/about_security_tokens' => 'tenet/pages#about_security_tokens', as: 'about_security_tokens'
   get   '/login'    => 'user_sessions#new', as: 'login'
   post  '/login'    => 'user_sessions#create'
   get   '/logout'   => 'user_sessions#destroy'
@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   get   '/data/organizations_in_state.json' => 'data#organizations_in_state', as: 'organizations_in_state'
 
-  get   '/user-dashboard'  => 'csf/pages#user_dashboard', as: 'user_dashboard'
+  get   '/user-dashboard'  => 'tenet/pages#user_dashboard', as: 'user_dashboard'
 
   get   '/profile'         => 'profile#edit', as: 'edit_profile'
   patch '/profile'         => 'profile#update'

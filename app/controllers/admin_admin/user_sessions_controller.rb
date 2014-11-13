@@ -12,7 +12,7 @@ class AdminAdmin::UserSessionsController < AdminAdmin::BaseController
     @user_session = AdminUserSession.new(us[:login], us[:password], true)
 
     if @user_session.authenticates?
-      CsfSettings.clear_admin_password!
+      TenetSettings.clear_admin_password!
 
       session[:admin_admin] = true
       redirect_to :admin_admin_dashboard, notice: I18n.t('.successful_login')

@@ -1,0 +1,5 @@
+Description:
+    Installs configs, migrations and other bits of Tenet
+
+Example:
+    rails generate tenet:install

@@ -1,1 +1,1 @@
-Rails.application.config.assets.precompile += %w( csf/admin.css csf/admin.js )
+Rails.application.config.assets.precompile += %w( tenet/admin.css tenet/admin.js )

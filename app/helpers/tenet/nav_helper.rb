@@ -1,4 +1,4 @@
-module Csf
+module Tenet
   module NavHelper
 
     def item_class(item)

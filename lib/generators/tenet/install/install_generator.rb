@@ -1,17 +1,17 @@
-module Csf
+module Tenet
   class InstallGenerator < ::Rails::Generators::Base
     source_root File.expand_path('../templates', __FILE__)
 
-    def copy_csf_config
-      copy_file "csf_config.yml", "config/csf_config.yml"
+    def copy_tenet_config
+      copy_file "tenet_config.yml", "config/tenet_config.yml"
     end
 
-    def copy_csf_migrations
-      rake "csf_engine:install:migrations"
+    def copy_tenet_migrations
+      rake "tenet_engine:install:migrations"
     end
 
     def add_landing_page_route
-      route 'root "csf/pages#landing"'
+      route 'root "tenet/pages#landing"'
     end
 
     def configure_sidekiq

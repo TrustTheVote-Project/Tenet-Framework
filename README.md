@@ -6,20 +6,20 @@ Multi-tenant means that the service is offered to multiple distinct organization
 has a separate instance of the service in a separate sandbox.
 
 The simple sample application exists to demonstrate the documented points of interaction between
-the CSF and the application, in way that is simple to see, and easy to replace with connection
+the Tenet and the application, in way that is simple to see, and easy to replace with connection
 points to set of real application software.
 
-The key features of this CSF are:
+The key features of this Tenet are:
 
-* CSF administration of each tenant
+* Tenet administration of each tenant
 * tenant administration of its users and roles
 * user authentication
 * administrator authentication
 * use of existing common GEMS for user management, authentication, and user role-based access control
 * use of a new technique for strong authentication of administrators using a lightweight closed
-  public-key infrastructure that is managed by the CSF-administrator.
+  public-key infrastructure that is managed by the Tenet-administrator.
 
-The latter feature is the main innovative aspect of CSF, but the value entire framework is as much
+The latter feature is the main innovative aspect of Tenet, but the value entire framework is as much
 in the integration of the innovation with the full set of features, to enable the development of
 multi-tenant applications in which administration cannot be compromised by successful attack on
 re-usable passwords.
@@ -37,7 +37,7 @@ Installation
 
 Add the gem to the Gemfile:
 
-    gem "csf"
+    gem "tenet"
 
 Run bundle install:
 
@@ -45,19 +45,21 @@ Run bundle install:
 
 Create configuration:
 
-    $ bin/rails generate csf:install
+    $ bin/rails generate tenet:install
 
 Run migrations:
 
     $ bin/rake db:migrations
 
-Update frame work configuration at `config/csf_config.yml`.
+Update frame work configuration at `config/tenet_config.yml`.
 
 Seed data:
 
-    $ bin/rake csf:db:seed
+    $ bin/rake tenet:db:seed
 
-Rename your `ApplicationController` to `BaseController` (or whatever). `ApplicationController` is provided by CSF and you need to inherit from it to get access to helpers and use layouts, like this:
+Rename your `ApplicationController` to `BaseController` (or whatever).
+`ApplicationController` is provided by Tenet and you need to inherit
+from it to get access to helpers and use layouts, like this:
 
     class BaseController < ApplicationController
       # your former ApplicationController contents
@@ -130,7 +132,7 @@ you proper access control, view layout and helpers.
 Localizing
 ----------
 
-All content of the CSF can be updated through the localization files without altering the code base.
+All content of the Tenet can be updated through the localization files without altering the code base.
 In order to do that, you need to create locale files in `config/locale` folder and override the values
 of keys in question. For example, to change the subject of the reset password email, you need to create
 a file (or update any existing locale file) and place the following keys in it:
@@ -157,7 +159,7 @@ name your scripts properly.
 Group-specific initialization
 -----------------------------
 
-Upon new group creation, when the group is saved, CSF looks for the `GroupInit` class and calls
+Upon new group creation, when the group is saved, Tenet looks for the `GroupInit` class and calls
 `perform(Account)` on it if the class and method are present. It gives you a hook to initialize the
 newly created group account.
 
@@ -185,8 +187,8 @@ For the operation of the OTP feature:
   - set permissions of the `authorized_keys` file to 400
   - create `~otp/.ssh/environment` and set permissions to 600:
 
-        CSF_DB_USERNAME=<your app db username>
-        CSF_DB_NAME=<your app db name>
+        TENET_DB_USERNAME=<your app db username>
+        TENET_DB_NAME=<your app db name>
 
   - set `~otp/.ssh` and contents ownership to `otp:otp`
   - add the rule to the `/etc/sudoers` that allows `deploy` user to run
@@ -196,7 +198,7 @@ For the operation of the OTP feature:
 
   - add permissions line to `pg_hba.conf` (PostgreSQL access
     configuration) so that your app database is accessible to the db
-    user from CLI. See CSF_DB_USERNAME and CSF_DB_NAME above.
+    user from CLI. See TENET_DB_USERNAME and TENET_DB_NAME above.
 
         local <database> <username> trust
 
@@ -213,5 +215,5 @@ keys storage as in OTP configuration instructions above.
 
 To set / change the public key of admin-admin, run the rake task:
 
-    $ rake csf:set_admin_public_key PUBLIC_KEY='ssh-rsa AAAAB3 ...'
+    $ rake tenet:set_admin_public_key PUBLIC_KEY='ssh-rsa AAAAB3 ...'
  

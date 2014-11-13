@@ -16,7 +16,7 @@
         = f.text_field :phone, class: 'form-control'
 
     .col-md-offset-2.col-md-4
-      - roles = CsfConfig['user_roles']
+      - roles = TenetConfig['user_roles']
       - unless roles.blank?
         .form-group
           = f.label :role, t('.role'), class: 'control-label'

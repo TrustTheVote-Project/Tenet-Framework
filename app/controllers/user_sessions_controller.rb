@@ -40,7 +40,7 @@ class UserSessionsController < ApplicationController
 
       redirect_to :group_admin_dashboard, notice: t('.successful_login')
     else
-      redirect_to CsfConfig['urls']['user_dashboard'], notice: t('.successful_login')
+      redirect_to TenetConfig['urls']['user_dashboard'], notice: t('.successful_login')
     end
   rescue ActiveRecord::RecordNotFound
     flash.now[:alert] = t('.user_not_found')

@@ -1,9 +1,9 @@
 Rails.application.configure do
   opts = {
-    host: CsfConfig['email']['host']
+    host: TenetConfig['email']['host']
   }
 
-  if !(port = CsfConfig['email']['port']).blank?
+  if !(port = TenetConfig['email']['port']).blank?
     opts[:port] = port
   end
 

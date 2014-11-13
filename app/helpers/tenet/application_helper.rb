@@ -1,4 +1,4 @@
-module Csf
+module Tenet
   module ApplicationHelper
 
     # composes the HTML for the footer links

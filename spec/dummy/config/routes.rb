@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  root "csf/pages#landing"
+  root "tenet/pages#landing"
 
-  get  '/user_dash'  => 'csf/pages#landing'
-  get  '/admin_dash' => 'csf/pages#admin_dashboard'
+  get  '/user_dash'  => 'tenet/pages#landing'
+  get  '/admin_dash' => 'tenet/pages#admin_dashboard'
 
 end

@@ -1,4 +1,4 @@
-module Csf
+module Tenet
   module FormsHelper
 
     # renders the error block for a given object with the custom head message

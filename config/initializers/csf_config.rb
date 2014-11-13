@@ -5,4 +5,4 @@ def load_config(name)
   config
 end
 
-CsfConfig = load_config('csf_config.yml')
+TenetConfig = load_config('tenet_config.yml')

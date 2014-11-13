@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   validates :password, strong: { if: :setting_password }, confirmation: { if: :password, message: "doesn't match password" }
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :role, presence: { if: ->{ !CsfConfig['user_roles'].blank? && self.user? } }
+  validates :role, presence: { if: ->{ !TenetConfig['user_roles'].blank? && self.user? } }
   validates :ssh_public_key, ssh_key: { if: :admin? }, uniqueness: { if: :admin?, allow_blank: true }, admin_key_uniqueness: { if: :admin? }
 
   scope :users_only, -> { where(admin: false) }

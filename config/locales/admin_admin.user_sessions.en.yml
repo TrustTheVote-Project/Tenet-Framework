@@ -4,7 +4,7 @@ en:
 
     user_sessions:
       new:
-        logo_image: csf/brand.png
+        logo_image: tenet/brand.png
         logo_image_alt: Logo
         title: Welcome back!
         body: Log in to the admin console.

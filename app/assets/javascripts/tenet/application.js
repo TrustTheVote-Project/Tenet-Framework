@@ -14,5 +14,5 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require knockout-3.1.0
-//= require csf/helpers
+//= require tenet/helpers
 //= require_tree ./public

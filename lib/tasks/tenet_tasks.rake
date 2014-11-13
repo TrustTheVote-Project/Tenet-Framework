@@ -1,4 +1,4 @@
-namespace :csf do
+namespace :tenet do
   namespace :db do
     desc "Seeds database with data"
     task :seed => :environment do
@@ -20,7 +20,7 @@ namespace :csf do
 
     require 'sshkey'
     unless SSHKey.valid_ssh_public_key?(key)
-      puts "Usage: rake csf:set_admin_public_key PUBLIC_KEY='ssh-... AAAM... name'"
+      puts "Usage: rake tenet:set_admin_public_key PUBLIC_KEY='ssh-... AAAM... name'"
       exit 1
     end
 
@@ -30,7 +30,7 @@ namespace :csf do
       exit 1
     end
 
-    CsfSettings.admin_public_key = key
+    TenetSettings.admin_public_key = key
 
     # regenerate authorized_keys
     SshKeyManager.regenerate_otp_authorized_keys

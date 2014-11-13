@@ -1,5 +1,0 @@
-Description:
-    Installs configs, migrations and other bits of CSF
-
-Example:
-    rails generate csf:install

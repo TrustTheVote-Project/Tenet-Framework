@@ -35,3 +35,4 @@ echo "$sql" | psql -U$TENET_DB_USERNAME $TENET_DB_NAME 1>/dev/null 2>&1
 
 echo "SUCCESS: $pass"
 exit 0
+

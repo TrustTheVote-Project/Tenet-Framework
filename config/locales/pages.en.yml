@@ -1,14 +1,14 @@
 en:
-  csf:
+  tenet:
     pages:
       landing:
         hero: >
-          CSF, the Common Services Framework, is an open source application framework for
+          Tenet, the Common Services Framework, is an open source application framework for
           web apps with strong authentication for administration. <a href="#">Learn more</a>
         title: Landing page
         details: >
           <p>
-            This is a CSF landing page details.
+            This is a Tenet landing page details.
           </p>
 
         signup:

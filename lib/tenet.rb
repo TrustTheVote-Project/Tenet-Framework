@@ -1,4 +1,4 @@
-require "csf/engine"
+require "tenet/engine"
 require "haml"
 require "bootstrap-sass"
 require "gon"
@@ -7,7 +7,7 @@ require "carmen-rails"
 require "sidekiq"
 require "sorcery"
 
-module Csf
+module Tenet
 
   class Engine < ::Rails::Engine
     config.generators do |g|

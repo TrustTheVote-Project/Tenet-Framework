@@ -4,8 +4,8 @@ describe User do
 
   let(:valid_key) { 'ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAIEA1uVTQU9G4IV0x0SnEpuNbME/XMArXcNYXTPJReLlcFYEOFr3WVV5eP6kbXRgTbtlMvVCnxJ/vGRk6K1pIIw45QOBWbPjXPV7K538nRJaWgegEwVfRNvEN1gZJltEDQC9RJyg4kv76gTBzc/dPndQ8M18ZBQqDQIGQT+d2cw9B9M= recess@flex.websitewelcome.com' }
 
-  before { CsfSettings.admin_public_key = nil }
-  after  { CsfSettings.admin_public_key = nil }
+  before { TenetSettings.admin_public_key = nil }
+  after  { TenetSettings.admin_public_key = nil }
 
   it 'should require public key' do
     u = build(:user, admin: true, ssh_public_key: '')
@@ -33,7 +33,7 @@ describe User do
   end
 
   it 'should validate uniqueness of the public key including admin-admin key' do
-    CsfSettings.admin_public_key = valid_key
+    TenetSettings.admin_public_key = valid_key
     u = build(:user, admin: true, ssh_public_key: valid_key)
     u.valid?
     expect(u.errors[:ssh_public_key]).to eq [ 'is used by admin' ]

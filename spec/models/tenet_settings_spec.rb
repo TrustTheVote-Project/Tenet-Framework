@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe CsfSettings do
+describe TenetSettings do
 
-  before { CsfSettings.delete_all }
+  before { TenetSettings.delete_all }
 
   it 'should return nil for option' do
     expect(get('option')).to be_nil
@@ -22,11 +22,11 @@ describe CsfSettings do
   private
 
   def get(name)
-    CsfSettings.get name
+    TenetSettings.get name
   end
 
   def set(name, value)
-    CsfSettings.set name, value
+    TenetSettings.set name, value
   end
 
 end

@@ -1,4 +1,4 @@
-class CsfSettings < ActiveRecord::Base
+class TenetSettings < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: { allows_blank: true }
 

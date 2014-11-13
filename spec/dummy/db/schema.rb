@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141110092256) do
+ActiveRecord::Schema.define(version: 20141113052555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,15 +28,6 @@ ActiveRecord::Schema.define(version: 20141110092256) do
   add_index "accounts", ["name"], name: "index_accounts_on_name", unique: true, using: :btree
   add_index "accounts", ["state_id"], name: "index_accounts_on_state_id", using: :btree
   add_index "accounts", ["suspended"], name: "index_accounts_on_suspended", using: :btree
-
-  create_table "csf_settings", force: true do |t|
-    t.string   "name",       null: false
-    t.text     "value"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "csf_settings", ["name"], name: "index_csf_settings_on_name", unique: true, using: :btree
 
   create_table "registration_requests", force: true do |t|
     t.string   "organization_name",                 null: false
@@ -60,6 +51,15 @@ ActiveRecord::Schema.define(version: 20141110092256) do
     t.string "code", null: false
     t.string "name", null: false
   end
+
+  create_table "tenet_settings", force: true do |t|
+    t.string   "name",       null: false
+    t.text     "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tenet_settings", ["name"], name: "index_tenet_settings_on_name", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.integer  "account_id",                                      null: false
