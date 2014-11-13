@@ -1,9 +1,9 @@
 Rails.application.configure do
   opts = {
-    host: TenetConfig['email']['host']
+    host: TenetConfig['email'].try(:[], 'host') || 'localhost'
   }
 
-  if !(port = TenetConfig['email']['port']).blank?
+  if !(port = TenetConfig['email'].try(:[], 'port')).blank?
     opts[:port] = port
   end
 
