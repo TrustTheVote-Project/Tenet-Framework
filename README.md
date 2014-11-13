@@ -37,7 +37,7 @@ Installation
 
 Add the gem to the Gemfile:
 
-    gem "tenet"
+    gem "tenet", git: "https://github.com/trustthevote/Tenet-Framework.git"
 
 Run bundle install:
 
@@ -66,6 +66,11 @@ from it to get access to helpers and use layouts, like this:
     end
 
 Don't forget to update other controllers to use your new `BaseController` if you have any.
+
+If you are starting a new app, remove your default layout at
+`app/views/layouts/application.*`. If you are adding the framework to an
+existing app, consider renaming your layout and then merging framework
+related CSS / JS inclusion statements.
 
 
 Auth methods and helpers
