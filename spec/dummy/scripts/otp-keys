@@ -7,7 +7,7 @@
 # Location of the keys file
 if [ -z "$TENET_AUTHORIZED_KEYS_FILE" ]
 then
-  TENET_AUTHORIZED_KEYS_FILE=/home/otp/.ssh/authorized_keys
+  TENET_AUTHORIZED_KEYS_FILE=~/.ssh/authorized_keys
 fi
 
 if [ ! -f $TENET_AUTHORIZED_KEYS_FILE ]

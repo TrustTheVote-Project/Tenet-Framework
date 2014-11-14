@@ -1,5 +1,8 @@
 app_title: Sample App
 
+# Name of Unix user for otp
+otp_user: otp
+
 admin:
   # user id of admin-admin
   login: admin
