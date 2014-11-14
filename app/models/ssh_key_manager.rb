@@ -44,7 +44,7 @@ class SshKeyManager
       `touch #{keys_file}`
       { "TENET_AUTHORIZED_KEYS_FILE" => keys_file }
     else
-      { "TENET_AUTHORIZED_KEYS_FILE" => "/home/#{otp_user}/.ssh/authorized_keys" }
+      {}
     end
   end
 
@@ -54,7 +54,7 @@ class SshKeyManager
     if Rails.env.development? or Rails.env.test?
       c
     else
-      "sudo -u #{otp_user} #{c}"
+      "sudo -H -u #{otp_user} #{c}"
     end
   end
 
