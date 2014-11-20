@@ -14,3 +14,21 @@
     margin-right: 5px;
   }
 }
+
+.navbar {
+  background-color: #F8F8F8;
+
+  .nav > li > a {
+    color: #B8B8B8;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  .nav > li > .btn-download {
+    background-color: #F8F8F8;
+    border-color: #E4E4E4;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 9px;
+  }
+}
