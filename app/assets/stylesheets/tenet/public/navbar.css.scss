@@ -27,6 +27,13 @@
 
   .nav > li.active > a {
     background-color: #E7E7E7;
+    color: #B8B8B8;
+    border-radius: 0;
+
+    &:hover {
+      background-color: #E7E7E7;
+      color: #B8B8B8;
+    }
   }
 
   .nav > li > .btn-download {
