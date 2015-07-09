@@ -31,8 +31,13 @@ class UserSessionsController < ApplicationController
     end
 
     # verify credentials
-    user = Rails.env.production? ? login(@user_session.login, @user_session.password) : u
-    raise ActiveRecord::RecordNotFound unless user
+    if Rails.env.development?
+      user = u
+      auto_login(user)
+    else
+      user = login(@user_session.login, @user_session.password)
+      raise ActiveRecord::RecordNotFound unless user
+    end
 
     if user.admin?
       # clear OTP once logged in
