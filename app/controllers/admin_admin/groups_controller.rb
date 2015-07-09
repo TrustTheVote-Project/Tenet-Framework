@@ -94,7 +94,7 @@ class AdminAdmin::GroupsController < AdminAdmin::BaseController
   private
 
   def ap
-    params[:account].permit(:name, :state_id, users_attributes: [ :admin, :login, :first_name, :last_name, :title, :phone, :email, :ssh_public_key ])
+    params[:account].permit(:name, :state_id, :website, users_attributes: [ :admin, :login, :first_name, :last_name, :title, :phone, :email, :ssh_public_key ])
   end
 
   def req

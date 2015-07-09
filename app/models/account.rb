@@ -15,6 +15,7 @@ class Account < ActiveRecord::Base
     a = Account.new
     a.state = State.find_by(code: req.state)
     a.name = req.organization_name
+    a.website = req.website
 
     a.users << User.new_from_request(req)
 
