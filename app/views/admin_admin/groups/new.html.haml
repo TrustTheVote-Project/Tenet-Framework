@@ -30,10 +30,10 @@
           = u.text_field :login, class: 'form-control'
         .form-group
           = u.label :first_name, t(".form.first_name"), class: 'control-label'
-          = u.text_field :first_name, class: 'form-control', data: { bind: 'value: firstName' }
+          = u.text_field :first_name, class: 'form-control', data: { bind: 'valueWithInit: firstName' }
         .form-group
           = u.label :last_name, t(".form.last_name"), class: 'control-label'
-          = u.text_field :last_name, class: 'form-control', data: { bind: 'value: lastName' }
+          = u.text_field :last_name, class: 'form-control', data: { bind: 'valueWithInit: lastName' }
         .form-group
           = u.label :title, t(".form.title"), class: 'control-label'
           = u.text_field :title, class: 'form-control'
