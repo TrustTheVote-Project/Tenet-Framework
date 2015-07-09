@@ -7,24 +7,23 @@
 = form_for @account, url: :admin_admin_groups do |f|
   = hidden_field_tag :request, params[:request]
 
-  .row
-    .col-md-4
-      %h4= t ".organization"
-      .form-group
-        = f.label :name, t(".form.name"), class: 'control-label'
-        = f.text_field :name, class: 'form-control'
-      .form-group
-        = f.label :state_id, t(".form.state"), class: 'control-label'
-        = f.select :state_id, options_from_collection_for_select(sorted_states, 'id', 'name', @account.state_id), { prompt: "Pick state" }, class: "form-control"
-      .form-group
-        = f.label :website, t(".form.website"), class: 'control-label'
-        = f.text_field :website, class: 'form-control'
+  = f.fields_for :users do |u|
+    = u.hidden_field :admin
+    .row
+      .col-md-4
+        %h4= t ".organization"
+        .form-group
+          = f.label :name, t(".form.name"), class: 'control-label'
+          = f.text_field :name, class: 'form-control'
+        .form-group
+          = f.label :state_id, t(".form.state"), class: 'control-label'
+          = f.select :state_id, options_from_collection_for_select(sorted_states, 'id', 'name', @account.state_id), { prompt: "Pick state" }, class: "form-control"
+        .form-group
+          = f.label :website, t(".form.website"), class: 'control-label'
+          = f.text_field :website, class: 'form-control'
 
-    .col-md-offset-2.col-md-4
-      %h4= t ".administrator"
-
-      = f.fields_for :users do |u|
-        = u.hidden_field :admin
+      .col-md-offset-2.col-md-4
+        %h4= t ".administrator"
         .form-group
           = u.label :login, t(".form.login"), class: 'control-label'
           = u.text_field :login, class: 'form-control'
@@ -43,9 +42,9 @@
         .form-group
           = u.label :email, t(".form.email"), class: 'control-label'
           = u.text_field :email, class: 'form-control'
-  .row
-    .col-md-10
-      = f.fields_for :users do |u|
+
+    .row
+      .col-md-10
         .form-group
           .control-label
             = u.label :ssh_public_key, t(".form.ssh_public_key")
