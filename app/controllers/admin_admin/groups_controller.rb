@@ -76,6 +76,9 @@ class AdminAdmin::GroupsController < AdminAdmin::BaseController
 
       redirect_to admin_admin_group_path(@account), notice: t(".success")
     else
+      gon.ssh_key_help = t(".ssh_key_help")
+      gon.administrator = t(".administrator")
+
       render :new
     end
   end
