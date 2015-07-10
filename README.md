@@ -196,6 +196,10 @@ For the operation of the OTP feature:
         TENET_DB_NAME=<your app db name>
 
   - set `~otp/.ssh` and contents ownership to `otp:otp`
+  - make sure your sshd configuration (`/etc/ssh/sshd_config`) has:
+
+        PermitUserEnvironment yes
+
   - add the rule to the `/etc/sudoers` that allows `deploy` user to run
     the `<app_root>/scripts/otp_keys` script that works with the keys file
 
