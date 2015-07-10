@@ -201,6 +201,10 @@ For the operation of the OTP feature:
 
         deploy ALL=(otp) NOPASSWD: /home/deploy/my-app/current/scripts/otp-keys
 
+  - make sure your sshd configuration (`/etc/ssh/sshd_config`) has:
+
+        PermitUserEnvironment yes
+
   - add permissions line to `pg_hba.conf` (PostgreSQL access
     configuration) so that your app database is accessible to the db
     user from CLI. See TENET_DB_USERNAME and TENET_DB_NAME above.
