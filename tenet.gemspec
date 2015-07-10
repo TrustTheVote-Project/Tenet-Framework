@@ -7,11 +7,11 @@ require "tenet/version"
 Gem::Specification.new do |s|
   s.name        = "tenet"
   s.version     = Tenet::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Tenet."
-  s.description = "TODO: Description of Tenet."
+  s.authors     = [ "Aleksey Gureiev" ]
+  s.email       = [ "spyromus@noizeramp.com" ]
+  s.homepage    = ""
+  s.summary     = "Common services framework"
+  s.description = "An application framework for applications that are offered as Web-delivered multi-tenant services. Multi-tenant means that the service is offered to multiple distinct organizations, each of which has a separate instance of the service in a separate sandbox."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "LICENSE", "Rakefile", "README.rdoc"]
