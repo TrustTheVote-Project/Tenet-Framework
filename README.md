@@ -189,7 +189,7 @@ For the operation of the OTP feature:
     at `/home/deploy/my-app/current/scripts/otp-generate`
   - touch `~otp/.hushlogin` to prevent MOTD on session start
   - create empty `~otp/.ssh/authorized_keys` file
-  - set permissions of the `authorized_keys` file to 400
+  - set permissions of the `authorized_keys` file to 600
   - create `~otp/.ssh/environment` and set permissions to 600:
 
         TENET_DB_USERNAME=<your app db username>
