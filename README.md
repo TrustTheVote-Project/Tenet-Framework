@@ -89,6 +89,7 @@ Here's the collection of methods that can be used in the user / group admin visi
 * current_user and current_login - either group admin / user `User` instance or `nil`
 * current_user_acc - user `User` instance or nil (if not logged in, or logged as admin)
 * current_admin_acc - group admin `User` instance or nil (if not logged in, or logged as user)
+* current_account - `Account` of currently logged in user
 * group_admin? - TRUE if logged in as group admin
 
 
@@ -189,7 +190,7 @@ For the operation of the OTP feature:
     at `/home/deploy/my-app/current/scripts/otp-generate`
   - touch `~otp/.hushlogin` to prevent MOTD on session start
   - create empty `~otp/.ssh/authorized_keys` file
-  - set permissions of the `authorized_keys` file to 400
+  - set permissions of the `authorized_keys` file to 600
   - create `~otp/.ssh/environment` and set permissions to 600:
 
         TENET_DB_USERNAME=<your app db username>
