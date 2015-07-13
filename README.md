@@ -89,6 +89,7 @@ Here's the collection of methods that can be used in the user / group admin visi
 * current_user and current_login - either group admin / user `User` instance or `nil`
 * current_user_acc - user `User` instance or nil (if not logged in, or logged as admin)
 * current_admin_acc - group admin `User` instance or nil (if not logged in, or logged as user)
+* current_account - `Account` of currently logged in user
 * group_admin? - TRUE if logged in as group admin
 
 
