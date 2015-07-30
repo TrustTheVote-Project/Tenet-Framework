@@ -22,7 +22,7 @@ en:
           placeholder: Smith
         admin_title:
           label: Job Title or Description
-          title: CEO
+          placeholder: CEO
         admin_email:
           label: Email
           placeholder: john@myfoundation.org
