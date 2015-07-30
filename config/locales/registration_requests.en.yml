@@ -7,14 +7,28 @@ en:
       your_information: Your Information
       all_required: All fields are required
       form:
-        organization_name: Name
+        organization_name:
+          label: Name
+          placeholder: TrustTheVote
         state: State
-        website: Website
-        admin_first_name: First Name
-        admin_last_name: Last Name
-        admin_title: Job Title or Description
-        admin_email: Email
-        admin_phone: Telephone
+        website:
+          label: Website
+          placeholder: "http://myfoundation.org"
+        admin_first_name:
+          label: First Name
+          placeholder: John
+        admin_last_name:
+          label: Last Name
+          placeholder: Smith
+        admin_title:
+          label: Job Title or Description
+          title: CEO
+        admin_email:
+          label: Email
+          placeholder: john@myfoundation.org
+        admin_phone:
+          label: Telephone
+          placeholder: "(000) 000-0000"
         submit: Submit Request
     create:
       success: "Your request has been registered"
