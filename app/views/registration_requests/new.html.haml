@@ -14,7 +14,7 @@
           %h4= t '.your_organization'
           .form-group
             = f.label :organization_name, t(".form.organization_name.label")
-            = f.text_field :organization_name, class: "form-control", placeholder: t(".form.organization_nane.placeholder"), data: { bind: 'value: organizationName, valueUpdate: "afterkeydown"' }
+            = f.text_field :organization_name, class: "form-control", placeholder: t(".form.organization_name.placeholder"), data: { bind: 'value: organizationName, valueUpdate: "afterkeydown"' }
           .form-group
             = f.label :state, t(".form.state.label")
             = f.select :state, options_from_collection_for_select(sorted_states, 'code', 'name', @request.state), { prompt: "Pick state" }, class: "form-control", data: { bind: 'value: state' }
