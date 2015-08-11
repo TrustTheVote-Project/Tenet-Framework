@@ -10,7 +10,8 @@ en:
         organization_name:
           label: Name
           placeholder: TrustTheVote
-        state: State
+        state:
+          label: State
         website:
           label: Website
           placeholder: "http://myfoundation.org"
