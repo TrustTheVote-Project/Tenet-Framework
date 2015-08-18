@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :role, presence: { if: ->{ !TenetConfig['user_roles'].blank? && self.user? } }
-  validates :ssh_public_key, ssh_key: { if: :admin? }, uniqueness: { if: :admin?, allow_blank: true }, admin_key_uniqueness: { if: :admin? }
+  validates :ssh_public_key, ssh_key: { if: :requires_ssh_key? }, uniqueness: { if: :requires_ssh_key?, allow_blank: true }, admin_key_uniqueness: { if: :requires_ssh_key? }
 
   scope :users_only, -> { where(admin: false) }
 
@@ -20,6 +20,10 @@ class User < ActiveRecord::Base
   before_validation :init_user, on: :create
 
   include Concern::Suspension
+
+  def requires_ssh_key?
+    admin? && !TenetConfig['group_admins_use_passwords']
+  end
 
   def self.new_from_request(req)
     u = User.new
@@ -63,7 +67,7 @@ class User < ActiveRecord::Base
   private
 
   def init_user
-    clear_password
+    clear_password unless self.admin? && TenetConfig['group_admins_use_passwords']
     self.login = self.email unless self.admin?
     true
   end

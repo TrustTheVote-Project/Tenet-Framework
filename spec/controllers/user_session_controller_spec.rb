@@ -24,6 +24,10 @@ describe UserSessionsController, type: :controller do
     u = create(:user)
     a = u.account
 
+    # set password as it's reset upon creation
+    u.password = u.password_confirmation = 'qwerty123456'
+    u.save
+
     post :create, user_session: { state_id: a.state_id, account_id: a.id, type: 'user', login: u.login, password: "qwerty123456" }
     expect(response).to redirect_to TenetConfig['urls']['user_dashboard']
   end

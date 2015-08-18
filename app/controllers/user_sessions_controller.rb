@@ -41,7 +41,7 @@ class UserSessionsController < ApplicationController
 
     if user.admin?
       # clear OTP once logged in
-      user.clear_password! unless Rails.env.development?
+      user.clear_password! unless Rails.env.development? or TenetConfig['group_admins_use_passwords']
 
       redirect_to :group_admin_dashboard, notice: t('.successful_login')
     else

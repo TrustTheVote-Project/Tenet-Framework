@@ -2,6 +2,8 @@ admin:
   # user id of admin-admin
   login: admin
 
+group_admins_use_passwords: false
+
 urls:
   user_dashboard:  /user_dash
 
